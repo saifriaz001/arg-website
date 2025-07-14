@@ -8,10 +8,10 @@ const Herosection = () => {
         
         {/* Text Section */}
         <div className="w-full lg:w-1/2 text-center lg:text-left">
-          <h1 className="nourd text-4xl md:text-5xl text-dark font-bold mb-4">
+          <h1 className="nourd text-4xl md:text-5xl text-dark font-bold mb-4  lg:mx-20 xl:mx-0">
             AECS Research Global
           </h1>
-          <p className="nourd text-subtle text-lg  max-w-xl mx-auto lg:mx-0">
+          <p className="nourd text-subtle text-lg  max-w-xl mx-auto lg:mx-20 xl:mx-0">
             Architecture, Engineering, and Construction for <br />
             <span className="font-semibold nourd text-dark">People, Planet, and Profits</span>
           </p>

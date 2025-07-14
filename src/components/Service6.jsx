@@ -16,10 +16,10 @@ const Services6 = () => {
   return (
     <section className="w-full px-4 text-center justify-items-center py-12 bg-white">
       <div className="max-w-7xl  mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+        <h2 className="text-2xl md:text-3xl  font-semibold nourd text-dark  text-center mb-2">
           Wastewater and Environmental Solutions
         </h2>
-        <p className="text-gray-700  text-base md:text-lg leading-relaxed mb-8 max-w-5xl">
+        <p className="text-subtle  mb-10 max-w-7xl text-center">
           Reflecting its commitment to sustainable development, ARG offers specialized expertise in
           the design and management of projects related to water and sanitation infrastructure. This
           capability is formally recognized, for instance, by its professional licensing in the
@@ -31,7 +31,7 @@ const Services6 = () => {
           <img src={images[1]} alt="STP Map" className="w-full h-64 object-cover rounded-md shadow-md" />
         </div>
 
-        <p className="text-gray-700 text-center text-base md:text-lg leading-relaxed mb-8 max-w-5xl">
+        <p className="mt-10  text-sm md:text-base leading-relaxed nourd text-subtle  space-y-4">
           This credential underscores ARG’s capacity to deliver solutions in a critical area of
           environmental engineering. While specific projects may not always be categorized solely
           under “wastewater,” ARG’s involvement in large-scale infrastructure developments, such as
@@ -40,13 +40,13 @@ const Services6 = () => {
           encompassing sophisticated water supply and wastewater management systems.
         </p>
 
-        <p className="text-gray-700 text-center text-base md:text-lg leading-relaxed mb-10 max-w-5xl">
+        <p className="mt-2  text-sm md:text-base leading-relaxed nourd text-subtle  space-y-4">
           This expertise aligns with ARG’s broader commitment to creating environmentally sound and
           resilient infrastructure, contributing to healthier communities and sustainable resource
           management.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div className=" mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {images.slice(2).map((src, idx) => (
             <img
               key={idx}

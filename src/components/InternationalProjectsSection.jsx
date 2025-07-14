@@ -34,9 +34,9 @@ const saudiProjects = [
 
 const InternationalProjectsSection = () => {
   return (
-    <section className="w-[10/12] bg-white px-4 py-16">
+    <section className="w-[10/12] bg-white px-4 py-10">
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl text-center md:text-4xl font-bold text-gray-800 mb-10">
+        <h2 className="text-3xl text-center md:text-4xl font-bold   leading-tight nourd  text-dark  mb-10">
           International Portfolio: Kingdom of Saudi Arabia
         </h2>
 
@@ -51,11 +51,11 @@ const InternationalProjectsSection = () => {
                 alt={project.title}
                 className="w-full  h-48 object-cover"
               />
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">
+              <div className="p-4">
+                <h3 className="text-xl   nourd  font-semibold text-dark nourd   mb-2">
                   {project.title}
                 </h3>
-                <p className="text-gray-700 text-sm">{project.description}</p>
+                <p className="nourd text-wrap text-subtle  text-sm">{project.description}</p>
               </div>
             </div>
           ))}

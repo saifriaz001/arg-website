@@ -25,11 +25,11 @@ const epcServices = [
 
 const Services2 = () => {
   return (
-    <section className="w-full max-w-[90%] md:w-10/12 text-center mx-auto py-12">
-      <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-6">
+    <section className="w-full max-w-[90%] md:w-10/12 text-center justify-center  items-center mx-auto py-12">
+      <h2 className="text-2xl md:text-3xl  font-semibold nourd text-dark  text-center mb-2">
         EPC (Engineering, Procurement, and Construction) Advisory
       </h2>
-      <p className="text-gray-700 mb-10 text-center max-w-3xl">
+      <p className="nourd text-subtle   mb-10 text-center max-w-7xl">
         ARG distinguishes itself as a provider of comprehensive Engineering,
         Procurement, and Construction (EPC) solutions, adeptly managing projects
         from their initial concept through to final commissioning on a turnkey
@@ -47,17 +47,17 @@ const Services2 = () => {
               alt={item.title}
               className="h-40 w-full object-cover mb-4 rounded"
             />
-            <h4 className="text-lg font-semibold mb-2 text-gray-800">
+            <h4 className="nourd text-xl font-semibold text-dark  mb-2">
               {item.title}
             </h4>
-            <p className="text-sm text-gray-700 leading-relaxed">
+            <p className="nourd text-subtle   text-sm">
               {item.description}
             </p>
           </div>
         ))}
       </div>
 
-      <p className="mt-10 text-gray-600 leading-relaxed text-sm md:text-base">
+      <p className="nourd text-subtle mt-7  text-sm">
         This holistic EPC approach, built upon ARG’s foundational services,
         allows the company to take full responsibility for complex projects,
         delivering them efficiently and effectively with construction commencing

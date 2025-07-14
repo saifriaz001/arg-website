@@ -63,7 +63,7 @@ const caseStudies = [
 const Service1 = () => {
     return (
         <div className="w-10/12 mx-auto py-10 space-y-10">
-            <h2 className="text-3xl font-bold text-center text-[#333] mb-8">
+            <h2 className= "font-semibold nourd text-dark text-3xl text-center mb-8">
                 Core Expertise: Strategic Cost Management
             </h2>
 
@@ -80,10 +80,10 @@ const Service1 = () => {
                             className="w-full h-48 object-fill rounded-t-lg"
                         />
                         <div className="p-4">
-                            <h3 className="text-xl font-semibold text-[#D87026] mb-2">
+                            <h3 className="nourd text-xl font-semibold text-dark  mb-2">
                                 {item.title}
                             </h3>
-                            <p className="text-gray-700 text-sm">{item.description}</p>
+                            <p className=" nourd text-subtle   text-sm">{item.description}</p>
                         </div>
                     </div>
                 ))}
@@ -96,8 +96,8 @@ const Service1 = () => {
                         key={i}
                         className="bg-[#FFF7EC] border border-[#F3E2D0] p-4 rounded-md shadow hover:shadow-md transition"
                     >
-                        <h4 className="font-semibold text-base text-[#444] mb-1">{item.title}</h4>
-                        <p className="text-sm text-gray-700">{item.description}</p>
+                        <h4 className="font-semibold nourd text-base text-dark mb-1">{item.title}</h4>
+                        <p className="text-sm nourd text-subtle">{item.description}</p>
                     </div>
                 ))}
             </div>

@@ -32,11 +32,11 @@ const projectManagementItems = [
 const Services4 = () => {
   return (
     <section className="w-full max-w-[90%] md:w-10/12 mx-auto py-12">
-      <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-4">
+      <h2 className="text-2xl md:text-3xl  font-semibold nourd text-dark  text-center mb-2">
         Strategic Project Management
       </h2>
 
-      <p className="text-gray-700 mb-10 max-w-4xl leading-relaxed">
+      <p className="text-subtle  mb-10 max-w-7xl text-center">
         ARG’s approach to Strategic Project Management is holistic and
         client-focused, positioning the firm as a virtual extension of the
         client’s organization. This comprehensive service covers every phase of
@@ -52,15 +52,15 @@ const Services4 = () => {
             className="bg-[#FFF7EA] border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-md transition"
           >
             <item.icon className="h-10 w-10 text-[#D87026] mb-4" />
-            <h4 className="text-lg font-semibold mb-2 text-gray-800">
+            <h4 className=" nourd  font-semibold text-dark nourd   mb-2">
               {item.title}
             </h4>
-            <p className="text-sm text-gray-700">{item.description}</p>
+            <p className="nourd text-subtle   text-sm">{item.description}</p>
           </div>
         ))}
       </div>
 
-      <div className="text-gray-700 text-sm md:text-base space-y-4 leading-relaxed">
+      <div className="mt-10  text-sm md:text-base leading-relaxed nourd text-subtle  space-y-4">
         <p>
           Beyond these core functions, ARG offers a suite of specialized
           management services that contribute to its holistic offering. These

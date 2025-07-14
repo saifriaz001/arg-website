@@ -27,10 +27,10 @@ const Services5 = () => {
   return (
     <section className="w-full px-4 py-12 bg-white">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl text-center md:text-4xl font-bold text-gray-800 mb-6">
+        <h2 className="text-2xl md:text-3xl  font-semibold nourd text-dark  text-center mb-2">
           Government Advisory Services
         </h2>
-        <p className="text-gray-700 text-center mb-10 max-w-4xl text-base md:text-lg leading-relaxed">
+        <p className= "text-subtle  mb-10 max-w-7xl text-center text-base md:text-lg leading-relaxed">
           ARG possesses proven and extensive experience in advising and managing large-scale
           government construction projects across multiple regions.
         </p>
@@ -49,16 +49,16 @@ const Services5 = () => {
                 className="w-full md:w-1/3 h-56 object-cover rounded-lg shadow-md"
               />
               <div className="flex-1">
-                <h4 className="text-xl md:text-2xl font-semibold text-gray-800 mb-2">
+                <h4 className="nourd   text-dark nourd    text-xl md:text-2xl font-semibold  mb-2">
                   {item.title}
                 </h4>
-                <p className="text-gray-700 text-base">{item.description}</p>
+                <p className="nourd text-subtle text-base">{item.description}</p>
               </div>
             </div>
           ))}
         </div>
 
-        <p className="text-gray-700 text-base mt-12">
+        <p className="mt-10  text-sm md:text-base leading-relaxed nourd text-subtle  space-y-4">
           ARG's advisory services are tailored to help government clients navigate complexities,
           optimize resources, and achieve their strategic infrastructure development goals.
         </p>

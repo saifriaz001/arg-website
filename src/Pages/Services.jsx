@@ -5,87 +5,62 @@ import Services3 from '../components/Service3';
 import Services4 from '../components/Service4';
 import Services5 from '../components/Services5';
 import Services6 from '../components/Service6';
+import image1 from "../assets/35-1.jpg.webp"
 const servicesData = [
   {
     title: 'Strategic Cost Management',
-    content: (
-        
-      <p className="text-subtle text-base leading-relaxed">
-        <Service1/>
-        ARG excels in delivering budget-sensitive projects without compromising quality or scope. Our services include Cost Analysis & Estimation, Value Engineering/Design Review, and Financial Control Systems, backed by successful case studies across healthcare, defense, and education.
-      </p>
+    content: (  
+      <Service1/>
     ),
   },
   {
     title: 'EPC Advisory',
     content: (
-      <p>
         <Services2/>
-        Comprehensive turnkey solutions from concept to commissioning—covering design, procurement, and construction execution.
-      </p>
     ),
   },
   {
     title: 'Advanced Engineering and Design',
     content: (
-      <p>
         <Services3/>
-        Full-spectrum solutions from Architectural & Structural to MEP and Civil engineering, driven by precision, innovation, and sustainability.
-      </p>
     ),
   },
   {
     title: 'Strategic Project Management',
     content: (
-      <p>
         <Services4/>
-        From pre-construction to post-completion: planning, scheduling, QA/QC, claims, tender, and dispute management—ensuring optimal delivery.
-      </p>
+
     ),
   },
   {
     title: 'Environmental Solutions',
     content: (
-      <p>
         <Services6/>
-        Water, sanitation, and wastewater infrastructure planning and design; driving sustainable community development and resource efficiency.
-      </p>
     ),
   },
   {
     title: 'Global Government Advisory',
     content: (
-      <p>
-        <Services5/>
-        Strategic advisory for large-scale public infrastructure across Indian and Saudi Arabian ministries and agencies.
-      </p>
+        <Services5/>      
     ),
   },
     {
     title: 'Concept to Completion',
     content: (
-      <p>
         <Services5/>
-        Strategic advisory for large-scale public infrastructure across Indian and Saudi Arabian ministries and agencies.
-      </p>
     ),
   },
   {
     title: 'Planning & Design Services',
     content: (
-      <p>
         <Services5/>
-        Strategic advisory for large-scale public infrastructure across Indian and Saudi Arabian ministries and agencies.
-      </p>
+
     ),
   },
   {
     title: 'Management & Optimization',
     content: (
-      <p>
         <Services5/>
-        Strategic advisory for large-scale public infrastructure across Indian and Saudi Arabian ministries and agencies.
-      </p>
     ),
   },
 ];
@@ -99,7 +74,7 @@ const Services = () => {
 
   return (
     <div className="w-10/12 mx-auto px-4 py-12">
-      <h1 className="text-3xl font-bold text-dark mb-10 text-center">
+      <h1 className="nourd text-center text-4xl md:text-5xl text-dark font-bold mb-10">
         Our Comprehensive Services
       </h1>
       <div className="space-y-6">
@@ -110,7 +85,7 @@ const Services = () => {
           >
             <button
               onClick={() => toggle(i)}
-              className="w-full flex justify-between items-center px-6 py-4 text-left text-xl font-semibold text-[#D87026] focus:outline-none"
+              className=" nourd text-subtle  w-full flex justify-between items-center px-6 py-4 text-left text-xl  focus:outline-none"
             >
               {service.title}
               <span className="text-2xl transform transition-transform duration-200">
