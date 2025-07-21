@@ -11,7 +11,7 @@ const topFeatures = [
     {
         title: 'Value Engineering / Design Review',
         description: 'Our critical evaluation of design options and materials identifies efficiencies and eliminates unnecessary costs.',
-        image:image2,
+        image: image2,
     },
     {
         title: 'Financial Control Systems',
@@ -60,37 +60,33 @@ const caseStudies = [
 ];
 
 
-const Service1 = () => {
+const StrategicCostManagement = () => {
     return (
-        <div className="w-10/12 mx-auto py-10 space-y-10">
-            <h2 className= "font-semibold nourd text-dark text-3xl text-center mb-8">
-                Core Expertise: Strategic Cost Management
-            </h2>
+        <section className='section-layout'>
+            <div className='max-w-7xl mx-auto  ' >
+                <h2 className="heading-title">
+                    Core Expertise: Strategic Cost Management
+                </h2>
 
-            {/* Top Feature Cards */}
-            <div className="grid md:grid-cols-3 gap-6">
-                {topFeatures.map((item, i) => (
-                    <div
-                        key={i}
-                        className="bg-[#F9F6F2] rounded-lg shadow-md hover:shadow-lg transition duration-300"
-                    >
-                        <img
-                            src={item.image}
-                            alt={item.title}
-                            className="w-full h-48 object-fill rounded-t-lg"
-                        />
-                        <div className="p-4">
-                            <h3 className="nourd text-xl font-semibold text-dark  mb-2">
-                                {item.title}
-                            </h3>
-                            <p className=" nourd text-subtle   text-sm">{item.description}</p>
+                {/* Top Feature Cards */}
+                <div className="grid md:grid-cols-3 gap-6">
+                    {topFeatures.map((item, i) => (
+                        <div key={i} className="feature-card">
+                            <img
+                                src={item.image}
+                                alt={item.title}
+                                className="feature-card-image"
+                            />
+                            <div className="feature-card-body">
+                                <h3 className="feature-card-title">{item.title}</h3>
+                                <p className="feature-card-description">{item.description}</p>
+                            </div>
                         </div>
-                    </div>
-                ))}
-            </div>
+                    ))}
+                </div>
 
-            {/* Case Study Cards */}
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                {/* Case Study Cards */}
+                {/* <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 {caseStudies.map((item, i) => (
                     <div
                         key={i}
@@ -100,9 +96,10 @@ const Service1 = () => {
                         <p className="text-sm nourd text-subtle">{item.description}</p>
                     </div>
                 ))}
+            </div> */}
             </div>
-        </div>
+        </section>
     );
 };
 
-export default Service1;
+export default StrategicCostManagement;

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import Service1 from '../components/Services1';
-import Services2 from '../components/Services2';
-import Services3 from '../components/Service3';
-import Services4 from '../components/Service4';
-import Services5 from '../components/Services5';
-import Services6 from '../components/Service6';
-import image1 from "../assets/35-1.jpg.webp"
+import Service1 from '../components/StrategicCostManagement';
+import Services2 from '../components/EPCAdvisory';
+import Services3 from '../components/ArchitectureEngineering';
+import Services4 from '../components/ProjectManagement';
+import Services5 from '../components/GovernmentAdvisory';
+import Services6 from '../components/EnvironmentalSolutions';
+import './Section.css';
 const servicesData = [
   {
     title: 'Strategic Cost Management',
@@ -74,7 +74,7 @@ const Services = () => {
 
   return (
     <div className="w-10/12 mx-auto px-4 py-12">
-      <h1 className="nourd text-center text-4xl md:text-5xl text-dark font-bold mb-10">
+      <h1 className="nourd text-center text-primary text-4xl md:text-5xl text-dark font-bold mb-10">
         Our Comprehensive Services
       </h1>
       <div className="space-y-6">

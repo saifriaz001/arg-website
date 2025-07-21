@@ -30,41 +30,43 @@ const architectureServices = [
   },
 ];
 
-const Services3 = () => {
+const ArchitectureEngineering = () => {
   return (
-    <section className="w-full max-w-[90%] md:w-10/12 mx-auto py-12">
-      <h2 className="text-2xl md:text-3xl  font-semibold nourd text-dark  text-center mb-2">
+    <section className="section-layout">
+      <div className="max-w-7xl mx-auto">
+      <h2 className=" heading-title">
         Architecture Engineering & Design
       </h2>
-      <p className="text-subtle  mb-10 max-w-7xl text-center">
+      <p className="paragraph-lg">
         ARG possesses robust in-house design capabilities, further augmented by
         strategic collaborations with specialized design firms, to deliver
         comprehensive and innovative solutions across a wide spectrum of
         engineering disciplines.
       </p>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {architectureServices.map((item, idx) => (
           <div
             key={idx}
-            className="bg-white rounded-lg shadow-md hover:shadow-lg transition border border-gray-200 p-5"
-          >
+            className="feature-card">
             <img
               src={item.image}
               alt={item.title}
-              className="h-36 w-full object-cover rounded mb-4"
+              className="feature-card-image"
             />
-            <h4 className="nourd text-[19px] md:text-base  xl:text-[19px] font-semibold text-dark nourd   mb-2">
+            <div className="feature-card-body" >
+            <h4 className="feature-card-title">
               {item.title}
             </h4>
-            <p className="nourd text-subtle   text-sm">
+            <p className="feature-card-description">
               {item.description}
             </p>
+            </div>
           </div>
         ))}
       </div>
 
-      <div className="mt-10 text-gray-600 text-sm md:text-base leading-relaxed nourd text-subtle  space-y-4">
+      <div className="mt-10 paragraph-sm-service">
         <p>
           The firm leverages sophisticated software and embraces the latest
           innovations in design practices to ensure that its solutions are both
@@ -80,8 +82,9 @@ const Services3 = () => {
           functionally superior and built to last.
         </p>
       </div>
+      </div>
     </section>
   );
 };
 
-export default Services3;
+export default ArchitectureEngineering;

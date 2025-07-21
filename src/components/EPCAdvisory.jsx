@@ -23,13 +23,14 @@ const epcServices = [
   },
 ];
 
-const Services2 = () => {
+const EPCAdvisory = () => {
   return (
-    <section className="w-full max-w-[90%] md:w-10/12 text-center justify-center  items-center mx-auto py-12">
-      <h2 className="text-2xl md:text-3xl  font-semibold nourd text-dark  text-center mb-2">
+    <section className="section-layout">
+      <div className="max-w-7xl mx-auto" >
+      <h2 className="heading-title">
         EPC (Engineering, Procurement, and Construction) Advisory
       </h2>
-      <p className="nourd text-subtle   mb-10 text-center max-w-7xl">
+      <p className="paragraph-lg">
         ARG distinguishes itself as a provider of comprehensive Engineering,
         Procurement, and Construction (EPC) solutions, adeptly managing projects
         from their initial concept through to final commissioning on a turnkey
@@ -40,31 +41,34 @@ const Services2 = () => {
         {epcServices.map((item, idx) => (
           <div
             key={idx}
-            className="bg-white rounded-lg shadow hover:shadow-lg border border-gray-200 p-5 transition"
+            className="feature-card"
           >
             <img
               src={item.image}
               alt={item.title}
-              className="h-40 w-full object-cover mb-4 rounded"
+              className="feature-card-image"
             />
-            <h4 className="nourd text-xl font-semibold text-dark  mb-2">
+            <div className="feature-card-body">
+            <h4 className="feature-card-title">
               {item.title}
             </h4>
-            <p className="nourd text-subtle   text-sm">
+            <p className="feature-card-description">
               {item.description}
             </p>
+            </div>
           </div>
         ))}
       </div>
 
-      <p className="nourd text-subtle mt-7  text-sm">
+      <p className="paragraph-sm-service mt-10">
         This holistic EPC approach, built upon ARG’s foundational services,
         allows the company to take full responsibility for complex projects,
         delivering them efficiently and effectively with construction commencing
         concurrently with the design process for significant time savings.
       </p>
+    </div>
     </section>
   );
 };
 
-export default Services2;
+export default EPCAdvisory;

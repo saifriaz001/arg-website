@@ -23,14 +23,14 @@ const governmentServices = [
   },
 ];
 
-const Services5 = () => {
+const GovernmentAdvisory = () => {
   return (
-    <section className="w-full px-4 py-12 bg-white">
+    <section className="section-layout">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-2xl md:text-3xl  font-semibold nourd text-dark  text-center mb-2">
+        <h2 className="heading-title">
           Government Advisory Services
         </h2>
-        <p className= "text-subtle  mb-10 max-w-7xl text-center text-base md:text-lg leading-relaxed">
+        <p className= "paragraph-lg">
           ARG possesses proven and extensive experience in advising and managing large-scale
           government construction projects across multiple regions.
         </p>
@@ -49,16 +49,16 @@ const Services5 = () => {
                 className="w-full md:w-1/3 h-56 object-cover rounded-lg shadow-md"
               />
               <div className="flex-1">
-                <h4 className="nourd   text-dark nourd    text-xl md:text-2xl font-semibold  mb-2">
+                <h4 className="subheading">
                   {item.title}
                 </h4>
-                <p className="nourd text-subtle text-base">{item.description}</p>
+                <p className="paragraph-sm">{item.description}</p>
               </div>
             </div>
           ))}
         </div>
 
-        <p className="mt-10  text-sm md:text-base leading-relaxed nourd text-subtle  space-y-4">
+        <p className="mt-10 paragraph-sm-service">
           ARG's advisory services are tailored to help government clients navigate complexities,
           optimize resources, and achieve their strategic infrastructure development goals.
         </p>
@@ -67,4 +67,4 @@ const Services5 = () => {
   );
 };
 
-export default Services5;
+export default GovernmentAdvisory;

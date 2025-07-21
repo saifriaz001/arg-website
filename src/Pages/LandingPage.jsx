@@ -14,8 +14,8 @@ const LandingPage = () => {
         <Herosection/>
         <SubSection1/>
         <SubSection2/>
-        <SubSection3/>
-        <SubSection4/>
+        {/* <SubSection3/> */}
+        {/* <SubSection4/> */}
         <SubSection5/>
         <SubSection6/>
         <Subsection7/>

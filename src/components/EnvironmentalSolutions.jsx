@@ -12,14 +12,14 @@ const images = [
   image5,
 ];
 
-const Services6 = () => {
+const EnvironmentalSolutions = () => {
   return (
-    <section className="w-full px-4 text-center justify-items-center py-12 bg-white">
+    <section className="section-layout">
       <div className="max-w-7xl  mx-auto">
-        <h2 className="text-2xl md:text-3xl  font-semibold nourd text-dark  text-center mb-2">
+        <h2 className="heading-title">
           Wastewater and Environmental Solutions
         </h2>
-        <p className="text-subtle  mb-10 max-w-7xl text-center">
+        <p className="paragraph-lg">
           Reflecting its commitment to sustainable development, ARG offers specialized expertise in
           the design and management of projects related to water and sanitation infrastructure. This
           capability is formally recognized, for instance, by its professional licensing in the
@@ -31,7 +31,7 @@ const Services6 = () => {
           <img src={images[1]} alt="STP Map" className="w-full h-64 object-cover rounded-md shadow-md" />
         </div>
 
-        <p className="mt-10  text-sm md:text-base leading-relaxed nourd text-subtle  space-y-4">
+        <p className="paragraph-sm-service">
           This credential underscores ARG’s capacity to deliver solutions in a critical area of
           environmental engineering. While specific projects may not always be categorized solely
           under “wastewater,” ARG’s involvement in large-scale infrastructure developments, such as
@@ -40,7 +40,7 @@ const Services6 = () => {
           encompassing sophisticated water supply and wastewater management systems.
         </p>
 
-        <p className="mt-2  text-sm md:text-base leading-relaxed nourd text-subtle  space-y-4">
+        <p className="paragraph-sm-service">
           This expertise aligns with ARG’s broader commitment to creating environmentally sound and
           resilient infrastructure, contributing to healthier communities and sustainable resource
           management.
@@ -61,4 +61,4 @@ const Services6 = () => {
   );
 };
 
-export default Services6;
+export default EnvironmentalSolutions;

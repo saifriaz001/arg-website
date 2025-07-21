@@ -29,14 +29,15 @@ const projectManagementItems = [
   },
 ];
 
-const Services4 = () => {
+const ProjectManagement = () => {
   return (
-    <section className="w-full max-w-[90%] md:w-10/12 mx-auto py-12">
-      <h2 className="text-2xl md:text-3xl  font-semibold nourd text-dark  text-center mb-2">
+    <section className="section-layout">
+      <div className="max-w-7xl mx-auto">
+      <h2 className="heading-title" >
         Strategic Project Management
       </h2>
 
-      <p className="text-subtle  mb-10 max-w-7xl text-center">
+      <p className="paragraph-lg">
         ARG’s approach to Strategic Project Management is holistic and
         client-focused, positioning the firm as a virtual extension of the
         client’s organization. This comprehensive service covers every phase of
@@ -49,34 +50,37 @@ const Services4 = () => {
         {projectManagementItems.map((item, idx) => (
           <div
             key={idx}
-            className="bg-[#FFF7EA] border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-md transition"
+            className="feature-card"
           >
-            <item.icon className="h-10 w-10 text-[#D87026] mb-4" />
-            <h4 className=" nourd  font-semibold text-dark nourd   mb-2">
+            <item.icon className="h-20 w-20 text-[#D87026] p-4 " />
+            <div className="feature-card-body -mt-2">
+            <h4 className="feature-card-title">
               {item.title}
             </h4>
-            <p className="nourd text-subtle   text-sm">{item.description}</p>
+            <p className="feature-card-description">{item.description}</p>
+            </div>
           </div>
         ))}
       </div>
 
-      <div className="mt-10  text-sm md:text-base leading-relaxed nourd text-subtle  space-y-4">
+      <div className="mt-10  paragraph-sm-service">
         <p>
           Beyond these core functions, ARG offers a suite of specialized
           management services that contribute to its holistic offering. These
-          include <strong>Tender Management</strong>, ensuring the selection of
+          include <strong className='strong' >Tender Management</strong>, ensuring the selection of
           qualified contractors through transparent and competitive bidding
           processes;
-          <strong> Client Representation</strong>, acting as the single point of
+          <strong className='strong' > Client Representation</strong>, acting as the single point of
           contact and safeguarding client interests;
-          <strong> Claims Management</strong>, expertly handling and preparing
+          <strong className='strong' > Claims Management</strong>, expertly handling and preparing
           claims to protect client positions; and{" "}
-          <strong>Dispute Management</strong>, employing effective strategies to
+          <strong className='strong' >Dispute Management</strong>, employing effective strategies to
           resolve conflicts amicably and efficiently.
         </p>
+      </div>
       </div>
     </section>
   );
 };
 
-export default Services4;
+export default ProjectManagement;

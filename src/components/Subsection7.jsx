@@ -42,48 +42,42 @@ const fadeUp = {
 
 const Subsection7 = () => {
   return (
-    <section className="w-[10/12] bg-white py-16 px-4 md:px-10 mx-auto">
-    <div className='max-w-7xl mx-auto justify-center items-center '>
-      <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-dark mb-4">
-          Connect with AECS Research Global
-        </h2>
-        <p className="text-subtle max-w-3xl mx-auto">
+    <section className="mt-20">
+      <div>
+        <h2 className="heading-title">Connect with AECS Research Global</h2>
+        <p className="paragraph-lg">
           AECS Research Global (ARG) invites inquiries from organizations seeking expert, reliable, and innovative solutions for their built environment projects. Whether you're starting a new development or exploring consultancy, we're here to help you succeed.
         </p>
-      </div>
 
-      <div className="  text-center grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-        {contacts.map((c, index) => (
-          <motion.div
-            key={index}
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            custom={index}
-            className="bg-[#fffaf2] rounded-lg shadow-md p-6 text-left hover:shadow-lg transition-all duration-300"
-          >
-            <h3 className="text-lg font-semibold text-dark mb-2">{c.title}</h3>
-            <p className="text-sm font-medium text-gray-700 mb-1">{c.org}</p>
-            {c.contactPerson && (
-              <p className="text-sm text-gray-600 mb-1">{c.contactPerson}</p>
-            )}
-            <p className="text-sm text-gray-600 mb-1 whitespace-pre-line">{c.address}</p>
-            <p className="text-sm text-gray-600 mb-1">
-              <span className="font-medium">Phone:</span> {c.phone}
-            </p>
-            <p className="text-sm text-gray-600">
-              <span className="font-medium">Email:</span> {c.email}
-            </p>
-            {c.extra && (
-              <p className="text-sm text-gray-600 mt-2">
-                <span className="font-medium">Design Office:</span> {c.extra}
+        <div className="text-center grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-10">
+          {contacts.map((c, index) => (
+            <motion.div
+              key={index}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              custom={index}
+              viewport={{ once: true, amount: 0.3 }}
+              className="contact-card"
+            >
+              <h3 className="contact-title">{c.title}</h3>
+              <p className="contact-org">{c.org}</p>
+              {c.contactPerson && <p className="contact-detail">{c.contactPerson}</p>}
+              <p className="contact-detail whitespace-pre-line">{c.address}</p>
+              <p className="contact-detail">
+                <span className="contact-label">Phone:</span> {c.phone}
               </p>
-            )}
-          </motion.div>
-        ))}
-      </div>
+              <p className="contact-detail">
+                <span className="contact-label">Email:</span> {c.email}
+              </p>
+              {c.extra && (
+                <p className="contact-extra">
+                  <span className="contact-label">Design Office:</span> {c.extra}
+                </p>
+              )}
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
