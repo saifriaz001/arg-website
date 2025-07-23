@@ -15,6 +15,7 @@ import ArchitectureEngineering from './components/ArchitectureEngineering'
 import ProjectManagement from './components/ProjectManagement'
 import GovernmentAdvisory from './components/GovernmentAdvisory'
 import EnvironmentalSolutions from './components/EnvironmentalSolutions'
+import SubStrategicCostManagement from './sub-pages/Strategic-Cost-Management/Strategic-Cost-Management'
 
 function App() {
 
@@ -36,6 +37,8 @@ function App() {
       <Route path='/projectManagement' element={<ProjectManagement/>}/>
       <Route path='/governmentAdvisory' element={<GovernmentAdvisory/>} />
       <Route path='/environmentalSolutions' element={<EnvironmentalSolutions/>}/>
+      <Route path='/sub-pages/strategic-cost-management' element={<SubStrategicCostManagement/>}/>
+      {/* Add more routes as needed */}
      </Routes>
     <Footer/>
     </div>

@@ -52,6 +52,7 @@ const ServicesPage = () => {
                 className="relative group h-64 overflow-hidden  shadow-md"
               >
                 <img
+                  loading="lazy"
                   src={service.image}
                   alt={service.title}
                   className="w-full h-full object-cover brightness-50 transform group-hover:brightness-100 transition duration-500 ease-in-out group-hover:scale-105"

@@ -29,11 +29,11 @@ const Navbar = () => {
       onMouseLeave={() => setActiveMenu(null)}
     >
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <div className=" items-center justify-center flex flex-row ">
+        <div className= " justify-center items-center gap-x-1  flex flex-row ">
           
-          <div><Link to={"/"}><img className='py-2 w-20 h-20' src={logo} alt='logo'/></Link></div>
+          <div><Link to={"/"}><img className=' py-2 w-20 h-20' src={logo} alt='logo'/></Link></div>
           <div className=' xl:hidden text-2xl brand-heading font-bold'> ARG </div>
-          <div className=' hidden xl:block text-2xl brand-heading font-bold'><Link to={"/"}>AECS Research Global</Link></div>
+          <div className='  hidden xl:block text-2xl brand-heading font-bold  '><Link to={"/"}>AECS Research Global</Link></div>
           
         </div>
 
