@@ -1,0 +1,24 @@
+/* filter-ui-bar.css */
+@import "tailwindcss";
+
+@layer components {
+  .filter-bar-container {
+    @apply flex flex-wrap gap-4 font-medium text-[var(--color-paragraph)] py-3;
+  }
+
+  .filter-button {
+    @apply hover:underline text-[var(--color-button-primary)] font-[var(--font-paragraph)];
+  }
+
+  .filter-panel {
+    @apply absolute w-screen left-0 bg-white border-t border-gray-200 shadow-lg z-[9999];
+  }
+
+  .filter-options-grid {
+    @apply max-w-screen-xl mx-auto px-4 py-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4;
+  }
+
+  .filter-option {
+    @apply text-sm cursor-pointer px-3 py-2 hover:bg-[var(--color-cardbackground)] rounded text-[var(--color-paragraph)] font-[var(--font-paragraph)];
+  }
+}
