@@ -17,87 +17,80 @@ import NewsSideBar from "../NewsPageComponents/NewsSideBar";
 
 const newsData = [
   {
-    date: "JULY 22, 2025",
-    title:
-      "AECOM to enhance mobility across the Greater Bay Area by delivering the Hong Kong Section of the Hong Kong-Shenzhen Western Rail Link (Hung Shui Kiu-Qianhai)",
-    types: "Projects",
-    market: "cities",
-    region: "",
-    year: 2025,
+    date: "2025-07-22",
+    title: "AECOM leads redevelopment of historic industrial zone in Dubai",
+    types: "News",
+    market: "Industrial",
+    regions: "Middle East & Africa",
+    year: 2024,
     summary:
-      "DALLAS (July 22, 2025) — AECOM (NYSE: ACM), the trusted global infrastructure leader, today announced that its joint venture with AtkinsRéalis has been awarded the consultancy agreement, DALLAS (July 22, 2025) — AECOM (NYSE: ACM), the trusted global infrastructure leader, today announced that its joint venture with AtkinsRéalis has been awarded the consultancy agreement",
+      "AECOM announced a major industrial redevelopment project in Dubai, converting legacy infrastructure into state-of-the-art logistics and innovation zones.",
   },
   {
-    date: "JULY 22, 2025",
-    title:
-      "AECOM to enhance mobility across the Greater Bay Area by delivering the Hong Kong Section of the Hong Kong-Shenzhen Western Rail Link (Hung Shui Kiu-Qianhai)",
+    date: "2024-03-03",
+    title: "AECOM secures education master plan for Southeast Asia",
     types: "Projects",
-    market: "cities",
-    region: "",
-    year: 2025,
+    market: "Education",
+    regions: "APAC",
+    year: 2023,
     summary:
-      "DALLAS (July 22, 2025) — AECOM (NYSE: ACM), the trusted global infrastructure leader, today announced that its joint venture with AtkinsRéalis has been awarded the consultancy agreement, DALLAS (July 22, 2025) — AECOM (NYSE: ACM), the trusted global infrastructure leader, today announced that its joint venture with AtkinsRéalis has been awarded the consultancy agreement",
+      "AECOM has been selected to lead the education infrastructure modernization for several emerging economies across Southeast Asia.",
   },
   {
-    date: "JULY 22, 2025",
-    title:
-      "AECOM to enhance mobility across the Greater Bay Area by delivering the Hong Kong Section of the Hong Kong-Shenzhen Western Rail Link (Hung Shui Kiu-Qianhai)",
-    types: "Projects",
-    market: "cities",
-    region: "",
-    year: 2025,
+    date: "2023-12-15",
+    title: "Major sustainability award for water management innovation",
+    types: "Awards",
+    market: "Water",
+    regions: "Europe",
+    year: 2023,
     summary:
-      "DALLAS (July 22, 2025) — AECOM (NYSE: ACM), the trusted global infrastructure leader, today announced that its joint venture with AtkinsRéalis has been awarded the consultancy agreement, DALLAS (July 22, 2025) — AECOM (NYSE: ACM), the trusted global infrastructure leader, today announced that its joint venture with AtkinsRéalis has been awarded the consultancy agreement",
+      "AECOM's European team received international recognition for water conservation and reuse technologies deployed in the Netherlands.",
   },
   {
-    date: "JULY 22, 2025",
-    title:
-      "AECOM to enhance mobility across the Greater Bay Area by delivering the Hong Kong Section of the Hong Kong-Shenzhen Western Rail Link (Hung Shui Kiu-Qianhai)",
-    types: "Projects",
-    market: "cities",
-    region: "",
-    year: 2025,
+    date: "2022-08-07",
+    title: "New justice infrastructure program in South America",
+    types: "Statements",
+    market: "Justice",
+    regions: "Americas",
+    year: 2022,
     summary:
-      "DALLAS (July 22, 2025) — AECOM (NYSE: ACM), the trusted global infrastructure leader, today announced that its joint venture with AtkinsRéalis has been awarded the consultancy agreement, DALLAS (July 22, 2025) — AECOM (NYSE: ACM), the trusted global infrastructure leader, today announced that its joint venture with AtkinsRéalis has been awarded the consultancy agreement",
+      "AECOM partners with national governments in South America to plan and deliver sustainable judicial facilities and correctional centers.",
   },
   {
-    date: "JULY 22, 2025",
-    title:
-      "AECOM to enhance mobility across the Greater Bay Area by delivering the Hong Kong Section of the Hong Kong-Shenzhen Western Rail Link (Hung Shui Kiu-Qianhai)",
-    types: "Projects",
-    market: "cities",
-    region: "",
-    year: 2025,
+    date: "2021-11-11",
+    title: "Global healthcare expansion with AI-integrated hospitals",
+    types: "Financials",
+    market: "Healthcare",
+    regions: "Middle East & Africa",
+    year: 2021,
     summary:
-      "DALLAS (July 22, 2025) — AECOM (NYSE: ACM), the trusted global infrastructure leader, today announced that its joint venture with AtkinsRéalis has been awarded the consultancy agreement, DALLAS (July 22, 2025) — AECOM (NYSE: ACM), the trusted global infrastructure leader, today announced that its joint venture with AtkinsRéalis has been awarded the consultancy agreement",
+      "AECOM announces multi-billion dollar investments into smart healthcare infrastructure with AI-powered diagnostics across MENA.",
   },
   {
-    date: "JULY 22, 2025",
-    title:
-      "AECOM to enhance mobility across the Greater Bay Area by delivering the Hong Kong Section of the Hong Kong-Shenzhen Western Rail Link (Hung Shui Kiu-Qianhai)",
+    date: "2020-04-02",
+    title: "Transportation corridor to boost African connectivity",
     types: "Projects",
-    market: "cities",
-    region: "",
-    year: 2025,
+    market: "Transportation",
+    regions: "Middle East & Africa",
+    year: 2020,
     summary:
-      "DALLAS (July 22, 2025) — AECOM (NYSE: ACM), the trusted global infrastructure leader, today announced that its joint venture with AtkinsRéalis has been awarded the consultancy agreement, DALLAS (July 22, 2025) — AECOM (NYSE: ACM), the trusted global infrastructure leader, today announced that its joint venture with AtkinsRéalis has been awarded the consultancy agreement",
+      "AECOM collaborates with African Union to develop the Trans-Africa corridor spanning over 1,500 kilometers across four nations.",
   },
   {
-    date: "JULY 22, 2025",
-    title:
-      "AECOM to enhance mobility across the Greater Bay Area by delivering the Hong Kong Section of the Hong Kong-Shenzhen Western Rail Link (Hung Shui Kiu-Qianhai)",
-    types: "Projects",
-    market: "cities",
-    region: "",
-    year: 2025,
+    date: "2019-01-19",
+    title: "Oil & gas sustainability strategy launched by AECOM",
+    types: "Statements",
+    market: "Oil, Gas & Chemicals",
+    regions: "APAC",
+    year: 2019,
     summary:
-      "DALLAS (July 22, 2025) — AECOM (NYSE: ACM), the trusted global infrastructure leader, today announced that its joint venture with AtkinsRéalis has been awarded the consultancy agreement, DALLAS (July 22, 2025) — AECOM (NYSE: ACM), the trusted global infrastructure leader, today announced that its joint venture with AtkinsRéalis has been awarded the consultancy agreement",
+      "AECOM releases its decarbonization roadmap for oil and gas projects in Asia Pacific, focusing on renewable integration and emissions monitoring.",
   },
 ];
 
 // Dummy Contacts
 const contacts = [
-  { name: "Jason Marshall", region: "Global" },
+  { name: "Jason Marshall", regions: "Global" },
   { name: "Quincy Zhai", region: "Americas" },
   { name: "Rebecca Adam", region: "Australia & New Zealand" },
   { name: "Rebecca Lam", region: "Asia Pacific" },
@@ -108,6 +101,32 @@ const contacts = [
 
 const NewsBlogs = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
+  const [sortOrder, setSortOrder] = useState("newest");
+  const [selectedFilters, setSelectedFilters] = useState({});
+
+  const handleFilterChange = (category, value) => {
+    setSelectedFilters((prev) => ({
+      ...prev,
+      [category]: prev[category] === value ? null : value,
+    }));
+  };
+
+  const handleClearFilters = () => {
+    setSelectedFilters({});
+  };
+
+  const filteredNews = newsData.filter((item) => {
+    return Object.entries(selectedFilters).every(([key, value]) => {
+      if (!value || value === "All") return true;
+      return String(item[key]).toLowerCase() === String(value).toLowerCase();
+    });
+  });
+
+  const sortedNews = [...filteredNews].sort((a, b) => {
+    const dateA = new Date(a.date);
+    const dateB = new Date(b.date);
+    return sortOrder === "newest" ? dateB - dateA : dateA - dateB;
+  });
 
   const toggleDropdown = (type) => {
     setOpenDropdown((prev) => (prev === type ? null : type));
@@ -119,9 +138,16 @@ const NewsBlogs = () => {
 
         <div className="main-container">
           <div className="w-full lg:w-2/3">
-            <SortBar onClear={() => setOpenDropdown(null)} />
-            <FilterUIBar />
-            {newsData.map((item, i) => (
+            <SortBar
+              // onClear={() => setOpenDropdown(null)}
+              onClear={handleClearFilters}
+              onSortChange={setSortOrder}
+            />
+            <FilterUIBar
+              selectedFilters={selectedFilters}
+              onSelect={handleFilterChange}
+            />
+            {sortedNews.map((item, i) => (
               <NewsCard key={i} item={item} />
             ))}
           </div>

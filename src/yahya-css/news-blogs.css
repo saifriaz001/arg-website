@@ -27,15 +27,15 @@
   }
 
   .sort-buttons {
-    @apply flex flex-wrap items-center gap-3;
+    @apply flex flex-wrap items-center gap-3 text-xl;
   }
 
   .sort-button {
-    @apply text-[var(--color-strong)] hover:underline;
+    @apply text-[var(--color-strong)] cursor-pointer text-lg;
   }
 
   .clear-button {
-    @apply text-[var(--color-strong)] hover:underline font-medium;
+    @apply text-[var(--color-strong)]  text-xl font-medium cursor-pointer;
   }
 
   .news-card {
@@ -47,7 +47,7 @@
   }
 
   .news-title {
-    @apply text-lg sm:text-xl text-[var(--color-heading)] font-semibold mb-1 leading-snug font-[var(--font-heading)];
+    @apply cursor-pointer text-2xl sm:text-xl text-[var(--color-heading)] font-semibold mb-1 leading-snug font-[var(--font-heading)];
   }
 
   .news-type {
@@ -59,7 +59,7 @@
   }
 
   .read-more-button {
-    @apply px-4 py-1 border border-[var(--color-button-primary)] text-[var(--color-button-primary)] font-medium rounded-xl cursor-pointer text-sm font-[var(--font-paragraph)];
+    @apply px-4 py-1 border border-[var(--color-button-primary)] text-[var(--color-button-primary)] font-medium rounded-4xl border-2 cursor-pointer text-sm font-[var(--font-paragraph)];
   }
 
   .sidebar {
@@ -75,7 +75,7 @@
   }
 
   .sidebar-link {
-    @apply text-[var(--color-button-primary)] hover:underline cursor-pointer;
+    @apply text-[var(--color-button-primary)] hover:font-semibold cursor-pointer;
   }
 
   .download-button {

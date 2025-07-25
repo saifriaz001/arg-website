@@ -1,6 +1,6 @@
 // components/HeroSection.jsx
 import React from "react";
-
+import "../yahya-css/news-blogs.css";
 const HeroSectionNews = ({ title, background }) => {
   return (
     <div

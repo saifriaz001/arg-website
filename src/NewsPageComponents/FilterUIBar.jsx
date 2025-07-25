@@ -1,16 +1,10 @@
 // components/FilterUIBar.jsx
 import React, { useEffect, useRef, useState } from "react";
 import "../yahya-css/filter-ui-bar.css"; // adjust path based on your project
-import {
-  FaAngleDown,
-  FaAngleUp,
-  FaChevronUp,
-  FaChevronDown,
-} from "react-icons/fa6";
-
+import { FaChevronUp, FaChevronDown } from "react-icons/fa6";
 
 const dropdownOptions = {
-  Market: [
+  market: [
     "Cities",
     "Commercial & Residential",
     "Education",
@@ -25,8 +19,8 @@ const dropdownOptions = {
     "Transportation",
     "Water",
   ],
-  Regions: ["Middle East & Africa", "Americas", "Europe", "APAC"],
-  Types: [
+  regions: ["Middle East & Africa", "Americas", "Europe", "APAC"],
+  types: [
     "Awards",
     "Financials",
     "News",
@@ -35,7 +29,7 @@ const dropdownOptions = {
     "Projects",
     "Statements",
   ],
-  Year: [
+  year: [
     "All",
     "2025",
     "2024",
@@ -56,10 +50,14 @@ const dropdownOptions = {
   ],
 };
 
-const FilterUIBar = () => {
+const FilterUIBar = ({ selectedFilters, onSelect }) => {
   const [activeFilter, setActiveFilter] = useState(null);
   const [panelTop, setPanelTop] = useState(0);
   const containerRef = useRef();
+
+  function capitalizeFirstLetter(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
 
   const toggleDropdown = (filter) => {
     setActiveFilter((prev) => (prev === filter ? null : filter));
@@ -86,18 +84,25 @@ const FilterUIBar = () => {
     <div ref={containerRef}>
       {/* Filter Buttons */}
       <div className="filter-bar-container">
-        {Object.keys(dropdownOptions).map((key) => (
-          <button
-            key={key}
-            onClick={() => toggleDropdown(key)}
-            className="filter-button"
-          >
-            {key}
-            <span className="inline-block relative top-[2px] ml-1">
-              {activeFilter === key ? <FaChevronUp /> : <FaChevronDown />}
-            </span>
-          </button>
-        ))}
+        {Object.keys(dropdownOptions).map((key) => {
+          const label = capitalizeFirstLetter(key);
+          const selected = selectedFilters[key];
+          return (
+            <button
+              key={key}
+              onClick={() => toggleDropdown(key)}
+              className="filter-button"
+            >
+              {label}
+              {selected && selected !== "All" && (
+                <span className="selected-text">: {selected}</span>
+              )}
+              <span className="up-down-arrow">
+                {activeFilter === key ? <FaChevronUp /> : <FaChevronDown />}
+              </span>
+            </button>
+          );
+        })}
       </div>
 
       {/* Dropdown Panel */}
@@ -105,7 +110,16 @@ const FilterUIBar = () => {
         <div className="filter-panel" style={{ top: `${panelTop}px` }}>
           <div className="filter-options-grid">
             {dropdownOptions[activeFilter].map((option, index) => (
-              <div key={index} className="filter-option">
+              <div
+                key={index}
+                className={`filter-option ${
+                  selectedFilters[activeFilter] === option ? "selected" : ""
+                }`}
+                onClick={() => {
+                  onSelect(activeFilter, option);
+                  setActiveFilter(null);
+                }}
+              >
                 {option}
               </div>
             ))}

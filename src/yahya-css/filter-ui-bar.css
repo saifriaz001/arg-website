@@ -7,9 +7,11 @@
   }
 
   .filter-button {
-    @apply hover:underline text-[var(--color-button-primary)] font-[var(--font-paragraph)];
+    @apply cursor-pointer text-xl text-[var(--color-button-primary)] font-[var(--font-paragraph)];
   }
-
+  .up-down-arrow {
+    @apply inline-block relative top-[2px] ml-2;
+  }
   .filter-panel {
     @apply absolute w-screen left-0 bg-white border-t border-gray-200 shadow-lg z-[9999];
   }
@@ -20,5 +22,19 @@
 
   .filter-option {
     @apply text-sm cursor-pointer px-3 py-2 hover:bg-[var(--color-cardbackground)] rounded text-[var(--color-paragraph)] font-[var(--font-paragraph)];
+  }
+
+  .selected-label {
+    @apply mx-1 text-sm text-gray-800 font-medium;
+  }
+
+  /* Highlight selected filter option inside dropdown */
+  .filter-option.selected {
+    @apply bg-yellow-100 text-sm;
+  }
+
+  /* Selected option text inside dropdown */
+  .selected-text {
+    @apply mx-1 text-sm text-[var(--color-button-primary)];
   }
 }
