@@ -1,160 +1,111 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import pressReleaseBg from "../yahya-images/press-release-bg.jpg";
 import FilterUIBar from "../NewsPageComponents/FilterUIBar";
 import "../yahya-css/news-blogs.css";
-import {
-  FaFacebookF,
-  FaTwitter,
-  FaLinkedinIn,
-  FaYoutube,
-  FaAngleDown,
-} from "react-icons/fa";
 
 import HeroSectionNews from "../NewsPageComponents/HeroSectionNews";
 import SortBar from "../NewsPageComponents/SortBar";
 import NewsCard from "../NewsPageComponents/NewsCard";
 import NewsSideBar from "../NewsPageComponents/NewsSideBar";
+import Pagination from "../NewsPageComponents/Pagination";
 
-const newsData = [
-  {
-    date: "2025-07-22",
-    title: "AECOM leads redevelopment of historic industrial zone in Dubai",
-    types: "News",
-    market: "Industrial",
-    regions: "Middle East & Africa",
-    year: 2024,
-    summary:
-      "AECOM announced a major industrial redevelopment project in Dubai, converting legacy infrastructure into state-of-the-art logistics and innovation zones.",
-  },
-  {
-    date: "2024-03-03",
-    title: "AECOM secures education master plan for Southeast Asia",
-    types: "Projects",
-    market: "Education",
-    regions: "APAC",
-    year: 2023,
-    summary:
-      "AECOM has been selected to lead the education infrastructure modernization for several emerging economies across Southeast Asia.",
-  },
-  {
-    date: "2023-12-15",
-    title: "Major sustainability award for water management innovation",
-    types: "Awards",
-    market: "Water",
-    regions: "Europe",
-    year: 2023,
-    summary:
-      "AECOM's European team received international recognition for water conservation and reuse technologies deployed in the Netherlands.",
-  },
-  {
-    date: "2022-08-07",
-    title: "New justice infrastructure program in South America",
-    types: "Statements",
-    market: "Justice",
-    regions: "Americas",
-    year: 2022,
-    summary:
-      "AECOM partners with national governments in South America to plan and deliver sustainable judicial facilities and correctional centers.",
-  },
-  {
-    date: "2021-11-11",
-    title: "Global healthcare expansion with AI-integrated hospitals",
-    types: "Financials",
-    market: "Healthcare",
-    regions: "Middle East & Africa",
-    year: 2021,
-    summary:
-      "AECOM announces multi-billion dollar investments into smart healthcare infrastructure with AI-powered diagnostics across MENA.",
-  },
-  {
-    date: "2020-04-02",
-    title: "Transportation corridor to boost African connectivity",
-    types: "Projects",
-    market: "Transportation",
-    regions: "Middle East & Africa",
-    year: 2020,
-    summary:
-      "AECOM collaborates with African Union to develop the Trans-Africa corridor spanning over 1,500 kilometers across four nations.",
-  },
-  {
-    date: "2019-01-19",
-    title: "Oil & gas sustainability strategy launched by AECOM",
-    types: "Statements",
-    market: "Oil, Gas & Chemicals",
-    regions: "APAC",
-    year: 2019,
-    summary:
-      "AECOM releases its decarbonization roadmap for oil and gas projects in Asia Pacific, focusing on renewable integration and emissions monitoring.",
-  },
-];
+import { newsData } from "../utils/constants";
+import { contacts } from "../utils/constants";
 
-// Dummy Contacts
-const contacts = [
-  { name: "Jason Marshall", regions: "Global" },
-  { name: "Quincy Zhai", region: "Americas" },
-  { name: "Rebecca Adam", region: "Australia & New Zealand" },
-  { name: "Rebecca Lam", region: "Asia Pacific" },
-  { name: "Rachel Brierley", region: "Europe & India" },
-  { name: "Bahaa Hage", region: "Middle East & Africa" },
-];
 // Add more entries if needed
+const ITEMS_PER_PAGE = 1;
 
 const NewsBlogs = () => {
-  const [openDropdown, setOpenDropdown] = useState(null);
   const [sortOrder, setSortOrder] = useState("newest");
   const [selectedFilters, setSelectedFilters] = useState({});
+  const [currentPage, setCurrentPage] = useState(1);
 
   const handleFilterChange = (category, value) => {
-    setSelectedFilters((prev) => ({
-      ...prev,
-      [category]: prev[category] === value ? null : value,
-    }));
+    setSelectedFilters((prev) => {
+      const updated = {
+        ...prev,
+        [category]: prev[category] === value ? null : value,
+      };
+
+      return updated;
+    });
   };
 
   const handleClearFilters = () => {
     setSelectedFilters({});
   };
 
-  const filteredNews = newsData.filter((item) => {
-    return Object.entries(selectedFilters).every(([key, value]) => {
-      if (!value || value === "All") return true;
-      return String(item[key]).toLowerCase() === String(value).toLowerCase();
+  const sortedNews = useMemo(() => {
+    console.log("Filtering and sorting..."); // This will now only run when dependencies change
+
+    const filtered = newsData.filter((item) => {
+      return Object.entries(selectedFilters).every(([key, value]) => {
+        if (!value || value === "All") return true;
+        return String(item[key]).toLowerCase() === String(value).toLowerCase();
+      });
     });
-  });
 
-  const sortedNews = [...filteredNews].sort((a, b) => {
-    const dateA = new Date(a.date);
-    const dateB = new Date(b.date);
-    return sortOrder === "newest" ? dateB - dateA : dateA - dateB;
-  });
+    return [...filtered].sort((a, b) => {
+      const dateA = new Date(a.date);
+      const dateB = new Date(b.date);
+      return sortOrder === "newest" ? dateB - dateA : dateA - dateB;
+    });
+  }, [newsData, selectedFilters, sortOrder]); // Dependencies
 
-  const toggleDropdown = (type) => {
-    setOpenDropdown((prev) => (prev === type ? null : type));
-  };
+  // 4. Calculate items for the current page
+  const totalPages = Math.ceil(sortedNews.length / ITEMS_PER_PAGE);
+
+  const currentNewsItems = useMemo(() => {
+    const indexOfLastItem = currentPage * ITEMS_PER_PAGE;
+    const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE;
+    return sortedNews.slice(indexOfFirstItem, indexOfLastItem);
+  }, [currentPage, sortedNews]);
+
+  // 5. Reset to page 1 when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedFilters, sortOrder]);
+
   return (
-    <>
-      <div className="news-page-wrapper">
-        <HeroSectionNews title="Press Releases" background={pressReleaseBg} />
+    <div className="news-page-wrapper">
+      <HeroSectionNews title="Press Releases" background={pressReleaseBg} />
 
-        <div className="main-container">
-          <div className="w-full lg:w-2/3">
-            <SortBar
-              // onClear={() => setOpenDropdown(null)}
-              onClear={handleClearFilters}
-              onSortChange={setSortOrder}
-            />
-            <FilterUIBar
-              selectedFilters={selectedFilters}
-              onSelect={handleFilterChange}
-            />
-            {sortedNews.map((item, i) => (
-              <NewsCard key={i} item={item} />
-            ))}
-          </div>
-          <NewsSideBar contacts={contacts} />
+      <div className="main-container">
+        <div className="w-full lg:w-2/3">
+          <SortBar onClear={handleClearFilters} onSortChange={setSortOrder} />
+          <FilterUIBar
+            selectedFilters={selectedFilters}
+            onSelect={handleFilterChange}
+          />
+
+          {currentNewsItems.length > 0 ? (
+            <>
+              {currentNewsItems.map((item) => (
+                <NewsCard key={item?.title} item={item} />
+              ))}
+              {/* 6. Render the Pagination component */}
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={setCurrentPage}
+              />
+            </>
+          ) : (
+            // If sortedNews is empty, render the fallback message
+            <div className="text-center py-20">
+              <h2 className="text-3xl font-[var(--font-paragraph)] mb-2">
+                Nothing Found
+              </h2>
+              <p className="text-[var(--color-text-secondary)]">
+                Sorry, but nothing matched your filter terms. Please try again
+                with different keywords.
+              </p>
+            </div>
+          )}
         </div>
+        <NewsSideBar contacts={contacts} />
       </div>
-    </>
+    </div>
   );
 };
 

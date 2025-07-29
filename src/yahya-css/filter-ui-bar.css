@@ -1,40 +1,73 @@
-/* filter-ui-bar.css */
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=DM+Sans:wght@400;700&display=swap");
 @import "tailwindcss";
+
+@layer theme {
+  :root {
+    /* Global Font Families */
+    --font-heading: "Libre Baskerville";
+    --font-paragraph: "DM Sans";
+
+    /* Global Color Palette (Semantic Tokens) */
+    --color-background: #fffdfa; /* Main page background */
+    --color-surface: #f7edd4; /* Card backgrounds, light surfaces */
+    --color-surface-inverse: #454240; /* Dark panels, footers */
+
+    --color-accent: #b88e23; /* Primary interactive color for buttons, links */
+
+    --color-text-primary: #5c4e3d; /* Main headings */
+    --color-text-secondary: #454240; /* Body text, paragraphs */
+    --color-text-tertiary: #1f2937; /* Less important labels (was gray-800) */
+    --color-text-inverse: #ffffff; /* Text on dark backgrounds (was white) */
+  }
+}
 
 @layer components {
   .filter-bar-container {
-    @apply flex flex-wrap gap-4 font-medium text-[var(--color-paragraph)] py-3;
+    @apply flex flex-col items-center gap-x-3 font-[var(--font-paragraph)] font-medium text-[var(--color-text-secondary)] py-3;
+    @apply md:flex-row;
   }
 
   .filter-button {
-    @apply cursor-pointer text-xl text-[var(--color-button-primary)] font-[var(--font-paragraph)];
+    @apply cursor-pointer text-xl text-[var(--color-accent)] flex items-center w-full justify-between;
+    @apply lg:w-auto;
   }
+
   .up-down-arrow {
-    @apply inline-block relative top-[2px] ml-2;
+    @apply cursor-pointer inline-block relative top-[2px] ml-2;
   }
+
   .filter-panel {
-    @apply absolute w-screen left-0 bg-white border-t border-gray-200 shadow-lg z-[9999];
+    @apply absolute mt-2 left-0 right-0 z-[9999] bg-[var(--color-surface-inverse)] px-6 py-8 shadow-lg;
+    @apply lg:mt-4;
+  }
+
+  .filter-item-wrapper {
+    @apply w-full;
+    @apply md:w-auto md:static;
   }
 
   .filter-options-grid {
-    @apply max-w-screen-xl mx-auto px-4 py-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4;
+    @apply max-w-screen-xl mx-auto bg-[var(--color-surface-inverse)] px-4 py-6 grid grid-cols-2 gap-4;
+    @apply sm:grid-cols-3;
+    @apply md:grid-cols-5;
   }
 
   .filter-option {
-    @apply text-sm cursor-pointer px-3 py-2 hover:bg-[var(--color-cardbackground)] rounded text-[var(--color-paragraph)] font-[var(--font-paragraph)];
-  }
-
-  .selected-label {
-    @apply mx-1 text-sm text-gray-800 font-medium;
+    /* Font is inherited from .filter-bar-container */
+    @apply text-sm cursor-pointer px-3 py-2 text-[var(--color-text-inverse)];
   }
 
   /* Highlight selected filter option inside dropdown */
   .filter-option.selected {
-    @apply bg-yellow-100 text-sm;
+    @apply bg-[var(--color-text-primary)] text-sm;
+  }
+
+  .selected-label {
+    @apply mx-1 text-sm text-[var(--color-text-tertiary)] font-medium;
   }
 
   /* Selected option text inside dropdown */
   .selected-text {
-    @apply mx-1 text-sm text-[var(--color-button-primary)];
+    @apply mx-1 text-sm text-[var(--color-accent)];
   }
 }

@@ -2,73 +2,17 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../yahya-css/filter-ui-bar.css"; // adjust path based on your project
 import { FaChevronUp, FaChevronDown } from "react-icons/fa6";
-
-const dropdownOptions = {
-  market: [
-    "Cities",
-    "Commercial & Residential",
-    "Education",
-    "Energy",
-    "Healthcare",
-    "Industrial",
-    "Justice",
-    "Leisure",
-    "National Governments",
-    "Oil, Gas & Chemicals",
-    "Sports and Venues",
-    "Transportation",
-    "Water",
-  ],
-  regions: ["Middle East & Africa", "Americas", "Europe", "APAC"],
-  types: [
-    "Awards",
-    "Financials",
-    "News",
-    "People",
-    "Products",
-    "Projects",
-    "Statements",
-  ],
-  year: [
-    "All",
-    "2025",
-    "2024",
-    "2023",
-    "2022",
-    "2021",
-    "2020",
-    "2019",
-    "2018",
-    "2017",
-    "2016",
-    "2015",
-    "2014",
-    "2013",
-    "2012",
-    "2011",
-    "2010",
-  ],
-};
+import { dropdownOptions } from "../utils/constants";
+import "../yahya-css/filter-ui-bar.css";
 
 const FilterUIBar = ({ selectedFilters, onSelect }) => {
   const [activeFilter, setActiveFilter] = useState(null);
-  const [panelTop, setPanelTop] = useState(0);
-  const containerRef = useRef();
 
-  function capitalizeFirstLetter(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  }
+  const containerRef = useRef();
 
   const toggleDropdown = (filter) => {
     setActiveFilter((prev) => (prev === filter ? null : filter));
   };
-
-  useEffect(() => {
-    if (containerRef.current) {
-      const rect = containerRef.current.getBoundingClientRect();
-      setPanelTop(rect.bottom + window.scrollY);
-    }
-  }, [activeFilter]);
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -81,51 +25,54 @@ const FilterUIBar = ({ selectedFilters, onSelect }) => {
   }, []);
 
   return (
-    <div ref={containerRef}>
-      {/* Filter Buttons */}
-      <div className="filter-bar-container">
-        {Object.keys(dropdownOptions).map((key) => {
-          const label = capitalizeFirstLetter(key);
-          const selected = selectedFilters[key];
-          return (
+    <div className="filter-bar-container" ref={containerRef}>
+      {Object.keys(dropdownOptions).map((key) => {
+        const selected = selectedFilters[key];
+        const isActive = activeFilter === key;
+
+        return (
+          // Each filter is now in its own wrapper for better layout control
+          <div key={key} className="filter-item-wrapper">
             <button
-              key={key}
-              onClick={() => toggleDropdown(key)}
               className="filter-button"
+              onClick={() => toggleDropdown(key)}
             >
-              {label}
-              {selected && selected !== "All" && (
-                <span className="selected-text">: {selected}</span>
-              )}
+              <span>
+                <span className="capitalize">{key}</span>
+                {selected && selected !== "All" && (
+                  <span className="selected-text">: {selected}</span>
+                )}
+              </span>
               <span className="up-down-arrow">
-                {activeFilter === key ? <FaChevronUp /> : <FaChevronDown />}
+                {isActive ? <FaChevronUp /> : <FaChevronDown />}
               </span>
             </button>
-          );
-        })}
-      </div>
 
-      {/* Dropdown Panel */}
-      {activeFilter && (
-        <div className="filter-panel" style={{ top: `${panelTop}px` }}>
-          <div className="filter-options-grid">
-            {dropdownOptions[activeFilter].map((option, index) => (
-              <div
-                key={index}
-                className={`filter-option ${
-                  selectedFilters[activeFilter] === option ? "selected" : ""
-                }`}
-                onClick={() => {
-                  onSelect(activeFilter, option);
-                  setActiveFilter(null);
-                }}
-              >
-                {option}
+            {/* The panel is now inside the wrapper and will appear
+                right below the button on mobile */}
+            {isActive && (
+              <div className="filter-panel">
+                <div className="filter-options-grid">
+                  {dropdownOptions[key].map((option, index) => (
+                    <div
+                      key={index}
+                      className={`filter-option ${
+                        selectedFilters[key] === option ? "selected" : ""
+                      }`}
+                      onClick={() => {
+                        onSelect(key, option);
+                        setActiveFilter(null);
+                      }}
+                    >
+                      {option}
+                    </div>
+                  ))}
+                </div>
               </div>
-            ))}
+            )}
           </div>
-        </div>
-      )}
+        );
+      })}
     </div>
   );
 };

@@ -17,9 +17,8 @@ import GovernmentAdvisory from "./components/GovernmentAdvisory";
 import EnvironmentalSolutions from "./components/EnvironmentalSolutions";
 import SubStrategicCostManagement from "./sub-pages/Strategic-Cost-Management/Strategic-Cost-Management";
 import NewsBlogs from "./Pages/NewsBlogs";
-
+import NewsDetail from "./Pages/NewsDetail";
 function App() {
-  
   return (
     <div className=" bg-cream">
       <Navbar />
@@ -48,7 +47,9 @@ function App() {
           element={<SubStrategicCostManagement />}
         />
         {/* Add more routes as needed */}
+        {/* News and Blog routes */}
         <Route path="/news-blogs" element={<NewsBlogs />} />
+        <Route path="/news-blogs/:slug" element={<NewsDetail />} />
       </Routes>
       <Footer />
     </div>
