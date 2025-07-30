@@ -16,13 +16,15 @@
 
 @layer components {
   .news-page-wrapper {
-    @apply w-full bg-[var(--color-pagebackground)];
+    @apply w-full;
+    font-family: var(--font-paragraph);
+    background-color: var(--color-pagebackground);
   }
 
   .hero-section {
     @apply relative w-full h-[300px] bg-cover bg-center flex items-center;
-    @apply sm:h-[350px];
-    @apply md:h-[400px];
+    @apply sm:h-[300px];
+    @apply md:h-[350px];
   }
 
   .hero-overlay {
@@ -30,9 +32,11 @@
   }
 
   .hero-heading {
-    @apply text-white text-3xl font-semibold font-[var(--font-heading)] text-center relative z-10 px-6;
-    @apply sm:text-4xl sm:px-20;
+    @apply text-white px-4 py-10 text-3xl font-semibold relative z-10;
+    font-family: var(--font-heading);
+    @apply sm:text-4xl;
     @apply md:text-6xl;
+    @apply xl:px-15;
   }
 
   .main-container {
@@ -42,7 +46,8 @@
   }
 
   .sort-clear-bar {
-    @apply flex flex-col gap-4 mb-4 text-sm text-[var(--color-paragraph)];
+    @apply flex flex-col gap-4 mb-4 text-sm;
+    color: var(--color-paragraph);
     @apply sm:flex-row sm:items-center sm:justify-between;
   }
 
@@ -51,11 +56,13 @@
   }
 
   .sort-button {
-    @apply text-[var(--color-strong)] cursor-pointer text-lg;
+    @apply cursor-pointer text-lg;
+    color: var(--color-strong);
   }
 
   .clear-button {
-    @apply text-[var(--color-strong)] text-xl font-medium cursor-pointer;
+    @apply text-xl font-medium cursor-pointer;
+    color: var(--color-strong);
   }
 
   .news-card {
@@ -95,7 +102,7 @@
   }
 
   .sidebar-heading {
-    @apply text-lg font-semibold mb-3 font-[var(--font-heading)];
+    @apply text-lg font-semibold mb-3;
   }
 
   .sidebar-list {
@@ -107,10 +114,15 @@
   }
 
   .download-button {
-    @apply w-full border-2 border-[var(--color-button-primary)] text-[var(--color-button-primary)] px-4 py-3 rounded-full font-medium flex items-center justify-center gap-2 hover:bg-[var(--color-cardbackground)];
+    @apply w-full mt-2 border-2 border-[var(--color-button-primary)] text-[var(--color-button-primary)] px-4 py-3 rounded-full font-medium flex items-center justify-center gap-2 hover:bg-[var(--color-cardbackground)];
+  }
+
+  .sidebar-subheading {
+    @apply mb-2;
   }
 
   .social-icons {
-    @apply flex gap-4 cursor-pointer text-[var(--color-paragraph)] text-xl;
+    @apply flex gap-4 w-full justify-around cursor-pointer text-[var(--color-paragraph)] text-xl mb-6 pb-2;
+    @apply md:justify-normal;
   }
 }

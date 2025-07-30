@@ -2,10 +2,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../yahya-css/filter-ui-bar.css"; // adjust path based on your project
 import { FaChevronUp, FaChevronDown } from "react-icons/fa6";
-import { dropdownOptions } from "../utils/constants";
+// import { dropdownOptions } from "../utils/constants";
 import "../yahya-css/filter-ui-bar.css";
 
-const FilterUIBar = ({ selectedFilters, onSelect }) => {
+const FilterUIBar = ({ dropdownOptions, selectedFilters, onSelect }) => {
   const [activeFilter, setActiveFilter] = useState(null);
 
   const containerRef = useRef();

@@ -306,3 +306,259 @@ export const dropdownOptions = {
     "2010",
   ],
 };
+
+import image1 from "../assets/Ballabhgarh.png";
+import image2 from "../assets/Vrinda City1.png";
+import image3 from "../assets/NRIlakecity.avif";
+import image4 from "../assets/SmartIndustrialPark.png";
+import image5 from "../assets/RajaNaharSinghCricket.png";
+import image6 from "../assets/100BeddedPrince.avif";
+import image7 from "../assets/AliRezaShoppinMall.png";
+import image8 from "../assets/SaudiAerospace.png";
+import image9 from "../assets/AdministrationBuilding.avif";
+
+const rawProjects = [
+  {
+    title: "Raja Nahar Singh Cricket Stadium",
+    img: image5,
+    location: "Faridabad, India",
+    market: "Sports and Venues",
+    services: [
+      "Architecture and Design",
+      "Structural Engineering",
+      "Project Management",
+    ],
+    note: "This project was completed ahead of schedule and under budget.",
+    introduction:
+      "The Raja Nahar Singh Cricket Stadium redevelopment project aimed to create a premier international sporting venue in the heart of Faridabad, capable of hosting major cricket tournaments.",
+    sections: [
+      {
+        heading: "A World-Class Venue",
+        content:
+          "A state-of-the-art cricket stadium designed to host international matches, featuring modern amenities for players and spectators. The design focuses on optimal viewing angles from every seat and efficient crowd management.",
+      },
+      {
+        heading: "Sustainable Design",
+        content:
+          "The stadium incorporates several sustainable features, including rainwater harvesting and solar power generation, minimizing its environmental impact.",
+      },
+    ],
+  },
+  {
+    title: "Smart Industrial Park, Padora",
+    img: image4,
+    location: "Padora, India",
+    market: "Industrial",
+    services: [
+      "Master Planning",
+      "Infrastructure Design",
+      "Environmental Consulting",
+    ],
+    note: null,
+    introduction:
+      "This project establishes a benchmark for industrial development in the region, providing a technologically advanced and sustainable ecosystem for businesses.",
+    sections: [
+      {
+        heading: "Future-Ready Industrial Hub",
+        content:
+          "An integrated industrial park with smart infrastructure, focusing on sustainability and efficient logistics for manufacturing units. It provides a plug-and-play environment for businesses to set up their operations quickly.",
+      },
+      {
+        heading: "Logistical Excellence",
+        content:
+          "Strategically located with excellent connectivity to major highways and ports, the park is designed to streamline supply chain operations for all its tenants.",
+      },
+    ],
+  },
+  {
+    title: "NRI Lake City",
+    img: image3,
+    location: "Bhopal, India",
+    market: "Residential",
+    services: [
+      "Urban Design",
+      "Landscape Architecture",
+      "Real Estate Development",
+    ],
+    note: null,
+    introduction:
+      "NRI Lake City is a landmark residential project that harmonizes modern living with nature, offering an unparalleled lifestyle experience in Bhopal.",
+    sections: [
+      {
+        heading: "Serene Lakeside Living",
+        content:
+          "A premium residential township centered around a natural lake, offering a serene living environment with comprehensive lifestyle facilities. The master plan ensures that a majority of residences enjoy views of the water.",
+      },
+    ],
+  },
+  {
+    title: "Vrinda City",
+    img: image2,
+    location: "Mathura, India",
+    market: "Residential",
+    services: ["Residential Design", "Community Planning"],
+    note: "Phase II of this project is currently under development.",
+    introduction:
+      "Vrinda City addresses the growing demand for quality housing in Mathura, creating a vibrant and self-sufficient community for families.",
+    sections: [
+      {
+        heading: "Affordable Quality Housing",
+        content:
+          "A large-scale residential project providing affordable and quality housing, complete with commercial spaces, schools, and parks. The project aims to create a self-sustained community for its residents.",
+      },
+    ],
+  },
+  {
+    title: "Ballabhgarh Bus Terminal Redevelopment",
+    img: image1,
+    location: "Ballabhgarh, India",
+    market: "Transportation",
+    services: ["Transportation Planning", "Structural Redevelopment"],
+    note: null,
+    introduction:
+      "The redevelopment of the Ballabhgarh Bus Terminal is a critical infrastructure upgrade designed to enhance public transportation efficiency and passenger comfort.",
+    sections: [
+      {
+        heading: "Modernizing Public Transit",
+        content:
+          "The modernization and redevelopment of the main bus terminal to improve passenger flow, safety, and overall travel experience. The new design includes dedicated lanes, digital information systems, and improved waiting areas.",
+      },
+    ],
+  },
+  {
+    title: "Administration Building, Najran University",
+    img: image9,
+    location: "Najran, Saudi Arabia",
+    market: "Education",
+    services: ["Architectural Design", "Interior Design", "MEP Engineering"],
+    note: null,
+    introduction:
+      "This administration building serves as the architectural centerpiece and operational core of Najran University, reflecting its commitment to academic excellence.",
+    sections: [
+      {
+        heading: "Iconic University Hub",
+        content:
+          "The central administration building for Najran University, designed to be an architectural landmark and a hub for university operations. Its unique facade is inspired by local culture and geography.",
+      },
+    ],
+  },
+  {
+    title: "100 Bedded Prince Mansour Military Hospital",
+    img: image6,
+    location: "Taif, Saudi Arabia",
+    market: "Healthcare",
+    services: ["Healthcare Architecture", "Medical Equipment Planning"],
+    note: null,
+    introduction:
+      "The Prince Mansour Military Hospital is a state-of-the-art healthcare facility providing specialized medical services to military personnel and their families.",
+    sections: [
+      {
+        heading: "Advanced Military Healthcare",
+        content:
+          "A specialized military hospital equipped with advanced medical technology and designed for optimal patient care and operational efficiency in high-stakes environments.",
+      },
+    ],
+  },
+  {
+    title: "Ali Reza Shopping Mall",
+    img: image7,
+    location: "Jeddah, Saudi Arabia",
+    market: "Commercial",
+    services: ["Retail Architecture", "Commercial Planning"],
+    note: null,
+    introduction:
+      "The Ali Reza Shopping Mall is set to become a premier shopping and leisure destination in Jeddah, offering a world-class experience to visitors.",
+    sections: [
+      {
+        heading: "Premier Retail Destination",
+        content:
+          "A modern shopping mall featuring a diverse mix of international retail brands, dining options, and entertainment facilities, creating a premier lifestyle destination for the city of Jeddah.",
+      },
+    ],
+  },
+  {
+    title: "Saudi Aerospace Engineering Industries",
+    img: image8,
+    location: "Riyadh, Saudi Arabia",
+    market: "Industrial",
+    services: ["Industrial Architecture", "Specialized Engineering"],
+    note: null,
+    introduction:
+      "This facility for Saudi Aerospace Engineering Industries (SAEI) is a cornerstone of the Kingdom's vision to localize aerospace technology and manufacturing.",
+    sections: [
+      {
+        heading: "Precision Aerospace Facility",
+        content:
+          "A high-tech facility for aerospace engineering and maintenance, built to international standards of security and precision. The complex includes hangars, workshops, and administrative offices.",
+      },
+    ],
+  },
+];
+
+export const projects = rawProjects.map((p) => ({
+  ...p,
+  slug: p.title
+    .toLowerCase()
+    .replace(/[^\w\s]/gi, "") // Remove punctuation
+    .replace(/\s+/g, "-"), // Replace spaces with hyphens
+}));
+
+export const projectFilterOptions = {
+  market: [
+    "All", // "All" is included for clearing the filter
+    "Commercial",
+    "Education",
+    "Energy", // New
+    "Government", // New
+    "Healthcare",
+    "Industrial",
+    "Residential",
+    "Sports and Venues",
+    "Transportation",
+    "Water", // New
+  ],
+  service: [
+    "All",
+    "Architecture and Design",
+    "Commercial Planning",
+    "Community Planning",
+    "Cost Management", // New
+    "Digital Solutions", // New
+    "Environmental Consulting",
+    "Healthcare Architecture",
+    "Industrial Architecture",
+    "Infrastructure Design",
+    "Interior Design",
+    "Landscape Architecture",
+    "Master Planning",
+    "Medical Equipment Planning",
+    "MEP Engineering",
+    "Project Management",
+    "Real Estate Development",
+    "Residential Design",
+    "Retail Architecture",
+    "Specialized Engineering",
+    "Structural Engineering",
+    "Structural Redevelopment",
+    "Sustainability Consulting", // New
+    "Transportation Planning",
+    "Urban Design",
+  ],
+  location: [
+    "All",
+    "Ballabhgarh, India",
+    "Bhopal, India",
+    "Doha, Qatar", // New
+    "Dubai, UAE", // New
+    "Faridabad, India",
+    "Jeddah, Saudi Arabia",
+
+    "London, UK", // New
+    "Mathura, India",
+    "Najran, Saudi Arabia",
+    "New York, USA", // New
+    "Padora, India",
+    "Riyadh, Saudi Arabia",
+    "Taif, Saudi Arabia",
+  ],
+};

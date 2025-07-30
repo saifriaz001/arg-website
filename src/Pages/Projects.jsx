@@ -3,7 +3,7 @@ import ProjectsTopSection from "../components/ProjectTopSection";
 import InternationalProjectsSection from "../components/InternationalProjectsSection";
 import IndianProjectsSection from "../components/IndianProjectsSection";
 
-const Projects = () => {
+const ProjectsInside = () => {
   return (
     <div>
       <ProjectsTopSection />
@@ -13,4 +13,4 @@ const Projects = () => {
   );
 };
 
-export default Projects;
+export default ProjectsInside;

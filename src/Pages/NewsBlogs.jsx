@@ -9,8 +9,7 @@ import NewsCard from "../NewsPageComponents/NewsCard";
 import NewsSideBar from "../NewsPageComponents/NewsSideBar";
 import Pagination from "../NewsPageComponents/Pagination";
 
-import { newsData } from "../utils/constants";
-import { contacts } from "../utils/constants";
+import { newsData, contacts, dropdownOptions } from "../utils/constants";
 
 // Add more entries if needed
 const ITEMS_PER_PAGE = 1;
@@ -21,14 +20,10 @@ const NewsBlogs = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const handleFilterChange = (category, value) => {
-    setSelectedFilters((prev) => {
-      const updated = {
-        ...prev,
-        [category]: prev[category] === value ? null : value,
-      };
-
-      return updated;
-    });
+    setSelectedFilters((prev) => ({
+      ...prev,
+      [category]: prev[category] === value ? null : value,
+    }));
   };
 
   const handleClearFilters = () => {
@@ -52,7 +47,6 @@ const NewsBlogs = () => {
     });
   }, [newsData, selectedFilters, sortOrder]); // Dependencies
 
-  // 4. Calculate items for the current page
   const totalPages = Math.ceil(sortedNews.length / ITEMS_PER_PAGE);
 
   const currentNewsItems = useMemo(() => {
@@ -61,7 +55,6 @@ const NewsBlogs = () => {
     return sortedNews.slice(indexOfFirstItem, indexOfLastItem);
   }, [currentPage, sortedNews]);
 
-  // 5. Reset to page 1 when filters change
   useEffect(() => {
     setCurrentPage(1);
   }, [selectedFilters, sortOrder]);
@@ -74,6 +67,7 @@ const NewsBlogs = () => {
         <div className="w-full lg:w-2/3">
           <SortBar onClear={handleClearFilters} onSortChange={setSortOrder} />
           <FilterUIBar
+            dropdownOptions={dropdownOptions}
             selectedFilters={selectedFilters}
             onSelect={handleFilterChange}
           />
@@ -83,7 +77,7 @@ const NewsBlogs = () => {
               {currentNewsItems.map((item) => (
                 <NewsCard key={item?.title} item={item} />
               ))}
-              {/* 6. Render the Pagination component */}
+
               <Pagination
                 currentPage={currentPage}
                 totalPages={totalPages}

@@ -24,7 +24,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       <button
         onClick={handlePrevious}
         disabled={currentPage === 1}
-        className="disabled:opacity-50 disabled:cursor-not-allowed text-2xl text-[var(--color-accent)]"
+        className="cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-2xl text-[var(--color-accent)]"
         aria-label="Go to previous page"
       >
         <FaChevronLeft />
@@ -37,7 +37,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       <button
         onClick={handleNext}
         disabled={currentPage === totalPages}
-        className="disabled:opacity-50 disabled:cursor-not-allowed text-2xl text-[var(--color-accent)]"
+        className="cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-2xl text-[var(--color-accent)]"
         aria-label="Go to next page"
       >
         <FaChevronRight />

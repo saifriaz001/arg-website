@@ -5,6 +5,7 @@ import {
   FaTwitter,
   FaLinkedinIn,
   FaYoutube,
+  FaInstagram,
 } from "react-icons/fa";
 import { RiDownloadCloud2Line } from "react-icons/ri";
 
@@ -43,6 +44,7 @@ const NewsSideBar = ({ contacts }) => {
           <FaTwitter />
           <FaLinkedinIn />
           <FaYoutube />
+          <FaInstagram />
         </div>
       </div>
     </aside>

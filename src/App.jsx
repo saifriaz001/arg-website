@@ -8,6 +8,7 @@ import Footer from "./Pages/Footer";
 import Navbar from "./NavBar/Navbar";
 import ServicesPage from "./Pages/ServicesPage";
 import Projects from "./Pages/ProjectsPage";
+import ProjectDetailPage from "./Pages/ProjectDetailPage";
 import AboutPage from "./Pages/AboutPage";
 import StrategicCostManagement from "./components/StrategicCostManagement";
 import EPCAdvisory from "./components/EPCAdvisory";
@@ -29,6 +30,12 @@ function App() {
         {/* <Route path='/projects' element={<Projects/>} /> */}
         <Route path="/servicespage" element={<ServicesPage />} />
         <Route path="/projectspage" element={<Projects />} />
+
+        <Route
+          path="/projectspage/project/:slug"
+          element={<ProjectDetailPage />}
+        />
+
         <Route path="/about-us" element={<AboutPage />} />
         <Route path="/costmanagement" element={<StrategicCostManagement />} />
         <Route path="/epcadvisory" element={<EPCAdvisory />} />
