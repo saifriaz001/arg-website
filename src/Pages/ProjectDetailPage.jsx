@@ -21,15 +21,15 @@ const ProjectDetailPage = () => {
   // If no project is found for the given slug, show a message
   if (!project) {
     return (
-      <section className="section-layout bg-[#FFFDFA]">
+      <section className="section-layout">
         <div className="max-w-7xl mx-auto text-center py-20">
           <h1 className="heading-title">Project Not Found</h1>
           <p className="paragraph-lg mt-4">
             Sorry, we couldn't find the project you're looking for.
           </p>
           <Link
-            to="/projects" // Assuming your main projects page is at /projects
-            className="text-blue-600 hover:underline mt-8 inline-block"
+            to="/projectspage"
+            className="text-orange-300 hover:underline mt-8 inline-block"
           >
             &larr; Back to all projects
           </Link>
@@ -41,7 +41,7 @@ const ProjectDetailPage = () => {
   return (
     <>
       {/* Header Section */}
-      <section className="section-layout bg-[#F0F3F5]">
+      <section className="section-layout">
         {" "}
         {/* Different BG Color */}
         <div className="max-w-7xl mx-auto">
@@ -67,7 +67,7 @@ const ProjectDetailPage = () => {
       </div>
 
       {/* Main Content Section */}
-      <section className="section-layout bg-[#FFFDFA]">
+      <section className="section-layout">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row gap-12">
             {/* Left Side: Main Content */}
