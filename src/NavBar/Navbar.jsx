@@ -1,10 +1,10 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef , useEffect } from 'react';
 import MegaMenu from './MegaMenu';
 import NavServiceSection from './NavServiceSection';
 import NavPortfolioSection from './NavPortfolioSection';
 import MobileMenu from './MobileMenu';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import { Link } from 'react-router-dom';
+import { Link , useLocation } from 'react-router-dom';
 import "../Pages/Section.css"
 import logo from "../assets/arglogo.svg"
 const Navbar = () => {
@@ -22,6 +22,14 @@ const Navbar = () => {
       setActiveMenu(null);
     }, 400); // delay before closing
   };
+
+  const location = useLocation();
+
+  useEffect(() => {
+    // ✅ Close dropdown on route change
+    setActiveMenu(null);
+    setIsMobileOpen(false);
+  }, [location]); 
 
   return (
     <header
@@ -56,7 +64,7 @@ const Navbar = () => {
             }`}>About Us</span></Link>
 
           {/* Our Work */}
-          {/* <span
+          <span
             className={`nav-tab ${
               activeMenu === 'ourwork' ? 'nav-tab-active' : 'nav-tab-hover'
             }`}
@@ -64,9 +72,9 @@ const Navbar = () => {
             onMouseLeave={handleMenuLeave}
           >
             Our Work
-          </span> */}
+          </span> 
 
-          {/* Services */}
+          {/* Services
 
           <span
             className={`nav-tab ${activeMenu === 'services' ? 'nav-tab-active' : 'nav-tab-hover'
@@ -78,20 +86,20 @@ const Navbar = () => {
           </span>
 
           {/* Portfolio */}
-          <span
+          {/* <span
             className={`nav-tab ${activeMenu === 'Portfolio' ? 'nav-tab-active' : 'nav-tab-hover'
               }`}
             onMouseEnter={() => handleMenuEnter('Portfolio')}
             onMouseLeave={handleMenuLeave}
           >
             Portfolios
-          </span>
+          </span> */}
 
 
           <span className={`nav-tab ${activeMenu === 'Careers' ? 'nav-tab-active' : 'nav-tab-hover'
             }`}>Careers</span>
-          <span className={`nav-tab ${activeMenu === 'News' ? 'nav-tab-active' : 'nav-tab-hover'
-            }`}>News & Blog</span>
+          <Link to={"/news"}><span className={`nav-tab ${activeMenu === 'News' ? 'nav-tab-active' : 'nav-tab-hover'
+            }`}>News & Blog</span></Link>
         </nav>
       </div>
 
@@ -102,11 +110,11 @@ const Navbar = () => {
           onMouseEnter={() => handleMenuEnter('ourwork')}
           onMouseLeave={handleMenuLeave}
         >
-          <MegaMenu />
+          <MegaMenu onLinkClick={() => setActiveMenu(null)} />
         </div>
       )}
 
-      {/* NavServiceSection (Services) */}
+      {/* NavServiceSection (Services)
       {activeMenu === 'services' && (
         <div
           className="absolute top-full left-0 w-full"
@@ -115,8 +123,8 @@ const Navbar = () => {
         >
           <NavServiceSection onLinkClick={() => setActiveMenu(null)} />
         </div>
-      )}
-      {activeMenu === 'Portfolio' && (
+      )} */}
+      {/* {activeMenu === 'Portfolio' && (
         <div
           className="absolute top-full left-0 w-full"
           onMouseEnter={() => handleMenuEnter('Portfolio')}
@@ -124,7 +132,7 @@ const Navbar = () => {
         >
           <NavPortfolioSection onLinkClick={() => setActiveMenu(null)} />
         </div>
-      )}
+      )} */}
       {activeMenu === 'home'}
       {activeMenu === 'about-us'}
       {activeMenu === 'Careers'}

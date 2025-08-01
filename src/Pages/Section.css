@@ -9,23 +9,30 @@
     --color-heading: #5C4E3D;
     --color-paragraph: #454240;
     --color-strong: #454240;
-    --color-cardbackground:#f7edd4;
-    --color-pagebackground:#FFFDFA 
+    --color-cardbackground: #f7edd4;
+    --color-pagebackground: #FFFDFA
   }
 }
 
-    
+.paragraph-lg {
+  @apply text-2xl font-medium leading-8 md:text-xl max-w-7xl mb-4;
+  font-family: var(--font-paragraph);
+  color: var(--color-paragraph);
+}
+
+.heading-title {
+    @apply text-4xl md:text-5xl font-bold mb-6;
+    color: var(--color-heading);
+    font-family: var(--font-heading);
+  }
+
 @layer components {
   .section-layout {
     @apply px-4 py-10 md:px-10 lg:px-20;
     background-color: var(--color-pagebackground)
   }
 
-  .heading-title {
-    @apply text-4xl md:text-5xl font-bold mb-6;
-    color: var(--color-heading);
-    font-family: var(--font-heading);
-  }
+  
 
   .subheading {
     @apply text-2xl md:text-3xl font-semibold mb-4;
@@ -33,14 +40,8 @@
     font-family: var(--font-heading);
   }
 
-  .paragraph-lg {
-    @apply text-lg  md:text-xl max-w-7xl mb-4;
-    font-family: var(--font-paragraph);
-    color: var(--color-paragraph);
-  }
-
   .paragraph-sm {
-    @apply text-sm md:text-base  max-w-5xl mb-10;
+    @apply text-sm md:text-base max-w-5xl mb-10;
     font-family: var(--font-paragraph);
     color: var(--color-paragraph);
   }
@@ -49,20 +50,114 @@
     color: var(--color-strong);
   }
 
+  /* Reuseable-Grid-Page */
+  .title {
+    @apply text-sm uppercase md:text-xs lg:text-base sm:text-base font-semibold;
+    font-family: var(--font-paragraph);
+  }
+
+  /* Slug- reuseable-page */
+  .slug-heading {
+    @apply text-[1.5rem] leading-9 font-normal mb-5;
+    font-family: var(--font-paragraph);
+    color: var(--color-paragraph);
+  }
+
+  .slug-Description {
+    @apply text-base font-light whitespace-pre-line leading-6;
+    font-family: var(--font-paragraph);
+    color: var(--color-paragraph);
+  }
+
+  /* PROJECT DETAIL PAGE */
+  .Project-title {
+    @apply text-[3.5rem] sm:text-[3rem] font-semibold sm:leading-14 leading-16;
+    color: var(--color-heading);
+    font-family: var(--font-heading);
+  }
+
+  .Project-location {
+    @apply text-[2.5rem] sm:text-[1.5rem] sm:leading-10 leading-16 font-normal mt-1;
+    font-family: var(--font-paragraph);
+    color: var(--color-paragraph);
+  }
+
+  .Project-heading {
+    @apply italic text-[1.5rem] leading-10 font-normal mb-4;
+    font-family: var(--font-paragraph);
+    color: var(--color-paragraph);
+  }
+
+  .Project-description {
+    @apply font-normal text-base leading-6 whitespace-pre-line;
+    font-family: var(--font-paragraph);
+    color: var(--color-paragraph);
+  }
+
+  .Project-service {
+    @apply text-[1.25rem] leading-8 font-normal border-b pb-1 border-[#5C4E3D];
+    font-family: var(--font-paragraph);
+    color: var(--color-heading);
+    border-color: var(--color-heading)
+  }
+
+  .Project-service-description {
+    @apply text-base leading-7 font-normal;
+    font-family: var(--font-paragraph);
+    color: var(--color-paragraph);
+  }
+
+  /* News Page */
+  .News-heading {
+    @apply text-[1.5rem] md:leading-8 leading-relaxed font-normal mb-2;
+    font-family: var(--font-paragraph);
+    color: var(--color-paragraph);
+  }
+
+  .News-type {
+    @apply text-sm font-semibold;
+    font-family: var(--font-paragraph);
+    color: var(--color-paragraph);
+  }
+
+  .News-date {
+    @apply text-[1rem] md:leading-7 leading-relaxed font-normal mb-2;
+    font-family: var(--font-paragraph);
+    color: var(--color-paragraph);
+  }
+  .News{
+    background-color: var(--color-paragraph);
+  }
+
+  .btn-with-arrow {
+    font-family: var(--font-paragraph);
+    color: var(--color-white);
+    background-color: var(--color-paragraph);
+    border-color: var(--color-paragraph);
+    @apply inline-flex items-center gap-1 border px-4 py-1.5 rounded-full font-medium transition;
+  }
+
+  .btn-with-arrow:hover {
+    background-color: white;
+    color: var(--color-paragraph);
+  }
+
+
+
   /* ABOUT-US-PAGE SUBSECTION_3 MAPPING CARDS */
 
   .value-card {
-    @apply p-6  rounded-md shadow-sm hover:shadow-xl transition-shadow duration-300 ;
+    @apply p-6 rounded-md shadow-sm hover:shadow-xl transition-shadow duration-300;
     background-color: var(--color-cardbackground)
   }
 
   .icon-wrapper {
-    @apply text-3xl mb-3 ;
+    @apply text-3xl mb-3;
     color: var(--color-heading);
   }
 
   .card-title {
-    @apply text-3xl font-bold mb-1  flex  items-center justify-items-start;
+    @apply text-3xl font-bold mb-1 flex items-center justify-items-start;
     color: var(--color-heading);
     font-family: var(--font-heading);
   }
@@ -70,25 +165,25 @@
   .subtitle {
     @apply block text-sm font-normal;
     color: var(--color-paragraph);
-        font-family: var(--font-paragraph);
+    font-family: var(--font-paragraph);
   }
 
   .card-list {
     @apply text-base list-disc list-inside mt-2 space-y-1;
     color: var(--color-paragraph);
-        font-family: var(--font-paragraph);
+    font-family: var(--font-paragraph);
   }
-  
+
 
   /*ABOUT-US-PAGE SUBSECTION_4 MAPPING CARDS FOR LEADERSHIP */
 
- .card {
-    @apply relative  rounded-lg shadow-md p-6 text-left transition-all  overflow-hidden hover:shadow-xl  duration-300;
+  .card {
+    @apply relative rounded-lg shadow-md p-6 text-left transition-all overflow-hidden hover:shadow-xl duration-300;
     background-color: var(--color-cardbackground)
   }
 
   .card-hover-overlay {
-    @apply absolute inset-0  px-6 py-6 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-in-out pointer-events-none group-hover:pointer-events-auto z-20;
+    @apply absolute inset-0 px-6 py-6 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-in-out pointer-events-none group-hover:pointer-events-auto z-20;
     background-color: var(--color-cardbackground)
   }
 
@@ -119,7 +214,7 @@
   }
 
   .card-highlight {
-    @apply  font-semibold text-center;
+    @apply font-semibold text-center;
     font-family: var(--font-paragraph);
     color: var(--color-paragraph);
   }
@@ -133,7 +228,7 @@
 
   /* ABOUT-US-PAGE SUBSECTION_5 MAPPING CARDS FOR RESEARCH GLOBAL  */
   .contact-card {
-    @apply rounded-lg  shadow-md p-6 text-left hover:shadow-xl transition-shadow duration-300 ;
+    @apply rounded-lg shadow-md p-6 text-left hover:shadow-xl transition-shadow duration-300;
     background-color: var(--color-cardbackground)
   }
 
@@ -171,14 +266,14 @@
   /* SERVICE PAGE GENERIC MAP CARDS TEMPLATE  */
 
   .feature-card {
-    @apply  rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden;
+    @apply rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden;
     background-color: var(--color-cardbackground)
   }
 
   /* Card image */
   .feature-card-image {
     @apply w-full h-48 object-cover object-top rounded-t-lg;
-        
+
   }
 
   /* Inner content */
@@ -188,33 +283,36 @@
 
   /* Card title */
   .feature-card-title {
-    @apply text-xl font-semibold mb-2 ;
+    @apply text-xl font-semibold mb-2;
     color: var(--color-heading);
     font-family: var(--font-heading);
   }
 
   /* Card description */
   .feature-card-description {
-    @apply text-sm ;
+    @apply text-sm;
     font-family: var(--font-paragraph);
     color: var(--color-paragraph);
   }
 
   .paragraph-sm-service {
-    @apply text-sm md:text-base  max-w-7xl mb-10;
+    @apply text-sm md:text-base max-w-7xl mb-10;
     font-family: var(--font-paragraph);
     color: var(--color-paragraph);
   }
-  
+
 
   /*For Navbar  */
-  
+
 
 
 }
 
 .strong {
   color: var(--color-strong);
+}
+.pressRelease-background{
+  color: var(--color-paragraph)
 }
 
 

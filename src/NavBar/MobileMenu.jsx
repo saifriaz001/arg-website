@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const MobileMenu = () => {
   const [expanded, setExpanded] = useState('');
@@ -8,105 +9,64 @@ const MobileMenu = () => {
   };
 
   const sections = [
-    { title: 'Home', sub: [] },
-    { title: 'About Us', sub: [] },
+    { title: 'Home', sub: [], link: '/' },
+    { title: 'About Us', sub: [], link: '/about-us' },
     {
-      title: 'Services',
+      title: 'Our Work',
       sub: [
-        'Strategic Cost Management',
-        'EPC Advisory',
-        'Advanced Engineering & Design',
-        'Strategic Project Management',
-        'Environmental Solutions',
-        'Global Government Advisory'
+        { label: 'Markets', link: '/markets' },
+        { label: 'Services', link: '/servicespage' },
+        { label: 'Projects', link: '/projects' }
       ]
     },
-    {
-      title: 'Portfolios',
-      sub: [
-        {
-          heading: 'International Portfolios',
-          items: [
-            'Administration Building, Najran University',
-            '100 Bedded Prince Mansour Military Hospital',
-            'Ali Reza Shopping Mall',
-            'Healthcare',
-            'Saudi Aerospace Engineering Industries'
-          ]
-        },
-        {
-          heading: 'Indian Portfolios',
-          items: [
-            'Raja Nahar Singh Cricket Stadium, Faridabad',
-            'Smart Industrial Park, Padora, Shivpuri',
-            'NRI Lake City, Rudrapur',
-            'Vrinda City, Greater Noida',
-            'Ballabhgarh Bus Terminal Redevelopment'
-          ]
-        }
-      ]
-    },
-    { title: 'Careers', sub: [] },
-    { title: 'News & Blog', sub: [] }
+    { title: 'Careers', sub: [], link: '/careers' },
+    { title: 'News & Blog', sub: [], link: '/news' }
   ];
 
   return (
     <div className="mobile-menu xl:hidden">
-      {sections.map(({ title, sub }) => (
-        <div key={title} className="mobile-section">
-          <div
-            className="mobile-section-title"
-            onClick={() => sub.length > 0 && toggle(title)}
-          > 
-          <div className=' w-full flex flex-col'> 
-            <div className="mobile-title-text ">{title}</div>
-            
-          </div>
-          
-            
-            {sub.length > 0 && (
-              <span className="mobile-title-icon">{expanded === title ? '▲' : '▼'}</span>
+      {sections.map(({ title, sub, link }) => {
+        // ❗ Skip if sub is empty AND no direct link
+        if (!link && Array.isArray(sub) && sub.length === 0) return null;
+
+        return (
+          <div key={title} className="mobile-section">
+            <div
+              className="mobile-section-title"
+              onClick={() => sub.length > 0 && toggle(title)}
+            >
+              <div className="w-full flex flex-col">
+                {link ? (
+                  <Link to={link} className="mobile-title-text">
+                    {title}
+                  </Link>
+                ) : (
+                  <div className="mobile-title-text">{title}</div>
+                )}
+              </div>
+              {sub.length > 0 && (
+                <span className="mobile-title-icon">
+                  {expanded === title ? '▲' : '▼'}
+                </span>
+              )}
+            </div>
+            <div className="mobile-line"></div>
+
+            {expanded === title && Array.isArray(sub) && sub.length > 0 && (
+              <div className="mobile-submenu">
+                <ul className="mobile-sublist">
+                  {sub.map(({ label, link }) => (
+                    <li key={label} className="mobile-subitem mt-1">
+                      <Link to={link}>{label}</Link>
+                      <div className="mobile-line"></div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             )}
           </div>
-          <div className='mobile-line'></div>
-
-          {expanded === title && Array.isArray(sub) && sub.length > 0 && (
-            <div className="mobile-submenu">
-              {typeof sub[0] === 'string' &&
-                sub.map(item => (
-                  <div key={item} className="mobile-subitem">{item}
-                  <div className='mobile-line'></div>
-                  </div>
-                  
-                ))
-              }
-
-              {typeof sub[0] === 'object' &&
-                sub.map(section => (
-                  <div key={section.heading}>
-                    <div className="mobile-subheading">{section.heading}</div>
-
-                    <ul className="mobile-sublist">
-                      {section.items.map(item => (
-                        <div>
-                          <li key={item} className="mobile-subitem mt-1">{item}</li>
-                          <div className='mobile-line'></div>
-
-                        </div>
-                        
-                        
-                      ))}
-                      
-                    </ul>
-                  </div>
-                ))
-              }
-            </div>
-          )}
-          
-        </div>
-        
-      ))}
+        );
+      })}
     </div>
   );
 };
