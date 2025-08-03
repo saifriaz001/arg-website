@@ -260,7 +260,7 @@ export const contacts = [
   { name: "Bahaa Hage", regions: "Middle East & Africa" },
 ];
 
-export const dropdownOptions = {
+export const newsFilterOptions = {
   market: [
     "Cities",
     "Commercial & Residential",

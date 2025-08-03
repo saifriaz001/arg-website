@@ -31,7 +31,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <div className=" justify-center items-center gap-x-1  flex flex-row ">
           <div>
-            {/* xl:w-30 xl:pl-8 */}
+            {/*px-4 xl:w-30 xl:pl-8 */}
             <Link to={"/"}>
               <img
                 className="py-2 w-20 h-20 px-4 xl:w-30 xl:pl-8 "

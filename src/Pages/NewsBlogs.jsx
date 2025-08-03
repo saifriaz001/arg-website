@@ -9,7 +9,7 @@ import NewsCard from "../NewsPageComponents/NewsCard";
 import NewsSideBar from "../NewsPageComponents/NewsSideBar";
 import Pagination from "../NewsPageComponents/Pagination";
 
-import { newsData, contacts, dropdownOptions } from "../utils/constants";
+import { newsData, contacts, newsFilterOptions } from "../utils/constants";
 
 // Add more entries if needed
 const ITEMS_PER_PAGE = 1;
@@ -67,7 +67,7 @@ const NewsBlogs = () => {
         <div className="w-full lg:w-2/3">
           <SortBar onClear={handleClearFilters} onSortChange={setSortOrder} />
           <FilterUIBar
-            dropdownOptions={dropdownOptions}
+            dropdownOptions={newsFilterOptions}
             selectedFilters={selectedFilters}
             onSelect={handleFilterChange}
           />
