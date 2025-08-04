@@ -10,7 +10,7 @@ const FilterGroup = ({ title, options, onSelectFilter }) => {
 
   return (
     <div className="filter-group">
-      <div className="filter-group-header">
+      <div className="filter-group-header ">
         {/* <div className="flex-col"> */}
         <div
           className="flex justify-between"

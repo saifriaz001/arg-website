@@ -15,4 +15,4 @@
 - sidebar text - 30, 400, 45 (700 for bold)
 
 form link needed in data, minReq, preferredQual ,
-
+filter catergoies should have max 4 words

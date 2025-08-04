@@ -3,13 +3,11 @@ import { FaChevronRight } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 import "../yahya-css/careers.css";
 import { jobs } from "../utils/constants";
-import { connectCardData } from "../utils/importantConstants"; // For the sidebar cards
-import ConnectCard from "../CareerComponents/ConnectCard";
 
 const JobDetail = () => {
   const { slug } = useParams();
-  // Find the single job that matches the slug from the URL
   const job = jobs.find((j) => j.slug === slug);
+
   if (!job) {
     return (
       <div className="job-detail-container p-8">
@@ -20,55 +18,36 @@ const JobDetail = () => {
       </div>
     );
   }
-  const sidebarCards = connectCardData.filter(
-    (card) =>
-      card.title.includes("disability") || card.title.includes("CONNECT")
-  );
 
   return (
     <div className="job-detail-container">
-      {/* <div className="max-w-7xl mx-auto">
-        <Link to="/careers" className="back-button">
-          &larr; Back to all jobs
-        </Link>
-      </div> */}
-
-      {/* Job Detail Header */}
+      {/* Header Section */}
       <div className="job-detail-header">
-        <div className="job-detail-header-content">
-          <div>
-            <h1 className="job-detail-title">{job.title}</h1>
-            <p className="job-detail-location">
-              {job.city}, {job.state}
-            </p>
-          </div>
-          <div className="job-detail-meta">
-            <p>
-              <strong>Reqid:</strong> {job._id}
-            </p>
-            <p>
-              <strong>Career Area:</strong> {job.careerArea}
-            </p>
-            <p>
-              <strong>Business Line:</strong> {job.businessLine}
-            </p>
-          </div>
+        <div className="page-section">
+          <h1 className="page-title">{job.title}</h1>
+          <p className="page-subtitle">
+            {job.city}, {job.state}
+          </p>
         </div>
       </div>
 
-      {/* Main Content */}
-      <div className="job-detail-main-content">
-        <div className="job-detail-description-panel">
-          <h3>Job Description</h3>
-          <p>{job.description}</p>
-          <h3>Qualifications</h3>
+      {/* Main Content Section */}
+      <div className="page-section">
+        <div className="content-panel">
+          <h3 className="section-heading">Job Description</h3>
+          <p className="paragraph">{job.description}</p>
+
+          <h3 className="section-heading">Qualifications</h3>
           <ul className="qualifications-list">
             {job.qualifications.map((q, index) => (
               <li key={index}>{q}</li>
             ))}
           </ul>
-          <h3>What makes ARG a great place to work</h3>
-          <p>
+
+          <h3 className="section-heading">
+            What makes ARG a great place to work
+          </h3>
+          <p className="paragraph">
             You will be part of a global team that champions your growth and
             career ambitions. Work on groundbreaking projects - both in your
             local community and on a global scale - that are transforming our
@@ -81,7 +60,7 @@ const JobDetail = () => {
             community—where you have the freedom to grow in a world of
             opportunity.
           </p>
-          <p>
+          <p className="paragraph">
             As an Equal Opportunity Employer, we believe in your potential and
             are here to help you achieve it. All your information will be kept
             confidential according to EEO guidelines.
@@ -89,26 +68,13 @@ const JobDetail = () => {
 
           <div className="job-details-bottom-meta">
             <p>
-              <strong>ReqID:</strong> {job._id}
-            </p>
-            <p>
               <strong>Business Line:</strong> {job.businessLine}
-            </p>
-            <p>
-              <strong>Business Group:</strong> {job.businessGroup}
-            </p>
-            <p>
-              <strong>Strategic Business Unit:</strong>{" "}
-              {job.strategicBusinessUnit}
             </p>
             <p>
               <strong>Career Area:</strong> {job.careerArea}
             </p>
             <p>
-              <strong>Work Location Model:</strong> {job.workLocationModel}
-            </p>
-            <p>
-              <strong>Legal Entity:</strong> {job.legalEntity}
+              <strong>Work Location Model:</strong> {job.workLocation}
             </p>
           </div>
 
@@ -116,31 +82,11 @@ const JobDetail = () => {
             href={job.googleFormLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="color-btn mt-8 w-35"
+            className="color-btn mt-8 w-auto sm:w-60 md:w-38 lg:w-35 mb-5"
           >
             <span>Apply Now</span> <FaChevronRight className="right-arrow" />
           </a>
         </div>
-
-        <aside className="job-detail-sidebar">
-          <div className="hidden md:flex">
-            <a
-              href={job.googleFormLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="color-btn w-35"
-            >
-              <span>Apply Now</span> <FaChevronRight className="right-arrow" />
-            </a>
-          </div>
-          {sidebarCards.map((card, index) => (
-            <ConnectCard
-              key={index}
-              title={card.title}
-              buttons={card.buttons}
-            />
-          ))}
-        </aside>
       </div>
     </div>
   );

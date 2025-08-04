@@ -25,9 +25,9 @@ const Sidebar = ({
         onSelectFilter={onSelectFilter}
       />
     ))}
-    {connectCardData.map((card, index) => (
+    {/* {connectCardData.map((card, index) => (
       <ConnectCard key={index} title={card.title} buttons={card.buttons} />
-    ))}
+    ))} */}
   </aside>
 );
 

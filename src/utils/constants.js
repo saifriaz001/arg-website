@@ -847,6 +847,26 @@ export const jobs = [
     updatedAt: "2025-07-21T10:10:00.000Z",
     slug: "legal-counsel-new-york",
   },
+  {
+    _id: "688c5a3049a69987a0806e97",
+    title: "Legal Counsel Aid",
+    country: "Kingddom of Saudi Arabia",
+    state: "Riyadh",
+    city: "Riyadh",
+    businessLine: "Corporate Services",
+    careerArea: "Legal",
+    description:
+      "Provide legal advice and support on a wide range of corporate and commercial matters, including contracts, compliance, and litigation.",
+    qualifications: [
+      "Juris Doctor (JD) degree from an accredited law school.",
+      "Admission to the state bar.",
+      "3+ years of experience at a law firm or in-house legal department.",
+    ],
+    workLocation: "On-site",
+    createdAt: "2025-07-21T10:10:00.000Z",
+    updatedAt: "2025-07-21T10:10:00.000Z",
+    slug: "legal-counsel-new-york",
+  },
 ];
 
 // important function

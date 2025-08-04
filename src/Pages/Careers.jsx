@@ -29,6 +29,9 @@ const Careers = () => {
   const handleLoadMore = () => {
     setVisibleJobsCount((prevCount) => prevCount + JOBS_PER_PAGE);
   };
+  const handleShowLess = () => {
+    setVisibleJobsCount(JOBS_PER_PAGE);
+  };
 
   // When filters change, reset pagination
   useEffect(() => {
@@ -59,8 +62,8 @@ const Careers = () => {
             jobs={filteredJobs}
             visibleCount={visibleJobsCount}
             onLoadMore={handleLoadMore}
+            onShowLess={handleShowLess}
           />
-          <Link to="/career-fe">CareerFrontEnd</Link>
         </div>
       </div>
     </div>
