@@ -1,12 +1,12 @@
-import React, { useState, useRef } from "react";
-import MegaMenu from "./MegaMenu";
-import NavServiceSection from "./NavServiceSection";
-import NavPortfolioSection from "./NavPortfolioSection";
-import MobileMenu from "./MobileMenu";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { Link } from "react-router-dom";
-import "../Pages/Section.css";
-import logo from "../assets/arglogo.svg";
+import React, { useState, useRef , useEffect } from 'react';
+import MegaMenu from './MegaMenu';
+import NavServiceSection from './NavServiceSection';
+import NavPortfolioSection from './NavPortfolioSection';
+import MobileMenu from './MobileMenu';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { Link , useLocation } from 'react-router-dom';
+import "../Pages/Section.css"
+import logo from "../assets/arglogo.svg"
 const Navbar = () => {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState(null); // 'ourwork' | 'services' | null
@@ -22,6 +22,14 @@ const Navbar = () => {
       setActiveMenu(null);
     }, 400); // delay before closing
   };
+
+  const location = useLocation();
+
+  useEffect(() => {
+    // ✅ Close dropdown on route change
+    setActiveMenu(null);
+    setIsMobileOpen(false);
+  }, [location]); 
 
   return (
     <header
@@ -78,7 +86,7 @@ const Navbar = () => {
           </Link>
 
           {/* Our Work */}
-          {/* <span
+          <span
             className={`nav-tab ${
               activeMenu === 'ourwork' ? 'nav-tab-active' : 'nav-tab-hover'
             }`}
@@ -86,9 +94,9 @@ const Navbar = () => {
             onMouseLeave={handleMenuLeave}
           >
             Our Work
-          </span> */}
+          </span> 
 
-          {/* Services */}
+          {/* Services
 
           <span
             className={`nav-tab ${
@@ -101,15 +109,14 @@ const Navbar = () => {
           </span>
 
           {/* Portfolio */}
-          <span
-            className={`nav-tab ${
-              activeMenu === "Portfolio" ? "nav-tab-active" : "nav-tab-hover"
-            }`}
-            onMouseEnter={() => handleMenuEnter("Portfolio")}
+          {/* <span
+            className={`nav-tab ${activeMenu === 'Portfolio' ? 'nav-tab-active' : 'nav-tab-hover'
+              }`}
+            onMouseEnter={() => handleMenuEnter('Portfolio')}
             onMouseLeave={handleMenuLeave}
           >
             Portfolios
-          </span>
+          </span> */}
 
           <Link to={"/careers"}>
             <span
@@ -139,12 +146,12 @@ const Navbar = () => {
           onMouseEnter={() => handleMenuEnter("ourwork")}
           onMouseLeave={handleMenuLeave}
         >
-          <MegaMenu />
+          <MegaMenu onLinkClick={() => setActiveMenu(null)} />
         </div>
       )}
 
-      {/* NavServiceSection (Services) */}
-      {activeMenu === "services" && (
+      {/* NavServiceSection (Services)
+      {activeMenu === 'services' && (
         <div
           className="absolute top-full left-0 w-full"
           onMouseEnter={() => handleMenuEnter("services")}
@@ -152,8 +159,8 @@ const Navbar = () => {
         >
           <NavServiceSection onLinkClick={() => setActiveMenu(null)} />
         </div>
-      )}
-      {activeMenu === "Portfolio" && (
+      )} */}
+      {/* {activeMenu === 'Portfolio' && (
         <div
           className="absolute top-full left-0 w-full"
           onMouseEnter={() => handleMenuEnter("Portfolio")}
@@ -161,11 +168,11 @@ const Navbar = () => {
         >
           <NavPortfolioSection onLinkClick={() => setActiveMenu(null)} />
         </div>
-      )}
-      {activeMenu === "home"}
-      {activeMenu === "about-us"}
-      {activeMenu === "Careers"}
-      {activeMenu === "News"}
+      )} */}
+      {activeMenu === 'home'}
+      {activeMenu === 'about-us'}
+      {activeMenu === 'Careers'}
+      {activeMenu === 'News'}
 
       {/* Mobile Menu */}
       {isMobileOpen && <MobileMenu />}
