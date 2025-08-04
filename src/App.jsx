@@ -72,6 +72,7 @@ function App() {
         />{" "}
         <Route path="/careers" element={<Careers />} />
         <Route path="/careers/:slug" element={<JobDetail />} />
+        
         <Route path="/adminpanel" element={<AdminSection />} />
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route index element={<DashboardHome />} />
