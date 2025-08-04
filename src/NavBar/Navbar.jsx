@@ -120,7 +120,7 @@ const Navbar = () => {
               Careers
             </span>
           </Link>
-          <Link to={"/news-blogs"}>
+          <Link to={"/news"}>
             <span
               className={`nav-tab ${
                 activeMenu === "News" ? "nav-tab-active" : "nav-tab-hover"

@@ -7,8 +7,6 @@ import "./App.css";
 import Footer from "./Pages/Footer";
 import Navbar from "./NavBar/Navbar";
 import ServicesPage from "./Pages/ServicesPage";
-import Projects from "./Pages/ProjectsPage";
-import ProjectDetailPage from "./Pages/ProjectDetailPage";
 import AboutPage from "./Pages/AboutPage";
 import StrategicCostManagement from "./components/StrategicCostManagement";
 import EPCAdvisory from "./components/EPCAdvisory";
@@ -17,11 +15,8 @@ import ProjectManagement from "./components/ProjectManagement";
 import GovernmentAdvisory from "./components/GovernmentAdvisory";
 import EnvironmentalSolutions from "./components/EnvironmentalSolutions";
 import SubStrategicCostManagement from "./sub-pages/Strategic-Cost-Management/Strategic-Cost-Management";
-import NewsBlogs from "./Pages/NewsBlogs";
-import NewsDetail from "./Pages/NewsDetail";
 import Careers from "./Pages/Careers";
 import JobDetail from "./Pages/JobDetails";
-import CareerAdmin from "./Pages/CareerAdmin";
 function App() {
   return (
     <div className=" bg-cream">
@@ -32,12 +27,6 @@ function App() {
         <Route path="/services" element={<Services />} />
         {/* <Route path='/projects' element={<Projects/>} /> */}
         <Route path="/servicespage" element={<ServicesPage />} />
-        <Route path="/projectspage" element={<Projects />} />
-
-        <Route
-          path="/projectspage/project/:slug"
-          element={<ProjectDetailPage />}
-        />
 
         <Route path="/about-us" element={<AboutPage />} />
         <Route path="/costmanagement" element={<StrategicCostManagement />} />
@@ -58,11 +47,8 @@ function App() {
         />
         {/* Add more routes as needed */}
         {/* News and Blog routes */}
-        <Route path="/news-blogs" element={<NewsBlogs />} />
-        <Route path="/news-blogs/:slug" element={<NewsDetail />} />
         <Route path="/careers" element={<Careers />} />
         <Route path="/careers/:slug" element={<JobDetail />} />
-        <Route path="/career-fe" element={<CareerAdmin />} />
       </Routes>
       <Footer />
     </div>
