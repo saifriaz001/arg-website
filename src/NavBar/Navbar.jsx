@@ -33,18 +33,14 @@ const Navbar = () => {
           <div>
             {/*px-4 xl:w-30 xl:pl-8 */}
             <Link to={"/"}>
-              <img
-                className="py-2 w-20 h-20 px-4 xl:w-30 xl:pl-8 "
-                src={logo}
-                alt="logo"
-              />
+              <img className="py-2 w-20 h-20" src={logo} alt="logo" />
             </Link>
           </div>
           <div className=" xl:hidden text-2xl brand-heading font-bold">
             {" "}
             ARG{" "}
           </div>
-          <div className="  hidden xl:block text-2xl brand-heading font-bold  ">
+          <div className="hidden xl:block text-2xl brand-heading font-bold">
             <Link to={"/"}>AECS Research Global</Link>
           </div>
         </div>
@@ -115,13 +111,15 @@ const Navbar = () => {
             Portfolios
           </span>
 
-          <span
-            className={`nav-tab ${
-              activeMenu === "Careers" ? "nav-tab-active" : "nav-tab-hover"
-            }`}
-          >
-            Careers
-          </span>
+          <Link to={"/careers"}>
+            <span
+              className={`nav-tab ${
+                activeMenu === "Careers" ? "nav-tab-active" : "nav-tab-hover"
+              }`}
+            >
+              Careers
+            </span>
+          </Link>
           <Link to={"/news-blogs"}>
             <span
               className={`nav-tab ${

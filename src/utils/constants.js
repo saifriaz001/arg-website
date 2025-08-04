@@ -562,3 +562,323 @@ export const projectFilterOptions = {
     "Taif, Saudi Arabia",
   ],
 };
+
+export const jobs = [
+  {
+    _id: "688c5a3049a69987a0806e8e",
+    title: "Junior Project Lead",
+    country: "India",
+    state: "Delhi",
+    city: "New Delhi",
+    businessLine: "Commercial Buildings",
+    careerArea: "Project Management",
+    description:
+      "Support project planning and execution for commercial building projects. Coordinate with teams and stakeholders to ensure project milestones are met on time and within budget.",
+    qualifications: [
+      "Bachelor's degree in Engineering, Architecture, or a related field.",
+      "1-3 years of experience in project coordination or management.",
+      "Excellent organizational and communication skills.",
+      "Familiarity with project management software.",
+    ],
+    workLocation: "On-site",
+    createdAt: "2025-08-01T09:15:00.000Z",
+    updatedAt: "2025-08-01T09:15:00.000Z",
+    slug: "junior-project-lead-new-delhi",
+  },
+  {
+    _id: "688c5a3049a69987a0806e8f",
+    title: "Junior Project Intern",
+    country: "India",
+    state: "Delhi",
+    city: "New Delhi",
+    businessLine: "Commercial Buildings",
+    careerArea: "Project Management",
+    description:
+      "Support project planning and execution for commercial building projects. Coordinate with teams and stakeholders to ensure project milestones are met on time and within budget.",
+    qualifications: [
+      "Bachelor's degree in Engineering, Architecture, or a related field.",
+      "1-3 years of experience in project coordination or management.",
+      "Excellent organizational and communication skills.",
+      "Familiarity with project management software.",
+    ],
+    workLocation: "On-site",
+    createdAt: "2025-08-01T09:15:00.000Z",
+    updatedAt: "2025-08-01T09:15:00.000Z",
+    slug: "junior-project-intern-new-delhi",
+  },
+  {
+    _id: "688c5a3049a69987a0806e8d",
+    title: "Junior Project Intern2",
+    country: "India",
+    state: "Delhi",
+    city: "New Delhi",
+    businessLine: "Commercial Buildings",
+    careerArea: "Project Management",
+    description:
+      "Support project planning and execution for commercial building projects. Coordinate with teams and stakeholders to ensure project milestones are met on time and within budget.",
+    qualifications: [
+      "Bachelor's degree in Engineering, Architecture, or a related field.",
+      "1-3 years of experience in project coordination or management.",
+      "Excellent organizational and communication skills.",
+      "Familiarity with project management software.",
+    ],
+    workLocation: "On-site",
+    createdAt: "2025-08-01T09:15:00.000Z",
+    updatedAt: "2025-08-01T09:15:00.000Z",
+    slug: "junior-project-intern2-new-delhi",
+  },
+  {
+    _id: "688c5a3049a69987a0806e7f",
+    title: "Senior Software Engineer",
+    country: "United States",
+    state: "California",
+    city: "San Francisco",
+    businessLine: "Technology Solutions",
+    careerArea: "Software Development",
+    description:
+      "Lead the development of scalable software solutions. Mentor junior engineers and drive technical excellence across the team.",
+    qualifications: [
+      "Bachelor's or Master's degree in Computer Science.",
+      "Minimum 5 years of software development experience.",
+      "Proficiency in languages like Python, Java, or Go.",
+      "Experience with cloud platforms (AWS, Azure, GCP).",
+    ],
+    workLocation: "Hybrid",
+    createdAt: "2025-07-28T14:30:00.000Z",
+    updatedAt: "2025-07-28T14:30:00.000Z",
+    slug: "senior-software-engineer-san-francisco",
+  },
+  {
+    _id: "688c5a3049a69987a0806e90",
+    title: "Marketing Manager",
+    country: "United Kingdom",
+    state: "England",
+    city: "London",
+    businessLine: "Corporate Services",
+    careerArea: "Marketing & Communications",
+    description:
+      "Develop and execute marketing strategies to enhance brand visibility and drive lead generation for our corporate services.",
+    qualifications: [
+      "Degree in Marketing, Business, or a related field.",
+      "Proven experience in managing marketing campaigns.",
+      "Strong analytical and project management skills.",
+    ],
+    workLocation: "On-site",
+    createdAt: "2025-07-25T11:00:00.000Z",
+    updatedAt: "2025-07-25T11:00:00.000Z",
+    slug: "marketing-manager-london",
+  },
+  {
+    _id: "688c5a3049a69987a0806e91",
+    title: "Civil Engineer",
+    country: "United Arab Emirates",
+    state: "Dubai",
+    city: "Dubai",
+    businessLine: "Infrastructure",
+    careerArea: "Engineering",
+    description:
+      "Design and oversee the construction of large-scale infrastructure projects, such as roads, bridges, and water systems.",
+    qualifications: [
+      "Bachelor's degree in Civil Engineering.",
+      "Professional Engineer (PE) license is a plus.",
+      "Proficiency in AutoCAD and Civil 3D.",
+      "Minimum 4 years of experience.",
+    ],
+    workLocation: "On-site",
+    createdAt: "2025-08-02T10:00:00.000Z",
+    updatedAt: "2025-08-02T10:00:00.000Z",
+    slug: "civil-engineer-dubai",
+  },
+  {
+    _id: "688c5a3049a69987a0806e92",
+    title: "HR Business Partner",
+    country: "Canada",
+    state: "Ontario",
+    city: "Toronto",
+    businessLine: "Human Resources",
+    careerArea: "Human Resources",
+    description:
+      "Act as a strategic partner to business units, providing HR guidance and support on all people-related issues.",
+    qualifications: [
+      "Degree in Human Resources Management or related field.",
+      "5+ years of experience in an HR generalist or business partner role.",
+      "Strong understanding of employment law.",
+    ],
+    workLocation: "Hybrid",
+    createdAt: "2025-07-22T16:45:00.000Z",
+    updatedAt: "2025-07-22T16:45:00.000Z",
+    slug: "hr-business-partner-toronto",
+  },
+  {
+    _id: "688c5a3049a69987a0806e93",
+    title: "Data Scientist",
+    country: "Australia",
+    state: "New South Wales",
+    city: "Sydney",
+    businessLine: "Technology Solutions",
+    careerArea: "Data & Analytics",
+    description:
+      "Analyze large, complex data sets to identify trends, develop predictive models, and provide actionable insights to the business.",
+    qualifications: [
+      "Master's or PhD in Statistics, Computer Science, or a quantitative field.",
+      "Experience with machine learning frameworks and statistical languages like R or Python.",
+    ],
+    workLocation: "Remote",
+    createdAt: "2025-07-30T09:00:00.000Z",
+    updatedAt: "2025-07-30T09:00:00.000Z",
+    slug: "data-scientist-sydney",
+  },
+  {
+    _id: "688c5a3049a69987a0806e94",
+    title: "Environmental Consultant",
+    country: "Canada",
+    state: "British Columbia",
+    city: "Vancouver",
+    businessLine: "Environmental Services",
+    careerArea: "Consulting",
+    description:
+      "Provide expert advice on environmental regulations and sustainability practices to clients across various industries.",
+    qualifications: [
+      "Degree in Environmental Science, Engineering, or a related field.",
+      "Knowledge of federal and provincial environmental regulations.",
+    ],
+    workLocation: "Hybrid",
+    createdAt: "2025-07-19T13:20:00.000Z",
+    updatedAt: "2025-07-19T13:20:00.000Z",
+    slug: "environmental-consultant-vancouver",
+  },
+  {
+    _id: "688c5a3049a69987a0806e95",
+    title: "Financial Analyst",
+    country: "United States",
+    state: "New York",
+    city: "New York",
+    businessLine: "Corporate Services",
+    careerArea: "Finance",
+    description:
+      "Conduct financial forecasting, reporting, and operational metrics tracking. Analyze financial data and create financial models for decision support.",
+    qualifications: [
+      "Bachelor's degree in Finance, Economics, or a related field.",
+      "Proven experience in financial analysis.",
+      "Strong proficiency in Excel and financial modeling.",
+    ],
+    workLocation: "On-site",
+    createdAt: "2025-07-29T18:00:00.000Z",
+    updatedAt: "2025-07-29T18:00:00.000Z",
+    slug: "financial-analyst-new-york",
+  },
+  {
+    _id: "688c5a3049a69987a0806e96",
+    title: "Structural Engineer",
+    country: "India",
+    state: "Maharashtra",
+    city: "Mumbai",
+    businessLine: "Industrial Buildings",
+    careerArea: "Engineering",
+    description:
+      "Design and analyze structural components for large industrial facilities, ensuring safety and compliance with building codes.",
+    qualifications: [
+      "Master's degree in Structural Engineering.",
+      "Experience with structural analysis software like STAAD.Pro or ETABS.",
+      "Minimum 5 years of relevant experience.",
+    ],
+    workLocation: "On-site",
+    createdAt: "2025-08-01T12:00:00.000Z",
+    updatedAt: "2025-08-01T12:00:00.000Z",
+    slug: "structural-engineer-mumbai",
+  },
+  {
+    _id: "688c5a3049a69987a0806e97",
+    title: "UX/UI Designer",
+    country: "United Kingdom",
+    state: "England",
+    city: "London",
+    businessLine: "Technology Solutions",
+    careerArea: "Design",
+    description:
+      "Create intuitive and engaging user experiences for our web and mobile applications. Develop wireframes, prototypes, and high-fidelity mockups.",
+    qualifications: [
+      "A strong portfolio showcasing your design work.",
+      "Proficiency in design tools like Figma, Sketch, or Adobe XD.",
+      "Experience with user research and usability testing.",
+    ],
+    workLocation: "Remote",
+    createdAt: "2025-07-26T15:00:00.000Z",
+    updatedAt: "2025-07-26T15:00:00.000Z",
+    slug: "ux-ui-designer-london",
+  },
+  {
+    _id: "688c5a3049a69987a0806e98",
+    title: "Construction Manager",
+    country: "United Arab Emirates",
+    state: "Dubai",
+    city: "Dubai",
+    businessLine: "Commercial Buildings",
+    careerArea: "Project Management",
+    description:
+      "Oversee and direct construction projects from conception to completion, ensuring projects are completed on schedule and within budget.",
+    qualifications: [
+      "Bachelor's degree in Construction Management or a related field.",
+      "Extensive experience in managing large commercial construction sites.",
+      "Strong leadership and negotiation skills.",
+    ],
+    workLocation: "On-site",
+    createdAt: "2025-07-24T08:30:00.000Z",
+    updatedAt: "2025-07-24T08:30:00.000Z",
+    slug: "construction-manager-dubai",
+  },
+  {
+    _id: "688c5a3049a69987a0806e99",
+    title: "Legal Counsel",
+    country: "United States",
+    state: "New York",
+    city: "New York",
+    businessLine: "Corporate Services",
+    careerArea: "Legal",
+    description:
+      "Provide legal advice and support on a wide range of corporate and commercial matters, including contracts, compliance, and litigation.",
+    qualifications: [
+      "Juris Doctor (JD) degree from an accredited law school.",
+      "Admission to the state bar.",
+      "3+ years of experience at a law firm or in-house legal department.",
+    ],
+    workLocation: "On-site",
+    createdAt: "2025-07-21T10:10:00.000Z",
+    updatedAt: "2025-07-21T10:10:00.000Z",
+    slug: "legal-counsel-new-york",
+  },
+];
+
+// important function
+
+// const generateFilterOptions = (jobs, key) => {
+//   const counts = jobs.reduce((acc, job) => {
+//     const value = job[key];
+//     if (value) {
+//       acc[value] = (acc[value] || 0) + 1;
+//     }
+//     return acc;
+//   }, {});
+
+//   const options = Object.keys(counts).map((name) => ({
+//     name: name,
+//     count: counts[name],
+//   }));
+
+//   options.sort((a, b) => b.count - a.count);
+
+//   return options;
+// };
+
+// const filterCategories = [
+//   { title: "Filter by Country", key: "country" },
+//   { title: "Filter by Business Line", key: "businessLine" },
+//   { title: "Filter by Career Area", key: "careerArea" },
+//   { title: "Filter by State", key: "state" },
+//   { title: "Filter by City", key: "city" },
+// ];
+
+// export const filterData = filterCategories.map((category) => ({
+//   title: category.title,
+//   options: generateFilterOptions(jobs, category.key),
+// }));

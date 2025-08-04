@@ -19,6 +19,9 @@ import EnvironmentalSolutions from "./components/EnvironmentalSolutions";
 import SubStrategicCostManagement from "./sub-pages/Strategic-Cost-Management/Strategic-Cost-Management";
 import NewsBlogs from "./Pages/NewsBlogs";
 import NewsDetail from "./Pages/NewsDetail";
+import Careers from "./Pages/Careers";
+import JobDetail from "./Pages/JobDetails";
+import CareerAdmin from "./Pages/CareerAdmin";
 function App() {
   return (
     <div className=" bg-cream">
@@ -57,6 +60,9 @@ function App() {
         {/* News and Blog routes */}
         <Route path="/news-blogs" element={<NewsBlogs />} />
         <Route path="/news-blogs/:slug" element={<NewsDetail />} />
+        <Route path="/careers" element={<Careers />} />
+        <Route path="/careers/:slug" element={<JobDetail />} />
+        <Route path="/career-fe" element={<CareerAdmin />} />
       </Routes>
       <Footer />
     </div>
