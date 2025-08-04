@@ -32,8 +32,6 @@
     background-color: var(--color-pagebackground)
   }
 
-  
-
   .subheading {
     @apply text-2xl md:text-3xl font-semibold mb-4;
     color: var(--color-heading);
@@ -48,6 +46,19 @@
 
   .strong {
     color: var(--color-strong);
+  }
+  /* Load More button */
+
+  .Load-More{
+    @apply inline-flex items-center gap-2 border  px-6 py-2 rounded-full font-medium transition-all ease-in-out  duration-1000 ;
+    border-color: var(--color-heading) ;
+    font-family: var(--font-paragraph);
+    color: var(--color-paragraph);
+  }
+
+  .Load-More:hover{
+    @apply text-white;
+    background-color:var(--color-paragraph) ;
   }
 
   /* Reuseable-Grid-Page */
@@ -108,6 +119,25 @@
   }
 
   /* News Page */
+  .News-Press {
+    @apply text-[3.5rem] leading-16 text-white font-semibold;
+    font-family: var(--font-heading);
+  }
+
+  .News-Details-type{
+    @apply   text-sm px-3 py-1 text-white rounded-full border;
+    border-color: white;
+    font-family: var(--font-paragraph);
+  }
+
+  .News-detail-title{
+    @apply text-[2rem] font-normal leading-10 text-white;
+    font-family: var(--font-heading);
+    background-color:  var(--color-paragraph) ;
+
+  }
+
+
   .News-heading {
     @apply text-[1.5rem] md:leading-8 leading-relaxed font-normal mb-2;
     font-family: var(--font-paragraph);
@@ -134,15 +164,13 @@
     color: var(--color-white);
     background-color: var(--color-paragraph);
     border-color: var(--color-paragraph);
-    @apply inline-flex items-center gap-1 border px-4 py-1.5 rounded-full font-medium transition;
+    @apply inline-flex items-center gap-1 border px-4 py-1.5 rounded-full font-medium  transition-all ease-in-out  duration-1000 ;
   }
 
   .btn-with-arrow:hover {
     background-color: white;
     color: var(--color-paragraph);
   }
-
-
 
   /* ABOUT-US-PAGE SUBSECTION_3 MAPPING CARDS */
 
@@ -225,8 +253,8 @@
     color: var(--color-paragraph);
   }
 
-
   /* ABOUT-US-PAGE SUBSECTION_5 MAPPING CARDS FOR RESEARCH GLOBAL  */
+
   .contact-card {
     @apply rounded-lg shadow-md p-6 text-left hover:shadow-xl transition-shadow duration-300;
     background-color: var(--color-cardbackground)
@@ -264,24 +292,24 @@
 
 
   /* SERVICE PAGE GENERIC MAP CARDS TEMPLATE  */
-
   .feature-card {
     @apply rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden;
     background-color: var(--color-cardbackground)
   }
 
-  /* Card image */
+
+  /* Card-image */
   .feature-card-image {
     @apply w-full h-48 object-cover object-top rounded-t-lg;
 
   }
 
-  /* Inner content */
+  /* Inner-content */
   .feature-card-body {
     @apply p-4;
   }
 
-  /* Card title */
+  /* Card-title */
   .feature-card-title {
     @apply text-xl font-semibold mb-2;
     color: var(--color-heading);
@@ -301,10 +329,7 @@
     color: var(--color-paragraph);
   }
 
-
-  /*For Navbar  */
-
-
+  /*For Navbar*/
 
 }
 

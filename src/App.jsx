@@ -31,6 +31,7 @@ import MarketPage from './Pages/MarketPage'
 import MarketSlugPage from './Pages/MarketSlugPage'
 import ProjectSlug from './Pages/ProjectSlugPage'
 import  NewsPage from "./Pages/news"
+import NewsSlugPage from "./Pages/NewsSlugPage"
 import ProjectNavbar from "./Admin/AdminSection/DashboardSection/ProjectNavbar"
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
       {/* <Route path='/projects' element={<Projects/>} /> */}
       <Route path='/servicespage' element={<ServicesPage/>}/>
       <Route path ="/news" element={<NewsPage/>}/>
+      <Route path='/news/:slug' element={<NewsSlugPage/>}/>
       <Route path="/markets" element={<MarketPage/>}/>
       <Route path="/markets/:slug" element={<MarketSlugPage/>}/>
       <Route path='/projects' element={<ProjectPage/>}/>

@@ -1,7 +1,7 @@
 import React, { useState , useMemo } from 'react';
 import ServiceDropdown from '../ReuseableComponents/ServiceDropDown';
 import { Link } from 'react-router-dom';
-
+import LoadMoreToggle from './LoadMoreToggle';
 const ReusableGridPage = ({
   heading,
   paragraphLg,
@@ -13,6 +13,7 @@ const ReusableGridPage = ({
 }) => {
   const [selectedFilterType, setSelectedFilterType] = useState(defaultOption);
   const [selectedCategory, setSelectedCategory] = useState('');
+  const [visibleCount, setVisibleCount] = useState(6);
     // Helper to extract unique values from array
   const getUniqueOptions = (data, key) => {
     const allValues = data.flatMap((item) => {
@@ -47,7 +48,7 @@ const ReusableGridPage = ({
         {paragraphSm && <p className="paragraph-sm">{paragraphSm}</p>}
 
         {/* Dropdown */}
-        <div className="flex flex-wrap gap-4 mt-4 mb-6">
+        <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-4 mt-4 mb-6">
           {filters.map((filter) => (
             <ServiceDropdown
               key={filter.key}
@@ -65,14 +66,14 @@ const ReusableGridPage = ({
 
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1">
-          {filteredData.map((item, idx) => (
+          {filteredData.slice(0, visibleCount).map((item, idx) => (
             <Link to={`/${prefixPath}/${item.slug}`} className="block h-full w-full" key={idx}>
               <div className="relative group h-64 overflow-hidden shadow-md">
                 <img
                   loading="lazy"
                   src={item.image || item.imageUrl}
                   alt={item.title}
-                  className="w-full h-full object-cover brightness-50 transform group-hover:brightness-100 transition duration-500 ease-in-out group-hover:scale-105"
+                  className="w-full h-full object-cover brightness-50 transform group-hover:brightness-100 transition duration-1000 ease-in-out group-hover:scale-105"
                 />
                 <div className="absolute bottom-0 left-0 right-0 p-3 text-white">
                   <h4 className="title">{item.title}</h4>
@@ -81,6 +82,12 @@ const ReusableGridPage = ({
             </Link>
           ))}
         </div>
+        <LoadMoreToggle
+          visibleCount={visibleCount}
+          totalCount={filteredData.length}
+          increment={6}
+          setVisibleCount={setVisibleCount}
+        />
       </div>
     </section>
   );

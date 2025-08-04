@@ -4,24 +4,10 @@ import { Link } from "react-router-dom";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import NavButton from '../ReuseableComponents/NavButton';
 import ButtonWithArrow from "./ButtonWithArrow";
-
-
-const ReadMoreButton = ({ to }) => (
-  <Link
-    to={to}
-    className="inline-flex items-center gap-1 text-green-700 border border-green-500 px-4 py-1.5 rounded-full font-medium transition group hover:bg-green-700 hover:text-white"
-  >
-    <span>Read more</span>
-    <span className="transform transition-transform duration-900 group-hover:translate-x-1">
-      &rarr;
-    </span>
-  </Link>
-);
+import LoadMoreToggle from "./LoadMoreToggle";
 
 const PressReleasePage = ({
     heading,
-    paragraphLg,
-    paragraphSm,
     prefixPath,
     data,
     filters = [],
@@ -29,6 +15,7 @@ const PressReleasePage = ({
 }) => {
     const [selectedFilterType, setSelectedFilterType] = useState(defaultOption);
     const [selectedCategory, setSelectedCategory] = useState("");
+    const [visibleCount, setVisibleCount] = useState(5);
 
     // Normalize types -> ensure title exists
     const normalizedData = useMemo(() => {
@@ -100,17 +87,17 @@ const PressReleasePage = ({
 
     return (
         <div>
-            <div className="  News h-[300px] w-full">
-  <div className="max-w-7xl h-full mx-auto flex items-center px-6">
-    <h1 className="text-4xl text-white font-semibold">{heading || "Press Releases"}</h1>
-  </div>
-</div>
+            <div className="   News h-[300px] w-full">
+                <div className=" px-4 py-10  lg:px-4 xl:px-0  max-w-7xl h-full mx-auto flex items-center ">
+                    <h1 className="News-Press">{heading}</h1>
+                </div>
+            </div>
             <section className="section-layout">
                 <div className="max-w-7xl mx-auto">
                     {/* Heading + Intro */}
 
                     {/* Dropdown Filters */}
-                    <div className="flex flex-wrap gap-4 mt-4 mb-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-1 mt-4 mb-6">
                         {filters.map((filter) => (
                             <ServiceDropdown
                                 services={getUniqueOptions(normalizedData, filter.key)}
@@ -131,7 +118,7 @@ const PressReleasePage = ({
 
                     {/* Cards */}
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                        {filteredData.map((item, idx) => {
+                        {filteredData.slice(0, visibleCount).map((item, idx) => {
                             const date = new Date(item.date || item.createdAt).toLocaleDateString("en-US", {
                                 year: "numeric",
                                 month: "long",
@@ -185,6 +172,12 @@ const PressReleasePage = ({
                         })}
                     </div>
                 </div>
+                <LoadMoreToggle
+                    visibleCount={visibleCount}
+                    totalCount={filteredData.length}
+                    increment={5}
+                    setVisibleCount={setVisibleCount}
+                />
             </section>
         </div>
     );
