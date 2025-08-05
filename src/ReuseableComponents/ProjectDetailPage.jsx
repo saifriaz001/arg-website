@@ -5,7 +5,13 @@ const ProjectDetailPage = ({ data, slugParamName = 'slug'} ) => {
   const params = useParams();
   const slug = params[slugParamName];
 
-  const item = data.find((entry) => entry.slug === slug);
+  const item =  data.find((entry) => entry.slug === slug);
+  
+
+  
+  if (!item) {
+    return <div className="text-center py-10">Loading project details...</div>;
+  }
 
   const {
     title,

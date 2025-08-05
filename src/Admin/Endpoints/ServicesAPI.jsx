@@ -2,7 +2,7 @@ import { apiConnector } from "../ApiConnector/apiConnector";
 
 import { serviceEndpoints} from "./endpoints";
 
-
+const LOCAL_STORAGE_KEY = 'projects_cache';
 const { GET_SERVICES, POST_SERVICES , DELETE_SERVICE } = serviceEndpoints;
 
 export const postService = async (title, heading, description, imageUrl) => {
@@ -16,6 +16,7 @@ export const postService = async (title, heading, description, imageUrl) => {
         console.log("Response from post service:", response);
         if (response.status === 201) {
             console.log("Service created successfully:", response.data);
+            localStorage.removeItem(LOCAL_STORAGE_KEY);
             return response.data; // Return the created service data
         } else {
             console.error("Failed to create service:", response.data);
@@ -60,6 +61,7 @@ export const deleteService = async (serviceId) => {
         console.log("Response from delete service:", response);
         if (response.status === 200) {
             console.log("Service deleted successfully:", response.data);
+            localStorage.removeItem(LOCAL_STORAGE_KEY);
             return response.data; // Return the deleted service data
         } else {
             console.error("Failed to delete service:", response.data);

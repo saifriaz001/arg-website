@@ -39,8 +39,11 @@ function App() {
 
   return (
     <div className=' bg-cream'>
-    <Navbar/>
+    <div className="fixed top-0 left-0 w-full z-50 bg-cream shadow-md mb-10">
+      <Navbar />
+    </div>
     {/* <Bar/> */}
+    <div className="pt-[70px] bg-cream">
     <Routes>
       <Route path='/login' element={<LoginPage/>} />
       <Route path='/' element={<LandingPage/>}  />
@@ -75,6 +78,7 @@ function App() {
 
       {/* Add more routes as needed */}
      </Routes>
+     </div>
     <Footer/>
     </div>
   )
