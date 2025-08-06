@@ -1,9 +1,9 @@
 import { apiConnector } from "../ApiConnector/apiConnector";
 import axios from "axios";
 import { marketEndpoints} from "./endpoints";
-
 const { GET_MARKETS, POST_MARKETS , DELETE_MARKET } = marketEndpoints;
 
+const LOCAL_STORAGE_KEY = 'markets_cache';
 export const postMarket = async (title, heading, description, imageUrl) => {
     console.log("checking post market url ->", POST_MARKETS);
     try {
@@ -15,6 +15,7 @@ export const postMarket = async (title, heading, description, imageUrl) => {
         console.log("Response from post market:", response);
         if (response.status === 201) {
             console.log("Market created successfully:", response.data);
+            localStorage.removeItem(LOCAL_STORAGE_KEY);
             return response.data; // Return the created market data
         } else {
             console.error("Failed to create market:", response.data);
@@ -59,6 +60,7 @@ export const deleteMarket = async (marketId) => {
         console.log("Response from delete market:", response);
         if (response.status === 200) {
             console.log("Market deleted successfully:", response.data);
+            localStorage.removeItem(LOCAL_STORAGE_KEY);
             return response.data; // Return the deleted market data
         } else {
             console.error("Failed to delete market:", response.data);

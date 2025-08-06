@@ -2,48 +2,55 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'; // 👈 needed for routing
 import NavButton from '../ReuseableComponents/NavButton';
 import ButtonWithArrow from '../ReuseableComponents/ButtonWithArrow';
-import { getMarkets } from "../Admin/Endpoints/MarketsAPI";
-import { getServices } from "../Admin/Endpoints/ServicesAPI";
-import { getProjects } from "../Admin/Endpoints/ProjectArrayAPI";
+import { useDispatch , useSelector } from 'react-redux';
+import { fetchMarkets} from "../Redux/slices/marketSlice"
+import {fetchProjectsArray} from "../Redux/slices/projectArraySlice"
+import {fetchServices} from "../Redux/slices/serviceSlice"
+
 
 const MegaMenu = () => {
+  const dispatch = useDispatch();
+
+  // ⬇️ Grab data from Redux
+  const { data: marketData } = useSelector((state) => state.markets);
+  const { data: serviceData } = useSelector((state) => state.services);
+  const { data: projectData } = useSelector((state) => state.projectArray); // or projects
+
   const [markets, setMarkets] = useState([]);
   const [services, setServices] = useState([]);
   const [projects, setProjects] = useState([]);
 
   const shuffleArrayPreserveLastFirst = (arr) => {
-  if (!arr || arr.length === 0) return [];
-
-  const lastItem = arr[arr.length - 1]; // 👈 Get the last item
-  const rest = arr.slice(0, -1);        // 👈 All except the last
-  const shuffledRest = [...rest].sort(() => Math.random() - 0.5); // 👈 Shuffle rest
-
-  return [lastItem, ...shuffledRest];   // 👈 Return with last item first
-};
-
-  // Randomize / Rotate helper
-  const shuffleArray = (arr) => [...arr].sort(() => Math.random() - 0.5);
+    if (!arr || arr.length === 0) return [];
+    const lastItem = arr[arr.length - 1];
+    const rest = arr.slice(0, -1);
+    const shuffledRest = [...rest].sort(() => Math.random() - 0.5);
+    return [lastItem, ...shuffledRest];
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const marketRes = await getMarkets();
-        const serviceRes = await getServices();
-        const projectRes = await getProjects();
+    // Only dispatch if not already loaded
+    dispatch(fetchMarkets());
+    dispatch(fetchServices());
+    dispatch(fetchProjectsArray());
+  }, [dispatch]);
 
-        const shuffledMarkets = shuffleArrayPreserveLastFirst(marketRes?.data || []);
-        const shuffledServices = shuffleArrayPreserveLastFirst(serviceRes?.data || []);
+  useEffect(() => {
+    // once Redux provides data, process it
+    if (marketData.length) {
+      const shuffledMarkets = shuffleArrayPreserveLastFirst(marketData);
+      setMarkets(shuffledMarkets.slice(0, 6));
+    }
 
-        setMarkets(shuffledMarkets.slice(0, 6));
-        setServices(shuffledServices.slice(0, 6));
-        setProjects(projectRes?.data?.projects || []);
-      } catch (err) {
-        console.error("❌ Error fetching menu data:", err);
-      }
-    };
+    if (serviceData.length) {
+      const shuffledServices = shuffleArrayPreserveLastFirst(serviceData);
+      setServices(shuffledServices.slice(0, 6));
+    }
 
-    fetchData();
-  }, []);
+    if (projectData.length) {
+      setProjects(projectData);
+    }
+  }, [marketData, serviceData, projectData]);
 
   return (
     <div className="nav-section-background">
@@ -63,7 +70,7 @@ const MegaMenu = () => {
         {/* Markets */}
         <div className="flex flex-col justify-between h-full">
           <div>
-            <h3 className="text-white text-lg font-semibold mb-2">Markets</h3>
+            <h3 className="mega-menu-heading">Markets</h3>
             <ul className="space-y-4">
               {markets.map((market) => (
                 <li key={market._id || market.id} className="dropdown-link">
@@ -82,7 +89,7 @@ const MegaMenu = () => {
         {/* Services */}
         <div className="flex flex-col justify-between h-full">
           <div>
-            <h3 className="text-white text-lg font-semibold mb-2">Services</h3>
+            <h3 className="mega-menu-heading">Services</h3>
             <ul className="space-y-4">
               {services.map((service) => (
                 <li key={service._id || service.id} className="dropdown-link">
@@ -101,7 +108,7 @@ const MegaMenu = () => {
         {/* Projects */}
         <div className="flex flex-col justify-between h-full">
           <div>
-            <h3 className="text-white text-lg font-semibold mb-2">Projects</h3>
+            <h3 className="mega-menu-heading">Projects</h3>
             <ul className="space-y-4">
               {projects.slice(0, 5).map((project, index) => (
                 <li key={project._id || index} className="dropdown-link">

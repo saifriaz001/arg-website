@@ -65,25 +65,11 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Nav */}
-        <nav className="hidden xl:flex space-x-6">
-          <Link to={"/"}>
-            <span
-              className={`nav-tab ${
-                activeMenu === "home" ? "nav-tab-active" : "nav-tab-hover"
-              }`}
-            >
-              Home
-            </span>
-          </Link>
-          <Link to={"/about-us"}>
-            <span
-              className={`nav-tab ${
-                activeMenu === "about-us" ? "nav-tab-active" : "nav-tab-hover"
-              }`}
-            >
-              About Us
-            </span>
-          </Link>
+        <nav className="hidden  xl:flex space-x-6">
+          <Link to={"/"}><span className={`nav-tab ${activeMenu === 'home' ? 'nav-tab-active' : 'nav-tab-hover'
+            }`}>Home</span></Link>
+          <Link to={"/about-us"}><span className={`nav-tab ${activeMenu === 'about-us' ? 'nav-tab-active' : 'nav-tab-hover'
+            }`}>About Us</span></Link>
 
           {/* Our Work */}
           <span

@@ -97,7 +97,7 @@ const PressReleasePage = ({
                     {/* Heading + Intro */}
 
                     {/* Dropdown Filters */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-1 mt-4 mb-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-1 mt-5 mb-6">
                         {filters.map((filter) => (
                             <ServiceDropdown
                                 services={getUniqueOptions(normalizedData, filter.key)}
@@ -151,7 +151,7 @@ const PressReleasePage = ({
                                         </h2>
 
                                         {types.length > 0 && (
-                                            <div className="flex gap-2 mb-1">
+                                            <div className="flex  gap-2 mb-1">
                                                 {types.map((type, i) => (
                                                     <span key={i} className="News-type">
                                                         {type.title}

@@ -39,43 +39,34 @@ import Jobs from "./Admin/AdminSection/DashboardSection/Jobs";
 
 function App() {
   return (
-    <div className=" bg-cream">
+    <div className=' bg-cream'>
+    <div className="fixed top-0 left-0 w-full z-50 bg-cream shadow-md mb-10">
       <Navbar />
-      {/* <Bar/> */}
-      <Routes>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/services" element={<Services />} />
-        {/* <Route path='/projects' element={<Projects/>} /> */}
-        <Route path="/servicespage" element={<ServicesPage />} />
-        <Route path="/news" element={<NewsPage />} />
-        <Route path="/news/:slug" element={<NewsSlugPage />} />
-        <Route path="/markets" element={<MarketPage />} />
-        <Route path="/markets/:slug" element={<MarketSlugPage />} />
-        <Route path="/projects" element={<ProjectPage />} />
-        <Route path="/projects/:slug" element={<ProjectSlug />} />
-        <Route path="/about-us" element={<AboutPage />} />
-        <Route path="/costmanagement" element={<StrategicCostManagement />} />
-        <Route path="/epcadvisory" element={<EPCAdvisory />} />
-        <Route
-          path="/architectureEngineering"
-          element={<ArchitectureEngineering />}
-        />
-        <Route path="/projectManagement" element={<ProjectManagement />} />
-        <Route path="/governmentAdvisory" element={<GovernmentAdvisory />} />
-        <Route
-          path="/environmentalSolutions"
-          element={<EnvironmentalSolutions />}
-        />
-        <Route
-          path="/sub-pages/strategic-cost-management"
-          element={<SubStrategicCostManagement />}
-        />{" "}
-        <Route path="/careers" element={<Careers />} />
-        <Route path="/careers/:slug" element={<JobDetail />} />
-        
-        <Route path="/adminpanel" element={<AdminSection />} />
-        <Route path="/dashboard" element={<DashboardLayout />}>
+    </div>
+    {/* <Bar/> */}
+    <div className="pt-[70px] bg-cream">
+    <Routes>
+      <Route path='/login' element={<LoginPage/>} />
+      <Route path='/' element={<LandingPage/>}  />
+      <Route path='/services' element={<Services/>}/>
+      {/* <Route path='/projects' element={<Projects/>} /> */}
+      <Route path='/servicespage' element={<ServicesPage/>}/>
+      <Route path ="/news" element={<NewsPage/>}/>
+      <Route path='/news/:slug' element={<NewsSlugPage/>}/>
+      <Route path="/markets" element={<MarketPage/>}/>
+      <Route path="/markets/:slug" element={<MarketSlugPage/>}/>
+      <Route path='/projects' element={<ProjectPage/>}/>
+      <Route path="/projects/:slug" element={<ProjectSlug/>}/>
+      <Route path ="/about-us" element={<AboutPage/>}/>
+      <Route path ="/costmanagement" element={<StrategicCostManagement/>}/>
+      <Route path ="/epcadvisory" element={<EPCAdvisory/>}/>
+      <Route path='/architectureEngineering' element={<ArchitectureEngineering/>}/>
+      <Route path='/projectManagement' element={<ProjectManagement/>}/>
+      <Route path='/governmentAdvisory' element={<GovernmentAdvisory/>} />
+      <Route path='/environmentalSolutions' element={<EnvironmentalSolutions/>}/>
+      <Route path='/sub-pages/strategic-cost-management' element={<SubStrategicCostManagement/>}/>
+      <Route path="/adminpanel" element={<AdminSection/>} />
+      <Route path="/dashboard" element={<DashboardLayout />}>
           <Route index element={<DashboardHome />} />
           <Route path="create-location" element={<CreateLocationForm />} />
           <Route path="create-service" element={<ServicesSection />} />
@@ -86,9 +77,11 @@ function App() {
           <Route path="create-projectarray" element={<ProjectNavbar />} />
           {/* Add more child routes here */}
         </Route>
-        {/* Add more routes as needed */}
-      </Routes>
-      <Footer />
+
+      {/* Add more routes as needed */}
+     </Routes>
+     </div>
+    <Footer/>
     </div>
   );
 }

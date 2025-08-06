@@ -1,8 +1,6 @@
 import { apiConnector } from "../ApiConnector/apiConnector";
 import { ProjectArray} from "./endpoints";
-
-
-
+const LOCAL_STORAGE_KEY = 'projectsArray_cache';
 const { POST_ProjectArray , GET_PROJECTARRAY , DELETE_PROJECTARRAY } = ProjectArray;
 
 export const postProjects = async (projects) => {
@@ -16,6 +14,7 @@ export const postProjects = async (projects) => {
         console.log("Response from post projectArray:", response);
         if (response.status === 200) {
             console.log("ProjectArray created successfully:", response.data);
+            localStorage.removeItem(LOCAL_STORAGE_KEY);
             return response.data; // Return the created market data
         } else {
             console.error("Failed to create ProjectArray:", response.data);
@@ -60,6 +59,7 @@ export const deleteProject = async (projectId) => {
         console.log("Response from delete project:", response);
         if (response.status === 200) {
             console.log("Project deleted successfully:", response.data);
+            localStorage.removeItem(LOCAL_STORAGE_KEY);
             return response.data; // Return the deleted project data
         } else {
             console.error("Failed to delete project:", response.data);

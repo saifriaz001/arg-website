@@ -3,7 +3,7 @@ import { newsEndpoints } from "./endpoints";
 
 const { GET_NEWS, POST_NEWS , DELETE_NEWS } = newsEndpoints;
 
-
+const LOCAL_STORAGE_KEY = 'news_cache';
 export const postNews = async (title, description, types,markets,services,date,imageUrl) => {
     console.log("checking post news url ->", POST_NEWS);
     try {       
@@ -15,6 +15,7 @@ export const postNews = async (title, description, types,markets,services,date,i
         console.log("Response from post news:", response);
         if (response.status === 201) {
             console.log("News created successfully:", response.data);
+            localStorage.removeItem(LOCAL_STORAGE_KEY);
             return response?.data; // Return the created news data
         } else {
             console.error("Failed to create news:", response.data);
@@ -58,6 +59,7 @@ export const deleteNews = async (newsId) => {
         console.log("Response from delete news:", response);
         if (response.status === 200) {
             console.log("News deleted successfully:", response.data);
+            localStorage.removeItem(LOCAL_STORAGE_KEY);
             return response.data; // Return the deleted news data
         } else {
             console.error("Failed to delete news:", response.data);

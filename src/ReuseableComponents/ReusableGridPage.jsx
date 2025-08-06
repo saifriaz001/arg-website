@@ -48,7 +48,8 @@ const ReusableGridPage = ({
         {paragraphSm && <p className="paragraph-sm">{paragraphSm}</p>}
 
         {/* Dropdown */}
-        <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-4 mt-4 mb-6">
+
+        <div className=" grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-4 mt-4 mb-6">
           {filters.map((filter) => (
             <ServiceDropdown
               key={filter.key}
@@ -63,6 +64,7 @@ const ReusableGridPage = ({
             />
           ))}
         </div>
+
 
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1">

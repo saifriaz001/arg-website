@@ -14,6 +14,11 @@
 }
 
 @layer components {
+ 
+  .mega-menu-heading{
+    @apply text-white text-lg font-semibold mb-2;
+    font-family: var(--font-paragraph) ;
+  }
   .brand-heading {
     font-family: var(--font-paragraph);
     color: var(--color-paragraph);
@@ -104,8 +109,9 @@
 }
 
 .nav-tab-hover:hover {
-  @apply text-white;
-  background-color: var(--color-paragraph);
+   @apply text-white;
+    background-color: var(--color-paragraph);
+    
 }
 
 .nav-tab-active {

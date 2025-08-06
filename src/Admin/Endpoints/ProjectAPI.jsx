@@ -2,9 +2,9 @@ import { apiConnector } from "../ApiConnector/apiConnector";
 import axios from "axios";
 import { projectEndpoints} from "./endpoints";
 
-
-
+const LOCAL_STORAGE_KEY = 'projects_cache';
 const { GET_PROJECTS, POST_PROJECTS , DELETE_PROJECT } = projectEndpoints;
+
 export const postProjects = async (title , heading, description, imageUrl , market, services, country, state, city) => {
     console.log("checking post market url ->", POST_PROJECTS );
     try {
@@ -16,6 +16,7 @@ export const postProjects = async (title , heading, description, imageUrl , mark
         console.log("Response from post market:", response);
         if (response.status === 201) {
             console.log("Market created successfully:", response.data);
+            localStorage.removeItem(LOCAL_STORAGE_KEY);
             return response.data; // Return the created market data
         } else {
             console.error("Failed to create market:", response.data);
@@ -60,6 +61,7 @@ export const deleteProject = async (projectId) => {
         console.log("Response from delete project:", response);
         if (response.status === 200) {
             console.log("Project deleted successfully:", response.data);
+            localStorage.removeItem(LOCAL_STORAGE_KEY);
             return response.data; // Return the deleted project data
         } else {
             console.error("Failed to delete project:", response.data);

@@ -1,13 +1,36 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import ReactDOM from "react-dom";
 
 const ServiceDropdown = ({ option, text, services, selected, setSelected }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const triggerRef = useRef(null);
   const dropdownRef = useRef(null);
+  const [position, setPosition] = useState({ top: 0, left: 0, width: 0 });
 
+  // Positioning logic
+  useEffect(() => {
+    if (isOpen && triggerRef.current) {
+      const rect = triggerRef.current.getBoundingClientRect();
+      const scrollY = window.scrollY || window.pageYOffset;
+
+      setPosition({
+        top: rect.bottom + scrollY,
+        left: 0, // always flush with viewport left
+        width: window.innerWidth, // full screen width
+      });
+    }
+  }, [isOpen]);
+
+
+  // Close on outside click
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(e.target) &&
+        !triggerRef.current.contains(e.target)
+      ) {
         setIsOpen(false);
       }
     };
@@ -20,62 +43,71 @@ const ServiceDropdown = ({ option, text, services, selected, setSelected }) => {
     setIsOpen(false);
   };
 
-  return (
-    <div className="relative w-full flex items-center mb-6" ref={dropdownRef}>
-      <label className="text-gray-600 text-sm mr-2">{text}:</label>
-
-      {/* Toggle Button */}
+  const dropdown = isOpen ? (
+    <div
+      ref={dropdownRef}
+      className="Dropdown-background"
+      style={{
+        position: "absolute",
+        top: `${position.top}px`,
+        left: 0,
+        width: "99vw",
+        boxSizing: "border-box",
+      }}
+    >
+      {/* Default Option */}
       <div
-        className="text-sm px-2 py-3 rounded cursor-pointer flex items-center space-x-2"
-        onClick={() => setIsOpen((prev) => !prev)}
+        className={`Dropdown-selected text-white ${selected === option ? "" : ""
+          }`}
+        onClick={() => handleSelect(option)}
       >
-        <span>{selected && selected !== option ? selected : option}</span>
-        {isOpen ? <FaChevronUp size={10} /> : <FaChevronDown size={10} />}
+        {option}
       </div>
 
-      {/* Dropdown */}
-      {isOpen && (
-        <>
-          {/* Overlay to close when clicking outside on lg screens */}
-          <div
-            className="hidden lg:block fixed inset-0 z-40"
-            onClick={() => setIsOpen(false)}
-          />
+      {/* Dynamic Options */}
+      {services.map((s, idx) => (
+        <div
+          key={idx}
+          className={ `Dropdown-selected  text-white transition ${selected === s.title ? " " : ""
+            }`}
+          onClick={() => handleSelect(s.title)}
+        >
+          {s.title}
+        </div>
+      ))}
+    </div>
+  ) : null;
 
-          <div
-            className={`
-              z-50 p-4 max-h-[400px] overflow-y-auto 
-              grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6
-              bg-[#003840] text-white rounded shadow-lg 
-              absolute top-full mt-2 w-full 
-              lg:fixed lg:left-0 lg:right-0 lg:w-full lg:top-[100px] lg:mt-0 lg:rounded-none lg:px-20
-            `}
-          >
-            {/* "All" Option */}
-            <div
-              className={`cursor-pointer text-sm hover:text-[#D3FF48] transition ${
-                selected === option ? "text-[#D3FF48] font-semibold" : ""
-              }`}
-              onClick={() => handleSelect(option)}
-            >
-              {option}
-            </div>
+  return (
+    <div className="relative w-full">
+      <div
+        className="flex items-center space-x-6 cursor-pointer mb-6"
+        ref={triggerRef}
+        onClick={() => setIsOpen((prev) => !prev)}
+      >
+        <div className= " w-32">
+          <label className="Dropdown-selected w-24">{text}:</label>
 
-            {/* Service Options */}
-            {services.map((s, idx) => (
-              <div
-                key={idx}
-                onClick={() => handleSelect(s.title)}
-                className={`cursor-pointer text-sm hover:text-[#D3FF48] transition ${
-                  selected === s.title ? "text-[#D3FF48] font-semibold" : ""
-                }`}
-              >
-                {s.title}
-              </div>
-            ))}
+        </div>
+        
+        <div  className=" flex flex-row items-center  gap-3  ">
+          <div className="Dropdown-selected">
+            {selected && selected !== option ? selected : option}
+
           </div>
-        </>
-      )}
+          <div className=" strong  flex items-center">
+            {isOpen ? <FaChevronUp  className="" size={12} /> : <FaChevronDown size={12} />}
+          </div>
+
+        </div>
+
+
+      </div>
+
+      {/* Portal to fixed position */}
+      {typeof window !== "undefined" &&
+        document.getElementById("dropdown-root") &&
+        ReactDOM.createPortal(dropdown, document.getElementById("dropdown-root"))}
     </div>
   );
 };
