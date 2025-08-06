@@ -1,14 +1,33 @@
 import { useState, useEffect, useMemo } from "react";
-import { jobs as allJobs } from "../utils/constants";
 import { filterCategories } from "../utils/importantConstants";
+import { getJobs } from "../Admin/Endpoints/JobsAPI";
 
 export const useJobFilters = () => {
+  const [allJobs, setAllJobs] = useState([]);
+
   const [activeFilters, setActiveFilters] = useState({});
   const [filteredJobs, setFilteredJobs] = useState(allJobs);
   const [keywordSearch, setKeywordSearch] = useState("");
   const [locationSearch, setLocationSearch] = useState("");
   const [committedKeyword, setCommittedKeyword] = useState("");
   const [committedLocation, setCommittedLocation] = useState("");
+
+  useEffect(() => {
+    const fetchAndSetJobs = async () => {
+      try {
+        const jobsFromAPI = await getJobs();
+        if (Array.isArray(jobsFromAPI)) {
+          setAllJobs(jobsFromAPI);
+          setFilteredJobs(jobsFromAPI); // Initially, show all jobs
+        } else {
+          console.error("Fetched data is not an array:", jobsFromAPI);
+        }
+      } catch (error) {
+        console.error("❌ Failed to fetch jobs:", error);
+      }
+    };
+    fetchAndSetJobs();
+  }, []);
 
   useEffect(() => {
     let jobsResult = [...allJobs];
@@ -50,7 +69,7 @@ export const useJobFilters = () => {
     }
 
     setFilteredJobs(jobsResult);
-  }, [activeFilters, committedKeyword, committedLocation]);
+  }, [activeFilters, committedKeyword, committedLocation, allJobs]);
 
   const handleAddFilter = (category, value) => {
     const newFilters = { ...activeFilters };

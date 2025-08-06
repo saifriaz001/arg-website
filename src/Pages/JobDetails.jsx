@@ -3,8 +3,28 @@ import { FaChevronRight } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 import "../yahya-css/careers.css";
 import { jobs } from "../utils/constants";
+import { getJobs } from "../Admin/Endpoints/JobsAPI";
+
+import { useEffect, useState } from "react";
 
 const JobDetail = () => {
+  const [jobs, setJobs] = useState([]);
+  useEffect(() => {
+    const fetchAndSetJobs = async () => {
+      try {
+        const jobsFromAPI = await getJobs();
+        if (Array.isArray(jobsFromAPI)) {
+          setJobs(jobsFromAPI);
+        } else {
+          console.error("Fetched data is not an array:", jobsFromAPI);
+        }
+      } catch (error) {
+        console.error("❌ Failed to fetch jobs:", error);
+      }
+    };
+    fetchAndSetJobs();
+  }, []);
+
   const { slug } = useParams();
   const job = jobs.find((j) => j.slug === slug);
 
@@ -36,10 +56,16 @@ const JobDetail = () => {
         <div className="content-panel">
           <h3 className="section-heading">Job Description</h3>
           <p className="paragraph">{job.description}</p>
-
           <h3 className="section-heading">Qualifications</h3>
           <ul className="qualifications-list">
             {job.qualifications.map((q, index) => (
+              <li key={index}>{q}</li>
+            ))}
+          </ul>
+
+          <h3 className="section-heading">Minimum Requirements</h3>
+          <ul className="qualifications-list">
+            {job.minRequirements.map((q, index) => (
               <li key={index}>{q}</li>
             ))}
           </ul>
@@ -79,10 +105,10 @@ const JobDetail = () => {
           </div>
 
           <a
-            href={job.googleFormLink}
+            href={job.applyFormLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="color-btn mt-8 w-auto sm:w-60 md:w-38 lg:w-35 mb-5"
+            className="color-btn mt-8 w-auto sm:w-60 md:w-38 mb-5"
           >
             <span>Apply Now</span> <FaChevronRight className="right-arrow" />
           </a>
