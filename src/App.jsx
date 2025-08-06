@@ -57,6 +57,8 @@ function App() {
       <Route path="/markets/:slug" element={<MarketSlugPage/>}/>
       <Route path='/projects' element={<ProjectPage/>}/>
       <Route path="/projects/:slug" element={<ProjectSlug/>}/>
+      <Route path='/careers' element={<Careers/>}/>
+      <Route path="/careers/:slug" element={<JobDetail/>}/>
       <Route path ="/about-us" element={<AboutPage/>}/>
       <Route path ="/costmanagement" element={<StrategicCostManagement/>}/>
       <Route path ="/epcadvisory" element={<EPCAdvisory/>}/>
