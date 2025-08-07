@@ -104,14 +104,16 @@ const JobDetail = () => {
             </p>
           </div>
 
-          <a
-            href={job.applyFormLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="color-btn mt-8 w-auto sm:w-60 md:w-38 mb-5"
-          >
-            <span>Apply Now</span> <FaChevronRight className="right-arrow" />
-          </a>
+          <div className="w-38 mt-5">
+            <a
+              href={job.applyFormLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="color-btn"
+            >
+              <span>Apply Now</span> <FaChevronRight className="right-arrow" />
+            </a>
+          </div>
         </div>
       </div>
     </div>

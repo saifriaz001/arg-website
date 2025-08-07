@@ -17,7 +17,7 @@
 
 /* --- Generic & Reusable Classes --- */
 .page-section {
-  @apply max-w-7xl mx-auto p-4 md:p-8;
+  @apply max-w-7xl mx-auto py-4 md:py-8;
 }
 .page-title {
   @apply text-4xl md:text-5xl font-normal mb-2 leading-tight;
@@ -55,8 +55,8 @@
 
 /* make it standard as section-layout  */
 .hero-career-content {
-  @apply relative z-10 w-full py-1 max-w-7xl text-left px-2;
-  @apply md:py-10;
+  @apply relative z-10 w-full py-1 max-w-7xl text-left pl-2;
+  @apply md:py-10 md:pl-0;
 }
 
 .career-title {
@@ -94,9 +94,8 @@
 
 .color-btn,
 .transparent-btn {
-  @apply cursor-pointer border-2 border-white text-white font-bold py-2 px-3 rounded-4xl  flex items-center justify-between gap-2;
+  @apply cursor-pointer border-2 border-white text-white font-bold py-2 px-3 rounded-4xl flex items-center justify-between gap-2;
   background-color: var(--color-connect-card);
-  /* @apply hover:; */
 }
 .color-btn:hover,
 .transparent-btn:hover {
@@ -114,7 +113,7 @@
 
 /* Job Search Section */
 .job-search-section {
-  @apply max-w-7xl mx-auto w-full px-2 text-gray-800 pt-10 mt-6;
+  @apply max-w-7xl mx-auto w-full text-gray-800 pt-10 mt-6;
 }
 
 /* Jobs Main Content Layout */
@@ -129,7 +128,7 @@
 }
 
 .filter-group-header {
-  @apply cursor-pointer w-full text-[25px]  font-semibold leading-[35px] text-[var(--color-heading)] p-5 bg-[var(--color-cardbackground)] mb-1;
+  @apply cursor-pointer w-full text-[25px]  font-semibold leading-[35px] text-[var(--color-heading)] py-5 px-2 md:p-5 bg-[var(--color-cardbackground)] mb-1;
   font-family: var(--font-heading);
 }
 
@@ -199,7 +198,7 @@
 }
 
 .jobs-header {
-  @apply pl-6;
+  @apply pl-2 md:pl-6;
 }
 
 .jobs-count {
@@ -217,7 +216,7 @@
 
 /* Job Card */
 .job-card {
-  @apply border-b-1 border-gray-200 p-6 cursor-pointer;
+  @apply border-b-1 border-gray-200 py-6 pl-2 md:p-6 cursor-pointer;
   @apply hover:bg-[var(--color-cardbackground)];
 }
 .job-card:nth-child(1) {
@@ -240,7 +239,7 @@
 }
 
 .load-more-container {
-  @apply flex justify-start py-6 px-3;
+  @apply flex justify-start py-6 md:px-2 pl-1;
   /* padding: 2rem 1rem; */
 }
 
@@ -265,7 +264,7 @@
   @apply pt-4;
 }
 .job-details-bottom-meta {
-  @apply mt-8 pt-4 border-t border-gray-200 flex flex-col gap-2;
+  @apply mt-8 pt-4 border-t border-gray-200 flex flex-col gap-2 text-[var(--color-paragraph)];
 }
 .qualifications-list {
   @apply list-disc pl-5 space-y-2;
