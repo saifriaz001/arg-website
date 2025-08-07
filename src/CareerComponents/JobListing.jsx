@@ -12,19 +12,20 @@ const JobListing = ({ jobs, visibleCount, onLoadMore, onShowLess }) => (
         <JobCard key={job._id} job={job} />
       ))}
     </div>
-    {visibleCount < jobs.length ? (
+
+    {jobs.length > 0 && (
       <div className="load-more-container">
-        <button onClick={onLoadMore} className="color-btn ">
-          <span className="">Load More</span>
-          <FaChevronRight className="right-arrow" />
-        </button>
-      </div>
-    ) : (
-      <div className="load-more-container">
-        <button onClick={onShowLess} className="color-btn ">
-          <span className="">Show Less</span>
-          <FaChevronRight className="right-arrow" />
-        </button>
+        {visibleCount >= jobs.length ? (
+          <button onClick={onShowLess} className="color-btn">
+            <span>Show Less</span>
+            <FaChevronRight className="right-arrow" />
+          </button>
+        ) : (
+          <button onClick={onLoadMore} className="color-btn">
+            <span>Load More</span>
+            <FaChevronRight className="right-arrow" />
+          </button>
+        )}
       </div>
     )}
   </main>

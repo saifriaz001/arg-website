@@ -5,7 +5,7 @@ import CareerHero from "../CareerComponents/CareerHero";
 import SearchBar from "../CareerComponents/SearchBar";
 import Sidebar from "../CareerComponents/Sidebar";
 import JobListing from "../CareerComponents/JobListing";
-import { Link } from "react-router";
+
 
 const JOBS_PER_PAGE = 5;
 
