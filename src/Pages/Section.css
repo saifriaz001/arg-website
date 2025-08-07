@@ -21,7 +21,7 @@
 }
 
 .heading-title {
-    @apply text-4xl md:text-5xl font-bold mb-6;
+    @apply text-4xl md:text-5xl font-bold mt-6 mb-6;
     color: var(--color-heading);
     font-family: var(--font-heading);
   }
@@ -86,7 +86,7 @@
 
   /* Slug- reuseable-page */
   .slug-heading {
-    @apply text-[1.5rem] leading-9 font-normal mb-5;
+    @apply text-[1.5rem] italic leading-9 font-normal mb-5;
     font-family: var(--font-paragraph);
     color: var(--color-paragraph);
   }
