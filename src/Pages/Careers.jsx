@@ -6,7 +6,6 @@ import SearchBar from "../CareerComponents/SearchBar";
 import Sidebar from "../CareerComponents/Sidebar";
 import JobListing from "../CareerComponents/JobListing";
 
-
 const JOBS_PER_PAGE = 5;
 
 const Careers = () => {
@@ -19,6 +18,8 @@ const Careers = () => {
     setKeywordSearch,
     locationSearch,
     setLocationSearch,
+    setCommittedKeyword,
+    setCommittedLocation,
     handleSearch,
     handleAddFilter,
     handleRemoveFilter,
@@ -46,6 +47,8 @@ const Careers = () => {
         onKeywordChange={setKeywordSearch}
         location={locationSearch}
         onLocationChange={setLocationSearch}
+        onCommitKeyword={setCommittedKeyword}
+        onCommitLocation={setCommittedLocation}
         onSearch={handleSearch}
         onClear={handleClearAll}
       />

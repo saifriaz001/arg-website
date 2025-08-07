@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { filterCategories } from "../utils/importantConstants";
 import { getJobs } from "../Admin/Endpoints/JobsAPI";
+import { useDebounce } from "./useDebounce";
 
 export const useJobFilters = () => {
   const [allJobs, setAllJobs] = useState([]);
@@ -9,8 +10,12 @@ export const useJobFilters = () => {
   const [filteredJobs, setFilteredJobs] = useState(allJobs);
   const [keywordSearch, setKeywordSearch] = useState("");
   const [locationSearch, setLocationSearch] = useState("");
+  // for search button commit
   const [committedKeyword, setCommittedKeyword] = useState("");
   const [committedLocation, setCommittedLocation] = useState("");
+  // for input debouncing search without search button
+  const debouncedKeyword = useDebounce(keywordSearch, 500);
+  const debouncedLocation = useDebounce(locationSearch, 500);
 
   useEffect(() => {
     const fetchAndSetJobs = async () => {
@@ -44,8 +49,8 @@ export const useJobFilters = () => {
     }
 
     // Filter by committed keyword
-    if (committedKeyword.trim() !== "") {
-      const lowercasedKeyword = committedKeyword.toLowerCase();
+    if (debouncedKeyword.trim() !== "") {
+      const lowercasedKeyword = debouncedKeyword.toLowerCase();
       jobsResult = jobsResult.filter(
         (job) =>
           (job.title && job.title.toLowerCase().includes(lowercasedKeyword)) ||
@@ -57,8 +62,8 @@ export const useJobFilters = () => {
     }
 
     // Filter by committed location
-    if (committedLocation.trim() !== "") {
-      const lowercasedLocation = committedLocation.toLowerCase();
+    if (debouncedLocation.trim() !== "") {
+      const lowercasedLocation = debouncedLocation.toLowerCase();
       jobsResult = jobsResult.filter(
         (job) =>
           (job.city && job.city.toLowerCase().includes(lowercasedLocation)) ||
@@ -69,7 +74,7 @@ export const useJobFilters = () => {
     }
 
     setFilteredJobs(jobsResult);
-  }, [activeFilters, committedKeyword, committedLocation, allJobs]);
+  }, [activeFilters, debouncedKeyword, debouncedLocation, allJobs]);
 
   const handleAddFilter = (category, value) => {
     const newFilters = { ...activeFilters };
@@ -140,6 +145,8 @@ export const useJobFilters = () => {
     setKeywordSearch,
     locationSearch,
     setLocationSearch,
+    setCommittedKeyword,
+    setCommittedLocation,
     handleSearch,
     handleAddFilter,
     handleRemoveFilter,

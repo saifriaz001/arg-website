@@ -6,6 +6,8 @@ const SearchBar = ({
   onKeywordChange,
   location,
   onLocationChange,
+  onCommitKeyword,
+  onCommitLocation,
   onSearch,
   onClear,
 }) => (
@@ -17,14 +19,20 @@ const SearchBar = ({
           placeholder="job, title or keywords"
           className="search-input"
           value={keyword}
-          onChange={(e) => onKeywordChange(e.target.value)}
+          onChange={(e) => {
+            onKeywordChange(e.target.value);
+            onCommitKeyword(e.target.value);
+          }}
         />
         <input
           type="text"
           placeholder="city, state or country"
           className="search-input"
           value={location}
-          onChange={(e) => onLocationChange(e.target.value)}
+          onChange={(e) => {
+            onLocationChange(e.target.value);
+            onCommitLocation(e.target.value);
+          }}
         />
         <button onClick={onSearch} className="color-btn whitespace-nowrap">
           <span>Search</span> <FaChevronRight className="right-arrow" />

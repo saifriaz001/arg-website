@@ -1,4 +1,1 @@
-padding , apply button , color,
-no show less when 0 , 
-debouncing, 
-usememo in maps in bullet points in qualificiation 
+usememo in maps in bullet points in qualificiation, or in JobCard
