@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@layer theme {
+  :root {
+    --font-heading: "Libre Baskerville";
+    --font-paragraph: "DM Sans";
+    --color-heading: #5c4e3d;
+    --color-paragraph: #454240;
+    --color-strong: #454240;
+    --color-cardbackground: #f7edd4;
+    --color-pagebackground: #fffdfa;
+    --color-button-primary: #b88e23;
+    --hover-bg-color: #454240;
+  }
+}
+
+@layer components {
+  /* yahya-css/news-detail.css */
+
+  .news-detail-container {
+    @apply mt-0;
+    font-family: var(--font-paragraph);
+    overflow-x: hidden;
+  }
+
+  .sub-hero {
+    @apply w-full py-20 px-6 mb-10 text-white;
+    background-color: var(--hover-bg-color);
+    @apply md:px-16;
+  }
+
+  .sub-hero-type-tag {
+    @apply text-2xl font-semibold mb-2;
+    font-family: var(--font-heading);
+    @apply md:text-4xl;
+  }
+
+  .sub-hero-date {
+    @apply flex items-center text-xs font-medium mb-3;
+    @apply md:text-lg;
+  }
+
+  .sub-hero-title {
+    @apply text-2xl font-semibold leading-tight mb-4 max-w-5xl;
+    font-family: var(--font-heading);
+    @apply md:text-4xl;
+  }
+
+  .sub-hero-bottom-tag {
+    @apply mt-4;
+  }
+
+  .sub-hero-type {
+    @apply inline-block border border-white rounded-full px-4 py-1 text-xs font-medium;
+    @apply md:text-sm;
+  }
+
+  .news-detail-body {
+    @apply flex flex-col lg:flex-row gap-6 px-6;
+    @apply md:px-16;
+  }
+
+  .news-body-section {
+    @apply w-full lg:w-2/3 pb-6;
+  }
+
+  .news-note {
+    @apply font-semibold italic text-gray-800 mb-4;
+  }
+
+  .news-intro {
+    @apply text-lg leading-relaxed mb-6 text-gray-700;
+  }
+
+  .news-section {
+    @apply mb-8;
+  }
+
+  .section-heading {
+    @apply text-xl font-semibold mb-2 text-[#1f2937];
+  }
+
+  .section-content {
+    @apply text-base leading-relaxed text-gray-700;
+  }
+}

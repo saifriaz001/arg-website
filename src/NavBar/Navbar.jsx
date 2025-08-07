@@ -37,12 +37,20 @@ const Navbar = () => {
       onMouseLeave={() => setActiveMenu(null)}
     >
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <div className= " justify-center items-center gap-x-1  flex flex-row ">
-          
-          <div><Link to={"/"}><img className=' py-2 w-20 h-20' src={logo} alt='logo'/></Link></div>
-          <div className=' xl:hidden text-2xl brand-heading font-bold'> ARG </div>
-          <div className='  hidden xl:block text-2xl brand-heading font-bold  '><Link to={"/"}>AECS Research Global</Link></div>
-          
+        <div className=" justify-center items-center gap-x-1  flex flex-row ">
+          <div>
+            {/*px-4 xl:w-30 xl:pl-8 */}
+            <Link to={"/"}>
+              <img className="py-2 w-20 h-20" src={logo} alt="logo" />
+            </Link>
+          </div>
+          <div className=" xl:hidden text-2xl brand-heading font-bold">
+            {" "}
+            ARG{" "}
+          </div>
+          <div className="hidden xl:block text-2xl brand-heading font-bold">
+            <Link to={"/"}>AECS Research Global</Link>
+          </div>
         </div>
 
         {/* Mobile Hamburger */}
@@ -77,9 +85,10 @@ const Navbar = () => {
           {/* Services
 
           <span
-            className={`nav-tab ${activeMenu === 'services' ? 'nav-tab-active' : 'nav-tab-hover'
-              }`}
-            onMouseEnter={() => handleMenuEnter('services')}
+            className={`nav-tab ${
+              activeMenu === "services" ? "nav-tab-active" : "nav-tab-hover"
+            }`}
+            onMouseEnter={() => handleMenuEnter("services")}
             onMouseLeave={handleMenuLeave}
           >
             Services
@@ -95,19 +104,32 @@ const Navbar = () => {
             Portfolios
           </span> */}
 
-
-          <span className={`nav-tab ${activeMenu === 'Careers' ? 'nav-tab-active' : 'nav-tab-hover'
-            }`}>Careers</span>
-          <Link to={"/news"}><span className={`nav-tab ${activeMenu === 'News' ? 'nav-tab-active' : 'nav-tab-hover'
-            }`}>News & Blog</span></Link>
+          <Link to={"/careers"}>
+            <span
+              className={`nav-tab ${
+                activeMenu === "Careers" ? "nav-tab-active" : "nav-tab-hover"
+              }`}
+            >
+              Careers
+            </span>
+          </Link>
+          <Link to={"/news"}>
+            <span
+              className={`nav-tab ${
+                activeMenu === "News" ? "nav-tab-active" : "nav-tab-hover"
+              }`}
+            >
+              News & Blog
+            </span>
+          </Link>
         </nav>
       </div>
 
       {/* MegaMenu (Our Work) */}
-      {activeMenu === 'ourwork' && (
+      {activeMenu === "ourwork" && (
         <div
           className="absolute top-full left-0 w-full"
-          onMouseEnter={() => handleMenuEnter('ourwork')}
+          onMouseEnter={() => handleMenuEnter("ourwork")}
           onMouseLeave={handleMenuLeave}
         >
           <MegaMenu onLinkClick={() => setActiveMenu(null)} />
@@ -118,7 +140,7 @@ const Navbar = () => {
       {activeMenu === 'services' && (
         <div
           className="absolute top-full left-0 w-full"
-          onMouseEnter={() => handleMenuEnter('services')}
+          onMouseEnter={() => handleMenuEnter("services")}
           onMouseLeave={handleMenuLeave}
         >
           <NavServiceSection onLinkClick={() => setActiveMenu(null)} />
@@ -127,7 +149,7 @@ const Navbar = () => {
       {/* {activeMenu === 'Portfolio' && (
         <div
           className="absolute top-full left-0 w-full"
-          onMouseEnter={() => handleMenuEnter('Portfolio')}
+          onMouseEnter={() => handleMenuEnter("Portfolio")}
           onMouseLeave={handleMenuLeave}
         >
           <NavPortfolioSection onLinkClick={() => setActiveMenu(null)} />

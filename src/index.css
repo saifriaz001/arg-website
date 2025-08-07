@@ -1,16 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=DM+Sans:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=DM+Sans:wght@400;700&display=swap");
 @import "tailwindcss";
-
 
 @layer theme {
   :root {
     --font-heading: "Libre Baskerville";
     --font-paragraph: "DM Sans";
-    --color-heading: #5C4E3D;
+    --color-heading: #5c4e3d;
     --color-paragraph: #454240;
     --color-strong: #454240;
-    --color-cardbackground:#f7edd4;
-    --color-pagebackground:#FFFDFA 
+    --color-cardbackground: #f7edd4;
+    --color-pagebackground: #fffdfa;
   }
 }
 
@@ -27,14 +26,14 @@
 
   /* for Mobile nav bar  */
   .mobile-menu {
-    @apply  text-white px-6 pb-6;
+    @apply text-white px-6 pb-6;
     background-color: var(--color-cardbackground);
   }
 
   .mobile-section {
     @apply border-b border-white/20 py-3;
-      font-family: var(--font-paragraph);
-  color: var(--color-paragraph);
+    font-family: var(--font-paragraph);
+    color: var(--color-paragraph);
   }
 
   .mobile-section-title {
@@ -44,9 +43,9 @@
   }
 
   .mobile-title-text {
-    @apply font-semibold uppercase  ;
-      font-family: var(--font-paragraph);
-  color: var(--color-paragraph);
+    @apply font-semibold uppercase;
+    font-family: var(--font-paragraph);
+    color: var(--color-paragraph);
   }
 
   .mobile-title-icon {
@@ -65,19 +64,19 @@
 
   .mobile-sublist {
     @apply ml-3 space-y-1;
-      font-family: var(--font-paragraph);
-  color: var(--color-paragraph);
-  }
-
-  .mobile-subitem {
-    @apply text-base  ;
     font-family: var(--font-paragraph);
     color: var(--color-paragraph);
   }
 
-  .mobile-line{
+  .mobile-subitem {
+    @apply text-base;
+    font-family: var(--font-paragraph);
+    color: var(--color-paragraph);
+  }
+
+  .mobile-line {
     @apply border-b w-full py-1;
-    border-color: var(--color-paragraph) ;
+    border-color: var(--color-paragraph);
   }
 }
 
@@ -106,7 +105,7 @@
   font-family: var(--font-paragraph);
   color: var(--color-paragraph);
   background-color: var(--color-cardbackground);
-  @apply  w-30 h-20 flex justify-center items-center text-center text-sm font-bold uppercase  cursor-pointer transition-colors;
+  @apply w-30 h-20 flex justify-center items-center text-center text-sm font-bold uppercase  cursor-pointer transition-colors;
 }
 
 .nav-tab-hover:hover {
@@ -116,11 +115,11 @@
 }
 
 .nav-tab-active {
-  @apply   text-white;
-  background-color: var(--color-paragraph)
+  @apply text-white;
+  background-color: var(--color-paragraph);
 }
 
-.nav-section-background{
+.nav-section-background {
   @apply absolute transition-opacity duration-200 ease-in-out top-full left-0 w-full  text-white shadow-xl z-40;
-  background-color: var(--color-paragraph)
+  background-color: var(--color-paragraph);
 }

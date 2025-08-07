@@ -1,42 +1,43 @@
-import { useState } from 'react'
-import LandingPage from './Pages/LandingPage'
-import Services from './Pages/Services'
+import { useState } from "react";
+import LandingPage from "./Pages/LandingPage";
+import Services from "./Pages/Services";
 //import Projects from './Pages/Projects'
-import { Router , Route, Routes } from 'react-router-dom'
-import './App.css'
-import Footer from './Pages/Footer'
-import Navbar from './NavBar/Navbar'
-import ServicesPage from './Pages/ServicesPage'
-import ProjectPage from './Pages/ProjectPage'
-import AboutPage from './Pages/AboutPage'
-import StrategicCostManagement from './components/StrategicCostManagement'
-import EPCAdvisory from './components/EPCAdvisory'
-import ArchitectureEngineering from './components/ArchitectureEngineering'
-import ProjectManagement from './components/ProjectManagement'
-import GovernmentAdvisory from './components/GovernmentAdvisory'
-import EnvironmentalSolutions from './components/EnvironmentalSolutions'
-import SubStrategicCostManagement from './sub-pages/Strategic-Cost-Management/Strategic-Cost-Management'
-import LoginPage from './Admin/LoginPage/LoginPage'
-import AdminSection from './Admin/AdminSection/AdminSection'
-import DashboardLayout from './Admin/AdminSection/DashboardSection/DashboardLayout'
-import DashboardHome from './Admin/AdminSection/DashboardSection/DashboardHome'
-import CreateLocationForm from './Admin/AdminSection/DashboardSection/CreateLocationForm'
-import ServicesSection from './Admin/AdminSection/DashboardSection/ServicesSection'
-import CreateMarketForm from './Admin/AdminSection/DashboardComponents/CreateMarketForm'
-import CreateProjectForm from './Admin/AdminSection/DashboardComponents/CreateProjectForm'
-import News from './Admin/AdminSection/DashboardSection/News'
-import Market from './Admin/AdminSection/DashboardSection/Market'
-import ProjectList from './Admin/AdminSection/DashboardSection/ProjectList'
-import MarketPage from './Pages/MarketPage'
-import MarketSlugPage from './Pages/MarketSlugPage'
-import ProjectSlug from './Pages/ProjectSlugPage'
-import  NewsPage from "./Pages/news"
-import NewsSlugPage from "./Pages/NewsSlugPage"
-import ProjectNavbar from "./Admin/AdminSection/DashboardSection/ProjectNavbar"
+import { Router, Route, Routes } from "react-router-dom";
+import "./App.css";
+import Footer from "./Pages/Footer";
+import Navbar from "./NavBar/Navbar";
+import ServicesPage from "./Pages/ServicesPage";
+import ProjectPage from "./Pages/ProjectPage";
+import AboutPage from "./Pages/AboutPage";
+import StrategicCostManagement from "./components/StrategicCostManagement";
+import EPCAdvisory from "./components/EPCAdvisory";
+import ArchitectureEngineering from "./components/ArchitectureEngineering";
+import ProjectManagement from "./components/ProjectManagement";
+import GovernmentAdvisory from "./components/GovernmentAdvisory";
+import EnvironmentalSolutions from "./components/EnvironmentalSolutions";
+import SubStrategicCostManagement from "./sub-pages/Strategic-Cost-Management/Strategic-Cost-Management";
+import LoginPage from "./Admin/LoginPage/LoginPage";
+import AdminSection from "./Admin/AdminSection/AdminSection";
+import DashboardLayout from "./Admin/AdminSection/DashboardSection/DashboardLayout";
+import DashboardHome from "./Admin/AdminSection/DashboardSection/DashboardHome";
+import CreateLocationForm from "./Admin/AdminSection/DashboardSection/CreateLocationForm";
+import ServicesSection from "./Admin/AdminSection/DashboardSection/ServicesSection";
+import CreateMarketForm from "./Admin/AdminSection/DashboardComponents/CreateMarketForm";
+import CreateProjectForm from "./Admin/AdminSection/DashboardComponents/CreateProjectForm";
+import News from "./Admin/AdminSection/DashboardSection/News";
+import Market from "./Admin/AdminSection/DashboardSection/Market";
+import ProjectList from "./Admin/AdminSection/DashboardSection/ProjectList";
+import MarketPage from "./Pages/MarketPage";
+import MarketSlugPage from "./Pages/MarketSlugPage";
+import ProjectSlug from "./Pages/ProjectSlugPage";
+import NewsPage from "./Pages/news";
+import NewsSlugPage from "./Pages/NewsSlugPage";
+import ProjectNavbar from "./Admin/AdminSection/DashboardSection/ProjectNavbar";
+import Careers from "./Pages/Careers";
+import JobDetail from "./Pages/JobDetails";
+import Jobs from "./Admin/AdminSection/DashboardSection/Jobs";
 
 function App() {
-
-
   return (
     <div className=' bg-cream'>
     <div className="fixed top-0 left-0 w-full z-50 bg-cream shadow-md mb-10">
@@ -56,6 +57,8 @@ function App() {
       <Route path="/markets/:slug" element={<MarketSlugPage/>}/>
       <Route path='/projects' element={<ProjectPage/>}/>
       <Route path="/projects/:slug" element={<ProjectSlug/>}/>
+      <Route path='/careers' element={<Careers/>}/>
+      <Route path="/careers/:slug" element={<JobDetail/>}/>
       <Route path ="/about-us" element={<AboutPage/>}/>
       <Route path ="/costmanagement" element={<StrategicCostManagement/>}/>
       <Route path ="/epcadvisory" element={<EPCAdvisory/>}/>
@@ -67,12 +70,13 @@ function App() {
       <Route path="/adminpanel" element={<AdminSection/>} />
       <Route path="/dashboard" element={<DashboardLayout />}>
           <Route index element={<DashboardHome />} />
-          <Route path="create-location" element={<CreateLocationForm />} /> 
-          <Route path="create-service" element={<ServicesSection/>} />
-          <Route path="create-market" element={<Market/>} />
-          <Route path= "create-project" element={<ProjectList/>}/>
-          <Route path = "create-news" element={<News/>}/>
-          <Route path="create-projectarray" element={<ProjectNavbar/>}  />
+          <Route path="create-location" element={<CreateLocationForm />} />
+          <Route path="create-service" element={<ServicesSection />} />
+          <Route path="create-market" element={<Market />} />
+          <Route path="create-project" element={<ProjectList />} />
+          <Route path="create-jobs" element={<Jobs />} />
+          <Route path="create-news" element={<News />} />
+          <Route path="create-projectarray" element={<ProjectNavbar />} />
           {/* Add more child routes here */}
         </Route>
 
@@ -81,7 +85,7 @@ function App() {
      </div>
     <Footer/>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
