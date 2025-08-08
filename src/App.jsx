@@ -36,54 +36,66 @@ import ProjectNavbar from "./Admin/AdminSection/DashboardSection/ProjectNavbar";
 import Careers from "./Pages/Careers";
 import JobDetail from "./Pages/JobDetails";
 import Jobs from "./Admin/AdminSection/DashboardSection/Jobs";
+import Apply from "./Pages/Apply";
 
 function App() {
   return (
-    <div className=' bg-cream'>
-    <div className="fixed top-0 left-0 w-full z-50 bg-cream shadow-md mb-10">
-      <Navbar />
-    </div>
-    {/* <Bar/> */}
-    <div className="pt-[70px] bg-cream">
-    <Routes>
-      <Route path='/login' element={<LoginPage/>} />
-      <Route path='/' element={<LandingPage/>}  />
-      <Route path='/services' element={<Services/>}/>
-      {/* <Route path='/projects' element={<Projects/>} /> */}
-      <Route path='/servicespage' element={<ServicesPage/>}/>
-      <Route path ="/news" element={<NewsPage/>}/>
-      <Route path='/news/:slug' element={<NewsSlugPage/>}/>
-      <Route path="/markets" element={<MarketPage/>}/>
-      <Route path="/markets/:slug" element={<MarketSlugPage/>}/>
-      <Route path='/projects' element={<ProjectPage/>}/>
-      <Route path="/projects/:slug" element={<ProjectSlug/>}/>
-      <Route path='/careers' element={<Careers/>}/>
-      <Route path="/careers/:slug" element={<JobDetail/>}/>
-      <Route path ="/about-us" element={<AboutPage/>}/>
-      <Route path ="/costmanagement" element={<StrategicCostManagement/>}/>
-      <Route path ="/epcadvisory" element={<EPCAdvisory/>}/>
-      <Route path='/architectureEngineering' element={<ArchitectureEngineering/>}/>
-      <Route path='/projectManagement' element={<ProjectManagement/>}/>
-      <Route path='/governmentAdvisory' element={<GovernmentAdvisory/>} />
-      <Route path='/environmentalSolutions' element={<EnvironmentalSolutions/>}/>
-      <Route path='/sub-pages/strategic-cost-management' element={<SubStrategicCostManagement/>}/>
-      <Route path="/adminpanel" element={<AdminSection/>} />
-      <Route path="/dashboard" element={<DashboardLayout />}>
-          <Route index element={<DashboardHome />} />
-          <Route path="create-location" element={<CreateLocationForm />} />
-          <Route path="create-service" element={<ServicesSection />} />
-          <Route path="create-market" element={<Market />} />
-          <Route path="create-project" element={<ProjectList />} />
-          <Route path="create-jobs" element={<Jobs />} />
-          <Route path="create-news" element={<News />} />
-          <Route path="create-projectarray" element={<ProjectNavbar />} />
-          {/* Add more child routes here */}
-        </Route>
+    <div className=" bg-cream">
+      <div className="fixed top-0 left-0 w-full z-50 bg-cream shadow-md mb-10">
+        <Navbar />
+      </div>
+      {/* <Bar/> */}
+      <div className="pt-[70px] bg-cream">
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/services" element={<Services />} />
+          {/* <Route path='/projects' element={<Projects/>} /> */}
+          <Route path="/servicespage" element={<ServicesPage />} />
+          <Route path="/news" element={<NewsPage />} />
+          <Route path="/news/:slug" element={<NewsSlugPage />} />
+          <Route path="/markets" element={<MarketPage />} />
+          <Route path="/markets/:slug" element={<MarketSlugPage />} />
+          <Route path="/projects" element={<ProjectPage />} />
+          <Route path="/projects/:slug" element={<ProjectSlug />} />
+          <Route path="/careers" element={<Careers />} />
+          <Route path="/careers/apply" element={<Apply />} />
+          <Route path="/careers/:slug" element={<JobDetail />} />
 
-      {/* Add more routes as needed */}
-     </Routes>
-     </div>
-    <Footer/>
+          <Route path="/about-us" element={<AboutPage />} />
+          <Route path="/costmanagement" element={<StrategicCostManagement />} />
+          <Route path="/epcadvisory" element={<EPCAdvisory />} />
+          <Route
+            path="/architectureEngineering"
+            element={<ArchitectureEngineering />}
+          />
+          <Route path="/projectManagement" element={<ProjectManagement />} />
+          <Route path="/governmentAdvisory" element={<GovernmentAdvisory />} />
+          <Route
+            path="/environmentalSolutions"
+            element={<EnvironmentalSolutions />}
+          />
+          <Route
+            path="/sub-pages/strategic-cost-management"
+            element={<SubStrategicCostManagement />}
+          />
+          <Route path="/adminpanel" element={<AdminSection />} />
+          <Route path="/dashboard" element={<DashboardLayout />}>
+            <Route index element={<DashboardHome />} />
+            <Route path="create-location" element={<CreateLocationForm />} />
+            <Route path="create-service" element={<ServicesSection />} />
+            <Route path="create-market" element={<Market />} />
+            <Route path="create-project" element={<ProjectList />} />
+            <Route path="create-jobs" element={<Jobs />} />
+            <Route path="create-news" element={<News />} />
+            <Route path="create-projectarray" element={<ProjectNavbar />} />
+            {/* Add more child routes here */}
+          </Route>
+
+          {/* Add more routes as needed */}
+        </Routes>
+      </div>
+      <Footer />
     </div>
   );
 }

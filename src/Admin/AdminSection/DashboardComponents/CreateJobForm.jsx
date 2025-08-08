@@ -58,9 +58,6 @@ const CreateJobForm = ({ onJobCreated }) => {
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
-      // FIX: Create a clean payload object to send to the API.
-      // This completely decouples the submitted data from Formik's internal state
-      // and prevents any possibility of sending a DOM element.
       const payload = {
         title: values.title,
         country: values.country.label,
@@ -79,7 +76,6 @@ const CreateJobForm = ({ onJobCreated }) => {
         applyFormLink: values.applyFormLink,
       };
 
-      // The API function now receives a single, clean object.
       await postJob(payload);
 
       alert("✅ Job created successfully!");
