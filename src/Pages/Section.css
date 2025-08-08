@@ -112,7 +112,7 @@
 
   .Project-heading {
     @apply italic text-[1.5rem] leading-10 font-normal mb-4;
-    font-family: var(--font-paragraph);
+    font-family: var(--font-heading);
     color: var(--color-paragraph);
   }
 
@@ -353,6 +353,12 @@
 .strong {
   color: var(--color-strong);
 }
+
+.page-background{
+  color: var(--color-pagebackground);
+
+}
+
 .pressRelease-background{
   color: var(--color-paragraph)
 }

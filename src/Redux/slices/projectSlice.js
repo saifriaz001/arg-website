@@ -19,7 +19,7 @@ const loadCachedMarkets = () => {
 };
 
 export const fetchProjects = createAsyncThunk(
-  'markets/fetchProjects',
+  'projects/fetchProjects',
   async (_, { rejectWithValue }) => {
     try {
       // Try cache first

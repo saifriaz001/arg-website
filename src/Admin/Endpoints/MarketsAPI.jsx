@@ -4,28 +4,59 @@ import { marketEndpoints} from "./endpoints";
 const { GET_MARKETS, POST_MARKETS , DELETE_MARKET } = marketEndpoints;
 
 const LOCAL_STORAGE_KEY = 'markets_cache';
-export const postMarket = async (title, heading, description, imageUrl) => {
-    console.log("checking post market url ->", POST_MARKETS);
-    try {
-        const response = await apiConnector(
-            'POST', POST_MARKETS,
-            { title , heading, description, imageUrl },
-            { withCredentials: true }
-        );
-        console.log("Response from post market:", response);
-        if (response.status === 201) {
-            console.log("Market created successfully:", response.data);
-            localStorage.removeItem(LOCAL_STORAGE_KEY);
-            return response.data; // Return the created market data
-        } else {
-            console.error("Failed to create market:", response.data);
-            throw new Error("Non-200 response");
-        }
-    } catch (error) {
-        console.log("Error during post market:", error);
-        throw error;
+
+export const postMarket = async (
+  title,
+  mainHeading,
+  mainDescription,
+  imageUrl,
+  secondHeading,
+  secondDescription,
+  descriptionImageUrl,
+  highlightsHeading,
+  highlightsDescriptions,
+  highlightsDescriptionImageUrl
+) => {
+  console.log("📤 Posting market to:", POST_MARKETS);
+
+  try {
+    const payload = {
+      title,
+      mainHeading,
+      mainDescription,
+      imageUrl,
+      // Optional fields — only include them if values are provided
+      ...(secondHeading && { secondHeading }),
+      ...(secondDescription && { secondDescription }),
+      ...(descriptionImageUrl && { descriptionImageUrl }),
+      ...(highlightsHeading && { highlightsHeading }),
+      ...(highlightsDescriptions && { highlightsDescriptions }),
+      ...(highlightsDescriptionImageUrl && { highlightsDescriptionImageUrl }),
+    };
+
+    const response = await apiConnector(
+      'POST',
+      POST_MARKETS,
+      payload,
+      { withCredentials: true }
+    );
+
+    console.log("✅ Response from postMarket:", response);
+
+    if (response.status === 201) {
+      console.log("✅ Market created successfully:", response.data);
+      localStorage.removeItem(LOCAL_STORAGE_KEY);
+      return response.data;
+    } else {
+      console.error("❌ Failed to create market:", response.data);
+      throw new Error("Non-201 response from server");
     }
-}
+  } catch (error) {
+    console.error("❌ Error during postMarket:", error);
+    throw error;
+  }
+};
+
 
 export const getMarkets = async () => {
     console.log("checking get markets url ->", GET_MARKETS);

@@ -36,6 +36,11 @@ const MarketTable = () => {
       header: 'Title',
     },
     {
+      accessorKey: 'mainHeading',
+      header: 'Heading',
+
+    },
+    {
       accessorKey: 'heading',
       header: 'Heading',
     },
