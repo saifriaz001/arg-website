@@ -1,11 +1,39 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import { Formik, Form, Field, ErrorMessage, FieldArray } from "formik";
 import * as Yup from "yup";
 import { jobs } from "../utils/constants";
 import ExperienceForm from "../CareerComponents/ExperienceForm";
 import EducationForm from "../CareerComponents/EducationForm";
-import CountryCodeDropdown from "../CareerComponents/CountryCodeDropdown"; // --- NEW: Import custom dropdown
+import ExperienceDisplay from "../CareerComponents/ExperienceDisplay";
+import EducationDisplay from "../CareerComponents/EducationDisplay";
 import "../yahya-css/careers.css";
+
+const phoneRegExp = /^[0-9]+$/;
+
+const experienceSchema = Yup.object().shape({
+  title: Yup.string().required("Title is required"),
+  company: Yup.string(),
+  location: Yup.string(),
+  description: Yup.string(),
+  startDate: Yup.date().required("Start date is required"),
+  endDate: Yup.date().when("currentlyWorkHere", {
+    is: false,
+    then: (schema) =>
+      schema
+        .required("End date is required")
+        .min(Yup.ref("startDate"), "End date cannot be before start date"),
+    otherwise: (schema) => schema.nullable(),
+  }),
+  currentlyWorkHere: Yup.boolean(),
+});
+
+const educationSchema = Yup.object().shape({
+  institution: Yup.string().required("Institution is required"),
+  major: Yup.string(),
+  degree: Yup.string(),
+  schoolLocation: Yup.string(),
+  description: Yup.string(),
+});
 
 const validationSchema = Yup.object({
   firstName: Yup.string().required("First name is required"),
@@ -16,8 +44,10 @@ const validationSchema = Yup.object({
   confirmEmail: Yup.string()
     .oneOf([Yup.ref("email"), null], "Emails must match")
     .required("Please confirm your email"),
-  countryCode: Yup.string().required("Country code is required"),
-  phone: Yup.string().required("Phone number is required"),
+  phone: Yup.string()
+    .matches(phoneRegExp, "Phone number must only contain digits")
+    .min(10, "Phone number must be at least 10 digits")
+    .required("Phone number is required"),
   jobTitle: Yup.string().required("Please select a job title"),
   resume: Yup.mixed()
     .required("A resume is required")
@@ -32,39 +62,24 @@ const validationSchema = Yup.object({
       (value) => value && value.type === "application/pdf"
     ),
   message: Yup.string(),
-  experience: Yup.array().of(
-    Yup.object().shape({
-      title: Yup.string().required("Title is required"),
-      company: Yup.string(),
-      location: Yup.string(),
-      description: Yup.string(),
-      startDate: Yup.date().required("Start date is required"),
-      endDate: Yup.date().when("currentlyWorkHere", {
-        is: false,
-        then: (schema) => schema.required("End date is required"),
-        otherwise: (schema) => schema.nullable(),
-      }),
-      currentlyWorkHere: Yup.boolean(),
-    })
-  ),
-  education: Yup.array().of(
-    Yup.object().shape({
-      institution: Yup.string().required("Institution is required"),
-      major: Yup.string(),
-      degree: Yup.string(),
-      schoolLocation: Yup.string(),
-      description: Yup.string(),
-    })
-  ),
+  experience: Yup.array().of(experienceSchema),
+  education: Yup.array()
+    .of(educationSchema)
+    .min(1, "At least one education entry is required"),
 });
 
 const Apply = () => {
+  const [editingExperienceIndex, setEditingExperienceIndex] = useState(null);
+  const [editingEducationIndex, setEditingEducationIndex] = useState(null);
+  const [originalData, setOriginalData] = useState(null);
+  const [isNewEntry, setIsNewEntry] = useState(false);
+  const fileInputRef = useRef(null);
+
   const initialValues = {
     firstName: "",
     lastName: "",
     email: "",
     confirmEmail: "",
-    countryCode: "",
     phone: "",
     jobTitle: "",
     resume: null,
@@ -73,14 +88,26 @@ const Apply = () => {
     education: [],
   };
 
-  const handleSubmit = (values, { setSubmitting }) => {
-    console.log("Form Data:", values);
+  const handleSubmit = (values, { setSubmitting, resetForm }) => {
+    console.log("--- Form Submission Data ---");
+    console.log(values);
+
+    if (values.experience.length === 0) {
+      console.log("Applicant is a Fresher (No experience submitted)");
+    }
+    console.log("Resume Attached:", values.resume ? "Yes" : "No");
+
     alert("Application submitted! Check the console for the form data.");
     setSubmitting(false);
+    resetForm();
+
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
   };
 
   return (
-    <div className="apply-container">
+    <div className="apply-container mt-5 md:mt-10">
       <div className="page-section">
         <h1 className="page-title">Apply for a Job</h1>
         <p className="page-subtitle">We're excited to hear from you!</p>
@@ -90,132 +117,309 @@ const Apply = () => {
           validationSchema={validationSchema}
           onSubmit={handleSubmit}
         >
-          {(
-            formik // Changed to get the full formik instance
-          ) => (
-            <Form className="form-container">
-              <div className="form-grid">
-                <div className="form-group">
-                  <label htmlFor="firstName">First Name*</label>
-                  <Field name="firstName" type="text" className="form-input" />
-                  <ErrorMessage
-                    name="firstName"
-                    component="div"
-                    className="form-error"
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="lastName">Last Name*</label>
-                  <Field name="lastName" type="text" className="form-input" />
-                  <ErrorMessage
-                    name="lastName"
-                    component="div"
-                    className="form-error"
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="email">Email*</label>
-                  <Field name="email" type="email" className="form-input" />
-                  <ErrorMessage
-                    name="email"
-                    component="div"
-                    className="form-error"
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="confirmEmail">Confirm Email*</label>
-                  <Field
-                    name="confirmEmail"
-                    type="email"
-                    className="form-input"
-                  />
-                  <ErrorMessage
-                    name="confirmEmail"
-                    component="div"
-                    className="form-error"
-                  />
-                </div>
-                <div className="form-group phone-group">
-                  {/* --- UPDATED: Using the new custom dropdown --- */}
-                  <CountryCodeDropdown formik={formik} />
-                  <div className="w-2/3">
+          {(formik) => {
+            const handleSaveExperience = async (index) => {
+              try {
+                await experienceSchema.validate(
+                  formik.values.experience[index],
+                  { abortEarly: false }
+                );
+                setEditingExperienceIndex(null);
+                setIsNewEntry(false);
+              } catch (err) {
+                // This block runs if validation fails
+                const errors = {};
+                err.inner.forEach((error) => {
+                  errors[error.path] = error.message;
+                });
+                const newErrors = { ...formik.errors };
+                if (!newErrors.experience) newErrors.experience = [];
+                newErrors.experience[index] = errors;
+                formik.setErrors(newErrors);
+              }
+            };
+
+            const handleCancelExperience = (index, remove) => {
+              if (isNewEntry) {
+                // If it was a new entry, remove it completely
+                remove(index);
+              } else {
+                // If it was an existing entry, revert to original data
+                formik.setFieldValue(`experience.${index}`, originalData);
+              }
+              setEditingExperienceIndex(null);
+              setIsNewEntry(false);
+            };
+
+            const handleSaveEducation = async (index) => {
+              try {
+                await educationSchema.validate(formik.values.education[index], {
+                  abortEarly: false,
+                });
+                setEditingEducationIndex(null);
+                setIsNewEntry(false);
+              } catch (err) {
+                // This block runs if validation fails
+                const errors = {};
+                err.inner.forEach((error) => {
+                  errors[error.path] = error.message;
+                });
+                const newErrors = { ...formik.errors };
+                if (!newErrors.education) newErrors.education = [];
+                newErrors.education[index] = errors;
+                formik.setErrors(newErrors);
+              }
+            };
+
+            const handleCancelEducation = (index, remove) => {
+              if (isNewEntry) {
+                remove(index);
+              } else {
+                formik.setFieldValue(`education.${index}`, originalData);
+              }
+              setEditingEducationIndex(null);
+              setIsNewEntry(false);
+            };
+
+            return (
+              <Form className="form-container">
+                <div className="form-grid">
+                  <div className="form-group">
+                    <label htmlFor="firstName">First Name*</label>
+                    <Field
+                      name="firstName"
+                      type="text"
+                      className="form-input"
+                    />
+                    <ErrorMessage
+                      name="firstName"
+                      component="div"
+                      className="form-error"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="lastName">Last Name*</label>
+                    <Field name="lastName" type="text" className="form-input" />
+                    <ErrorMessage
+                      name="lastName"
+                      component="div"
+                      className="form-error"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="email">Email*</label>
+                    <Field name="email" type="email" className="form-input" />
+                    <ErrorMessage
+                      name="email"
+                      component="div"
+                      className="form-error"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="confirmEmail">Confirm Email*</label>
+                    <Field
+                      name="confirmEmail"
+                      type="email"
+                      className="form-input"
+                    />
+                    <ErrorMessage
+                      name="confirmEmail"
+                      component="div"
+                      className="form-error"
+                    />
+                  </div>
+                  <div className="form-group">
                     <label htmlFor="phone">Phone*</label>
                     <Field name="phone" type="tel" className="form-input" />
+                    <ErrorMessage
+                      name="phone"
+                      component="div"
+                      className="form-error"
+                    />
                   </div>
                 </div>
-                <ErrorMessage
-                  name="countryCode"
-                  component="div"
-                  className="form-error"
-                />
-                <ErrorMessage
-                  name="phone"
-                  component="div"
-                  className="form-error"
-                />
-              </div>
 
-              <div className="form-group">
-                <label htmlFor="jobTitle">Job Title*</label>
-                <Field as="select" name="jobTitle" className="form-input">
-                  <option value="">Select a job title</option>
-                  {jobs.map((job) => (
-                    <option key={job._id} value={job.title}>
-                      {job.title}
-                    </option>
-                  ))}
-                </Field>
-                <ErrorMessage
-                  name="jobTitle"
-                  component="div"
-                  className="form-error"
-                />
-              </div>
+                <div className="form-group">
+                  <label htmlFor="jobTitle">Job Title*</label>
+                  <Field as="select" name="jobTitle" className="form-input">
+                    <option value="">Select a job title</option>
+                    {jobs.map((job) => (
+                      <option key={job.title} value={job.title}>
+                        {job.title}
+                      </option>
+                    ))}
+                  </Field>
+                  <ErrorMessage
+                    name="jobTitle"
+                    component="div"
+                    className="form-error"
+                  />
+                </div>
 
-              <div className="form-group">
-                <label htmlFor="resume">Resume (PDF, up to 5MB)*</label>
-                <input
-                  name="resume"
-                  type="file"
-                  onChange={(event) =>
-                    formik.setFieldValue("resume", event.currentTarget.files[0])
-                  }
-                  className="form-input file-input"
-                />
-                <ErrorMessage
-                  name="resume"
-                  component="div"
-                  className="form-error"
-                />
-              </div>
+                <div className="form-section">
+                  <h3 className="section-heading">Experience</h3>
+                  <FieldArray name="experience">
+                    {({ remove, push }) => (
+                      <div>
+                        {formik.values.experience.map((exp, index) =>
+                          editingExperienceIndex === index ? (
+                            <ExperienceForm
+                              key={index}
+                              index={index}
+                              formik={formik}
+                              onSave={() => handleSaveExperience(index)}
+                              onCancel={() =>
+                                handleCancelExperience(index, remove)
+                              }
+                            />
+                          ) : (
+                            <ExperienceDisplay
+                              key={index}
+                              experience={exp}
+                              onEdit={() => {
+                                setOriginalData(
+                                  formik.values.experience[index]
+                                );
+                                setIsNewEntry(false);
+                                setEditingExperienceIndex(index);
+                              }}
+                              onDelete={() => remove(index)}
+                            />
+                          )
+                        )}
+                        {editingExperienceIndex === null && (
+                          <button
+                            type="button"
+                            onClick={() => {
+                              const newExperience = {
+                                title: "",
+                                company: "",
+                                location: "",
+                                description: "",
+                                startDate: "",
+                                endDate: "",
+                                currentlyWorkHere: false,
+                              };
+                              const newIndex = formik.values.experience.length;
+                              push(newExperience);
+                              setIsNewEntry(true);
+                              setEditingExperienceIndex(newIndex);
+                            }}
+                            className="color-btn"
+                          >
+                            Add Experience
+                          </button>
+                        )}
+                      </div>
+                    )}
+                  </FieldArray>
+                </div>
 
-              <div className="form-group">
-                <label htmlFor="message">Message to the Hiring Team</label>
-                <Field
-                  as="textarea"
-                  name="message"
-                  className="form-input"
-                  rows="4"
-                />
-                <ErrorMessage
-                  name="message"
-                  component="div"
-                  className="form-error"
-                />
-              </div>
+                <div className="form-section">
+                  <h3 className="section-heading">Education</h3>
+                  <FieldArray name="education">
+                    {({ remove, push }) => (
+                      <div>
+                        {formik.values.education.map((edu, index) =>
+                          editingEducationIndex === index ? (
+                            <EducationForm
+                              key={index}
+                              index={index}
+                              onSave={() => handleSaveEducation(index)}
+                              onCancel={() =>
+                                handleCancelEducation(index, remove)
+                              }
+                            />
+                          ) : (
+                            <EducationDisplay
+                              key={index}
+                              education={edu}
+                              onEdit={() => {
+                                setOriginalData(formik.values.education[index]);
+                                setIsNewEntry(false);
+                                setEditingEducationIndex(index);
+                              }}
+                              onDelete={() => remove(index)}
+                            />
+                          )
+                        )}
+                        {editingEducationIndex === null && (
+                          <button
+                            type="button"
+                            onClick={() => {
+                              const newEducation = {
+                                institution: "",
+                                major: "",
+                                degree: "",
+                                schoolLocation: "",
+                                description: "",
+                              };
+                              const newIndex = formik.values.education.length;
+                              push(newEducation);
+                              setIsNewEntry(true);
+                              setEditingEducationIndex(newIndex);
+                            }}
+                            className="color-btn"
+                          >
+                            Add Education
+                          </button>
+                        )}
+                      </div>
+                    )}
+                  </FieldArray>
+                  <ErrorMessage
+                    name="education"
+                    component="div"
+                    className="form-error"
+                  />
+                </div>
 
-              <FieldArray name="experience" component={ExperienceForm} />
-              <FieldArray name="education" component={EducationForm} />
+                <div className="form-group">
+                  <label htmlFor="resume">Resume (PDF, up to 5MB)*</label>
+                  <input
+                    ref={fileInputRef}
+                    name="resume"
+                    type="file"
+                    onChange={(event) =>
+                      formik.setFieldValue(
+                        "resume",
+                        event.currentTarget.files[0]
+                      )
+                    }
+                    className="form-input file-input"
+                  />
+                  <ErrorMessage
+                    name="resume"
+                    component="div"
+                    className="form-error"
+                  />
+                </div>
 
-              <button
-                type="submit"
-                disabled={formik.isSubmitting}
-                className="color-btn mt-8"
-              >
-                Submit Application
-              </button>
-            </Form>
-          )}
+                <div className="form-group">
+                  <label htmlFor="message">Message to the Hiring Team</label>
+                  <Field
+                    as="textarea"
+                    name="message"
+                    className="form-input"
+                    rows="4"
+                  />
+                  <ErrorMessage
+                    name="message"
+                    component="div"
+                    className="form-error"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={formik.isSubmitting}
+                  className="color-btn mt-8"
+                >
+                  Submit Application
+                </button>
+              </Form>
+            );
+          }}
         </Formik>
       </div>
     </div>
