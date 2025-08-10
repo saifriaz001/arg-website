@@ -1,77 +1,26 @@
 import React, { useState, useRef } from "react";
 import { Formik, Form, Field, ErrorMessage, FieldArray } from "formik";
-import * as Yup from "yup";
 import { jobs } from "../utils/constants";
+import {
+  applicationValidationSchema,
+  experienceSchema,
+  educationSchema,
+} from "../utils/validationSchemas";
+
 import ExperienceForm from "../CareerComponents/ExperienceForm";
 import EducationForm from "../CareerComponents/EducationForm";
 import ExperienceDisplay from "../CareerComponents/ExperienceDisplay";
 import EducationDisplay from "../CareerComponents/EducationDisplay";
+
 import "../yahya-css/careers.css";
-
-const phoneRegExp = /^[0-9]+$/;
-
-const experienceSchema = Yup.object().shape({
-  title: Yup.string().required("Title is required"),
-  company: Yup.string(),
-  location: Yup.string(),
-  description: Yup.string(),
-  startDate: Yup.date().required("Start date is required"),
-  endDate: Yup.date().when("currentlyWorkHere", {
-    is: false,
-    then: (schema) =>
-      schema
-        .required("End date is required")
-        .min(Yup.ref("startDate"), "End date cannot be before start date"),
-    otherwise: (schema) => schema.nullable(),
-  }),
-  currentlyWorkHere: Yup.boolean(),
-});
-
-const educationSchema = Yup.object().shape({
-  institution: Yup.string().required("Institution is required"),
-  major: Yup.string(),
-  degree: Yup.string(),
-  schoolLocation: Yup.string(),
-  description: Yup.string(),
-});
-
-const validationSchema = Yup.object({
-  firstName: Yup.string().required("First name is required"),
-  lastName: Yup.string().required("Last name is required"),
-  email: Yup.string()
-    .email("Invalid email address")
-    .required("Email is required"),
-  confirmEmail: Yup.string()
-    .oneOf([Yup.ref("email"), null], "Emails must match")
-    .required("Please confirm your email"),
-  phone: Yup.string()
-    .matches(phoneRegExp, "Phone number must only contain digits")
-    .min(10, "Phone number must be at least 10 digits")
-    .required("Phone number is required"),
-  jobTitle: Yup.string().required("Please select a job title"),
-  resume: Yup.mixed()
-    .required("A resume is required")
-    .test(
-      "fileSize",
-      "File is too large",
-      (value) => value && value.size <= 5 * 1024 * 1024
-    )
-    .test(
-      "fileType",
-      "Unsupported file format",
-      (value) => value && value.type === "application/pdf"
-    ),
-  message: Yup.string(),
-  experience: Yup.array().of(experienceSchema),
-  education: Yup.array()
-    .of(educationSchema)
-    .min(1, "At least one education entry is required"),
-});
 
 const Apply = () => {
   const [editingExperienceIndex, setEditingExperienceIndex] = useState(null);
   const [editingEducationIndex, setEditingEducationIndex] = useState(null);
-  const [originalData, setOriginalData] = useState(null);
+
+  const [originalExperience, setOriginalExperience] = useState(null);
+  const [originalEducation, setOriginalEducation] = useState(null);
+
   const [isNewEntry, setIsNewEntry] = useState(false);
   const fileInputRef = useRef(null);
 
@@ -98,7 +47,7 @@ const Apply = () => {
     console.log("Resume Attached:", values.resume ? "Yes" : "No");
 
     alert("Application submitted! Check the console for the form data.");
-    setSubmitting(false);
+    setSubmitting(false); 
     resetForm();
 
     if (fileInputRef.current) {
@@ -114,7 +63,7 @@ const Apply = () => {
 
         <Formik
           initialValues={initialValues}
-          validationSchema={validationSchema}
+          validationSchema={applicationValidationSchema}
           onSubmit={handleSubmit}
         >
           {(formik) => {
@@ -140,15 +89,15 @@ const Apply = () => {
             };
 
             const handleCancelExperience = (index, remove) => {
-              if (isNewEntry) {
-                // If it was a new entry, remove it completely
-                remove(index);
+              if (originalExperience) {
+                // If a backup exists, it was an existing entry. Revert it.
+                formik.setFieldValue(`experience.${index}`, originalExperience);
               } else {
-                // If it was an existing entry, revert to original data
-                formik.setFieldValue(`experience.${index}`, originalData);
+                // If no backup exists, it was a new entry. Remove it.
+                remove(index);
               }
               setEditingExperienceIndex(null);
-              setIsNewEntry(false);
+              setOriginalExperience(null); // Always clean up state
             };
 
             const handleSaveEducation = async (index) => {
@@ -172,13 +121,15 @@ const Apply = () => {
             };
 
             const handleCancelEducation = (index, remove) => {
-              if (isNewEntry) {
-                remove(index);
+              if (originalEducation) {
+                // If a backup exists, it was an existing entry. Revert it.
+                formik.setFieldValue(`education.${index}`, originalEducation);
               } else {
-                formik.setFieldValue(`education.${index}`, originalData);
+                // If no backup exists, it was a new entry. Remove it.
+                remove(index);
               }
               setEditingEducationIndex(null);
-              setIsNewEntry(false);
+              setOriginalEducation(null); // Always clean up state
             };
 
             return (
@@ -277,7 +228,7 @@ const Apply = () => {
                               key={index}
                               experience={exp}
                               onEdit={() => {
-                                setOriginalData(
+                                setOriginalExperience(
                                   formik.values.experience[index]
                                 );
                                 setIsNewEntry(false);
@@ -335,7 +286,9 @@ const Apply = () => {
                               key={index}
                               education={edu}
                               onEdit={() => {
-                                setOriginalData(formik.values.education[index]);
+                                setOriginalEducation(
+                                  formik.values.education[index]
+                                );
                                 setIsNewEntry(false);
                                 setEditingEducationIndex(index);
                               }}

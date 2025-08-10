@@ -1,7 +1,8 @@
 import React from "react";
 import { FaEdit, FaTrash } from "react-icons/fa";
 
-const ExperienceDisplay = ({ experience, onEdit, onDelete }) => {
+const ExperienceDisplay = ({ item, onEdit, onDelete }) => {
+  // FIX: Destructure 'item'
   const formatDate = (dateString) => {
     if (!dateString) return "";
     const date = new Date(dateString);
@@ -12,21 +13,21 @@ const ExperienceDisplay = ({ experience, onEdit, onDelete }) => {
     });
   };
 
-  const startDate = formatDate(experience.startDate);
-  // --- THE FIX: Show "Present" if the checkbox is checked or endDate is missing ---
+  const startDate = formatDate(item.startDate);
   const endDate =
-    experience.currentlyWorkHere || !experience.endDate
+    item.currentlyWorkHere || !item.endDate
       ? "Present"
-      : formatDate(experience.endDate);
+      : formatDate(item.endDate);
 
   return (
     <div className="display-card">
       <div className="display-card-content">
-        <h4 className="display-card-title">{experience.title}</h4>
+        {/* FIX: Use 'item' properties */}
+        <h4 className="display-card-title">{item.title}</h4>
         <p className="display-card-subtitle">
-          {experience.company} · {startDate} - {endDate}
+          {item.company} · {startDate} - {endDate}
         </p>
-        <p className="display-card-description">{experience.description}</p>
+        <p className="display-card-description">{item.description}</p>
       </div>
       <div className="display-card-actions">
         <button type="button" onClick={onEdit}>

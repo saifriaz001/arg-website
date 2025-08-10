@@ -1,14 +1,17 @@
 import React from "react";
 import { FaEdit, FaTrash } from "react-icons/fa";
 
-const EducationDisplay = ({ education, onEdit, onDelete }) => (
+const EducationDisplay = (
+  { item, onEdit, onDelete } // FIX: Destructure 'item'
+) => (
   <div className="display-card">
     <div className="display-card-content">
-      <h4 className="display-card-title">{education.institution}</h4>
+      {/* FIX: Use 'item' properties */}
+      <h4 className="display-card-title">{item.institution}</h4>
       <p className="display-card-subtitle">
-        {education.degree} in {education.major}
+        {item.degree} in {item.major}
       </p>
-      <p className="display-card-description">{education.description}</p>
+      <p className="display-card-description">{item.description}</p>
     </div>
     <div className="display-card-actions">
       <button type="button" onClick={onEdit}>
