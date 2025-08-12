@@ -15,7 +15,7 @@ const MobileMenu = () => {
       title: 'Our Work',
       sub: [
         { label: 'Markets', link: '/markets' },
-        { label: 'Services', link: '/servicespage' },
+        { label: 'Services', link: '/services' },
         { label: 'Projects', link: '/projects' }
       ]
     },

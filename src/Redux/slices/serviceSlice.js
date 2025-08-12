@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { getServices } from '../../Admin/Endpoints/ServicesAPI'; // import your API function
 
 
-const LOCAL_STORAGE_KEY = 'projects_cache';
+const LOCAL_STORAGE_KEY = 'services_cache';
 const CACHE_DURATION = 60 * 60 * 1000; 
 
 const loadCachedMarkets = () => {
@@ -46,7 +46,7 @@ export const fetchServices = createAsyncThunk(
 
 
 const serviceSlice = createSlice({
-  name: 'projects',
+  name: 'services',
   initialState: {
     data: [],
     loading: false,

@@ -1,4 +1,5 @@
 import React from 'react';
+import ButtonWithArrow from './ButtonWithArrow';
 import { Link } from 'react-router-dom';
 import { FiArrowRightCircle } from 'react-icons/fi'; // Icon similar to your screenshot
 
@@ -6,21 +7,20 @@ const CareerCard = () => {
   return (
     <Link
       to="/careers"
-      className="bg-gray-100 p-6 rounded-md shadow hover:shadow-md transition duration-300 block group"
+      className="page-background p-4 mustard-border border rounded-md shadow hover:shadow-md transition duration-300 block group"
     >
       {/* Title */}
       <h3 className="Project-heading">
-        Expand your career with <span className="text-black">ARG</span>
+        Expand your career with ARG
       </h3>
 
       {/* Footer row: Read More + Icon */}
-      <div className="flex items-center justify-between">
-        <span className="text-red-600 font-medium group-hover:underline">Read More</span>
-        <FiArrowRightCircle className="text-red-600 text-2xl group-hover:translate-x-1 transition duration-200" />
+      <div >
+        <ButtonWithArrow to={"/careers"} />
       </div>
 
       {/* Optional underline at the bottom */}
-      <div className="mt-4 border-t border-gray-300 w-full"></div>
+      <div className="mt-4 border-t mustard-border w-full"></div>
     </Link>
   );
 };

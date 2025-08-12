@@ -1,5 +1,8 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
+import CareerCard from './CareerCard';
+import NewsListSection from './NewsListSection';
+import ContactUsForm from './ContactUsForm';
 
 const ProjectDetailPage = ({ data, slugParamName = 'slug'} ) => {
   const params = useParams();
@@ -13,47 +16,77 @@ const ProjectDetailPage = ({ data, slugParamName = 'slug'} ) => {
     return <div className="text-center py-10">Loading project details...</div>;
   }
 
-  const {
-    title,
-    heading,
-    description,
-    imageUrl,
-    state,
-    country,
-    services,
-    market
-  } = item;
+
   return (
-    <section className="section-layout">
-      <div className="max-w-7xl mx-auto ">
-        {/* Title and Location */}
-        <div className="mb-6">
-          <h1 className=" Project-title">{title}</h1>
-          <p className="Project-location">{state}, {country}</p>
+    <div>
+            {/* HEADER */}
+      <section className="section-layout">
+        <div className="max-w-7xl mx-auto">
+          <h1 className="heading-title">{item?.title}</h1>
         </div>
+      </section>
 
-        {/* Image */}
-        {imageUrl && (
-          <div className="w-full h-[400px] overflow-hidden mb-6 rounded-md shadow-md">
-            <img
-              src={imageUrl}
-              alt={title}
-              className="w-full h-full object-cover"
-            />
-          </div>
-        )}
-
-        {/* Main Content */}
-        <div className="flex flex-col lg:flex-row gap-10">
-          {/* Left: Heading + Description */}
-          <div className="lg:w-2/3">
-            {heading && (
-              <p className="Project-heading">{heading}</p>
+      {/* IMAGE */}
+      <div className=" h-96 overflow-hidden  bg-[#FFFDFA]">
+        <img
+          src={item.imageUrl }
+          alt={item.title}
+          className="w-full h-full object-cover"
+        />
+      </div>
+    <section className="section-layout">
+      <div className=" mt-10 max-w-7xl mx-auto  lg:flex lg:gap-10 ">
+        {/* Title and Location */}
+                  <div className="lg:w-2/3 w-full space-y-10">
+            {item.mainHeading && (
+              <div>
+                <h2 className="Project-heading">{item.mainHeading}</h2>
+                {item.mainDescription && (
+                  <p className="Project-description">{item.mainDescription}</p>
+                )}
+              </div>
             )}
-            {description && (
-              <p className="Project-description">
-                {description}
-              </p>
+
+            {(item.secondHeading || item.secondDescription || item.descriptionImageUrl) && (
+              <div className="space-y-4">
+                {item.secondHeading && (
+                  <h2 className="Project-heading">{item.secondHeading}</h2>
+                )}
+                {item.secondDescription && (
+                  <p className="Project-description">{item.secondDescription}</p>
+                )}
+                {item.descriptionImageUrl && (
+                  <img
+                    src={item.descriptionImageUrl}
+                    alt="Second Section Image"
+                    className="w-full h-72 object-cover rounded-md"
+                  />
+                )}
+              </div>
+            )}
+
+            {(item.highlightsHeading || item.highlightsDescriptions?.length > 0 || item.highlightsDescriptionImageUrl) && (
+              <div className="space-y-4">
+                {item.highlightsHeading && (
+                  <h2 className="Project-heading">{item.highlightsHeading}</h2>
+                )}
+
+                {item.highlightsDescriptions?.length > 0 && (
+                  <ul className="list-disc pl-5 Project-description">
+                    {item.highlightsDescriptions.map((point, index) => (
+                      <li key={index}>{point}</li>
+                    ))}
+                  </ul>
+                )}
+
+                {item.highlightsDescriptionImageUrl && (
+                  <img
+                    src={item.highlightsDescriptionImageUrl}
+                    alt="Highlights Section Image"
+                    className="w-full h-72 object-cover  rounded-md"
+                  />
+                )}
+              </div>
             )}
           </div>
 
@@ -65,7 +98,7 @@ const ProjectDetailPage = ({ data, slugParamName = 'slug'} ) => {
                 Services
               </h3>
               <ul className="mt-2 list-disc list-inside Project-service-description">
-                {services?.map((s, idx) => (
+                {item?.services?.map((s, idx) => (
                   <li className='' key={idx}><Link to={`/${"services"}/${s.slug}`}>{s.title}</Link></li>
                 ))}
               </ul>
@@ -77,15 +110,28 @@ const ProjectDetailPage = ({ data, slugParamName = 'slug'} ) => {
                 Markets
               </h3>
               <ul className="mt-2 list-disc list-inside Project-service-description">
-                {market?.map((m, idx) => (
+                {item?.market?.map((m, idx) => (
                   <li className='' key={idx}><Link to={`/${"markets"}/${m.slug}`}>{m.title}</Link></li>
                 ))}
               </ul>
             </div>
+
+            <div className=' '>
+            <NewsListSection   items ={item?.news || []} />
+          </div>
+            <div className="mb-10">
+              <ContactUsForm />
+            </div>
+            <div className="mb-10">
+              <CareerCard/>
+            </div>
+
+
           </div>
         </div>
-      </div>
+      
     </section>
+    </div>
   );
 };
 

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import image1 from '../assets/Engineeringex.png'
 import image2 from '../assets/ConstructionManagement.avif'
 import image3 from '../assets/ProcurementManagement.png'
+import ButtonWithArrow from '../ReuseableComponents/ButtonWithArrow';
 const epcServices = [
   {
     title: "Engineering Excellence",
@@ -24,49 +25,50 @@ const epcServices = [
 ];
 
 const EPCAdvisory = () => {
-  return (
-    <section className="section-layout">
-      <div className="max-w-7xl mx-auto" >
-      <h2 className="heading-title">
-        EPC (Engineering, Procurement, and Construction) Advisory
-      </h2>
-      <p className="paragraph-lg">
-        ARG distinguishes itself as a provider of comprehensive Engineering,
-        Procurement, and Construction (EPC) solutions, adeptly managing projects
-        from their initial concept through to final commissioning on a turnkey
-        basis.
-      </p>
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {epcServices.map((item, idx) => (
-          <div
-            key={idx}
-            className="feature-card"
-          >
-            <img
-              src={item.image}
-              alt={item.title}
-              className="feature-card-image"
-            />
-            <div className="feature-card-body">
-            <h4 className="feature-card-title">
-              {item.title}
-            </h4>
-            <p className="feature-card-description">
-              {item.description}
-            </p>
-            </div>
+  useEffect(() => {
+    if (epcServices.length > 0) {
+      const interval = setInterval(() => {
+        setCurrentIndex((prev) => (prev + 1) % epcServices.length);
+      }, 4000);
+      return () => clearInterval(interval);
+    }
+  }, [epcServices.length]);
+
+  if (!epcServices || epcServices.length === 0) {
+    return null;
+  }
+
+  const epcService = epcServices[currentIndex];
+
+  return (
+    <section className="w-full mb-10">
+
+
+
+      <div className="feature-card relative w-full h-fit overflow-hidden shadow-md group">
+        <img
+          src={epcService.image}
+          alt={epcService.title}
+          className="feature-card-image"
+        />
+        <div className="feature-card-body">
+          <h4 className="feature-card-title">
+            {epcService.title}
+          </h4>
+          <p className="feature-card-description min-h-[60px]">
+            {epcService.description}
+          </p>
+          <div className="mt-auto pt-4 ">
+            <ButtonWithArrow to={"/sub-pages/strategic-cost-management"} />
           </div>
-        ))}
+        </div>
       </div>
 
-      <p className="paragraph-sm-service mt-10">
-        This holistic EPC approach, built upon ARG’s foundational services,
-        allows the company to take full responsibility for complex projects,
-        delivering them efficiently and effectively with construction commencing
-        concurrently with the design process for significant time savings.
-      </p>
-    </div>
+
+
+
     </section>
   );
 };

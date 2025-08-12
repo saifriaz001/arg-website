@@ -10,24 +10,7 @@ const ProjectSlug = () => {
     useEffect(()=>{
          dispatch(fetchProjects());
         },[])
-        
-  // const [markets, setMarkets] = useState([]);
-  // const [loading, setLoading] = useState(true);
-
-  // useEffect(() => {
-  //   const fetchMarkets = async () => {
-  //     try {
-  //       const response = await getProjects();
-  //       setMarkets(response?.data || []);
-  //     } catch (error) {
-  //       console.error('Error fetching market data:', error);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   fetchMarkets();
-  // }, []);
+      
 
   if (loading) return <div className="text-center py-10">Loading market details...</div>;
   if (error) return <p>Error: {error}</p>;

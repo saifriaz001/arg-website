@@ -1,32 +1,84 @@
 import { apiConnector } from "../ApiConnector/apiConnector";
-import axios from "axios";
 import { projectEndpoints} from "./endpoints";
 
 const LOCAL_STORAGE_KEY = 'projects_cache';
 const { GET_PROJECTS, POST_PROJECTS , DELETE_PROJECT } = projectEndpoints;
 
-export const postProjects = async (title , heading, description, imageUrl , market, services, country, state, city) => {
-    console.log("checking post market url ->", POST_PROJECTS );
-    try {
-        const response = await apiConnector(
-            'POST', POST_PROJECTS,
-            { title , heading, description, imageUrl , market, services, country, state, city },
-            { withCredentials: true }
-        );
-        console.log("Response from post market:", response);
-        if (response.status === 201) {
-            console.log("Market created successfully:", response.data);
-            localStorage.removeItem(LOCAL_STORAGE_KEY);
-            return response.data; // Return the created market data
-        } else {
-            console.error("Failed to create market:", response.data);
-            throw new Error("Non-200 response");
-        }
-    } catch (error) {
-        console.log("Error during post market:", error);
-        throw error;
+// Endpoints/ProjectsAPI.js
+export const postProject = async ({
+  title,
+  mainHeading,
+  mainDescription,
+  imageUrl,
+  country,
+  state,
+  city,
+  market,     // array of Service/Market IDs (strings)
+  services,   // array of Service IDs (strings)
+  secondHeading,
+  secondDescription,
+  descriptionImageUrl,
+  highlightsHeading,
+  highlightsDescriptions,
+  highlightsDescriptionImageUrl
+}) => {
+  const body = {
+    title,
+    mainHeading,
+    mainDescription,
+    imageUrl,
+    country,
+    state,
+    city,
+    market,
+    services,
+    secondHeading,
+    secondDescription,
+    descriptionImageUrl,
+    highlightsHeading,
+    highlightsDescriptions,
+    highlightsDescriptionImageUrl
+  };
+
+  console.log("checking post projects url ->", POST_PROJECTS);
+
+  try {
+    const response = await apiConnector("POST", POST_PROJECTS, body, {
+      withCredentials: true
+    });
+
+    console.log("Response from post project:", response);
+
+    if (response.status === 201) {
+      console.log("Project created successfully:", response.data);
+      localStorage.removeItem(LOCAL_STORAGE_KEY);
+      return response.data;
     }
-}   
+
+    const msg = response?.data?.message || "Failed to create project";
+    throw new Error(msg);
+
+  } catch (error) {
+    const serverMsg =
+      error?.response?.data?.message ||
+      error?.message ||
+      "Error creating project";
+
+    // surface duplicate key nicely
+    if (error?.response?.status === 409) {
+      throw new Error(
+        `Duplicate value: ${JSON.stringify(error?.response?.data?.keyValue || {})}`
+      );
+    }
+
+    console.error("Error during post project:", error);
+    const err = new Error(serverMsg);
+    err.status = error?.response?.status;
+    err.details = error?.response?.data;
+    throw err;
+  }
+};
+
 
 export const getProjects = async () => {
     console.log("checking get projects url ->", GET_PROJECTS);

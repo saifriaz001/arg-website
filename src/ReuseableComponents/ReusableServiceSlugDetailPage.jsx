@@ -4,13 +4,45 @@ import ContactUsForm from './ContactUsForm'; // Adjust path if needed
 import ProjectCarousel from './ProjectCarousel';
 import CareerCard from './CareerCard';
 import NewsListSection from './NewsListSection';
+import ArchitectureEngineering from "../components/ArchitectureEngineering"
+import StrategicCostManagement from '../components/StrategicCostManagement';
+import EPCAdvisory from '../components/EPCAdvisory';
+import ProjectManagement from '../components/ProjectManagement';
 
-const ReusableSlugDetailPage = ({
+export const servicesList = [
+  {
+    title: "Strategic Cost Management",
+    item: <StrategicCostManagement />
+  },
+  {
+    title: "Strategic Project Management",
+    item: <ProjectManagement />
+  },
+  {
+    title: "Architecture Engineering & Design",
+    item: <ArchitectureEngineering />
+  },
+  {
+    title: "EPC Advisory",
+    item: <EPCAdvisory />
+  }
+];
+
+
+const ReusableServiceSlugDetailPage = ({
   data,
   slugParamName = 'slug',
   defaultImage,
   backLink = '/'
 }) => {
+
+  const cards =[
+    {
+      title:"strategic"
+    }
+  ]
+
+
   const params = useParams();
   const slug = params[slugParamName];
 
@@ -24,6 +56,10 @@ const ReusableSlugDetailPage = ({
       </div>
     );
   }
+
+  const matchedService = item
+    ? servicesList.find((service) => service.title === item.title)
+    : null;
 
   return (
     <div>
@@ -104,7 +140,7 @@ const ReusableSlugDetailPage = ({
           <div className="lg:w-1/3 w-full mt-10 lg:mt-0">
 
           <div className=''>
-            <ProjectCarousel projects={item.projects || []} />
+            {matchedService && matchedService.item}
           </div>
           <div className=' '>
             <NewsListSection   items ={item?.news || []} />
@@ -122,4 +158,4 @@ const ReusableSlugDetailPage = ({
   );
 };
 
-export default ReusableSlugDetailPage;
+export default ReusableServiceSlugDetailPage;

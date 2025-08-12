@@ -1,12 +1,13 @@
 import { useState } from "react";
 import LandingPage from "./Pages/LandingPage";
 import Services from "./Pages/Services";
+import ServiceSlugPage from "./Pages/ServiceSlugPage";
 //import Projects from './Pages/Projects'
 import { Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Footer from "./Pages/Footer";
 import Navbar from "./NavBar/Navbar";
-import ServicesPage from "./Pages/ServicesPage";
+import ServicePage from "./Pages/ServicePage";
 import ProjectPage from "./Pages/ProjectPage";
 import AboutPage from "./Pages/AboutPage";
 import StrategicCostManagement from "./components/StrategicCostManagement";
@@ -49,9 +50,10 @@ function App() {
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/" element={<LandingPage />} />
-          <Route path="/services" element={<Services />} />
+          {/* <Route path="/services" element={<Services />} /> */}
           {/* <Route path='/projects' element={<Projects/>} /> */}
-          <Route path="/servicespage" element={<ServicesPage />} />
+          <Route path="/services" element={<ServicePage />} />
+          <Route path="/services/:slug" element={<ServiceSlugPage />} />
           <Route path="/news" element={<NewsPage />} />
           <Route path="/news/:slug" element={<NewsSlugPage />} />
           <Route path="/markets" element={<MarketPage />} />

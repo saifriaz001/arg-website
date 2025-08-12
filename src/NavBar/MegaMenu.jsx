@@ -101,7 +101,7 @@ const MegaMenu = () => {
             </ul>
           </div>
           <NavButton className="mt-4">
-            <Link to="/servicespage">View all services →</Link>
+            <Link to="/services">View all services →</Link>
           </NavButton>
         </div>
 

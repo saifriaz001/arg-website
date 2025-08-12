@@ -64,6 +64,22 @@
     color: var(--color-paragraph)
   }
 
+  /* News List Side Section */
+
+  .Date-section{
+    @apply text-base leading-7 font-normal;
+    font-family: var(--font-paragraph);
+    color: var(--color-paragraph) 
+  }
+
+  .title-section{
+    @apply text-base leading-7 font-normal;
+    font-family: var(--font-heading);
+    color: var(--color-heading) 
+  }
+
+
+
   /* Load More button */
 
   .Load-More{
@@ -317,7 +333,7 @@
 
   /* Card-image */
   .feature-card-image {
-    @apply w-full h-48 object-cover object-top rounded-t-lg;
+    @apply w-full h-48  md:h-80 lg:h-48  object-cover object-top rounded-t-lg;
 
   }
 
@@ -335,7 +351,7 @@
 
   /* Card description */
   .feature-card-description {
-    @apply text-sm;
+    @apply text-sm mb-2;
     font-family: var(--font-paragraph);
     color: var(--color-paragraph);
   }
@@ -362,6 +378,9 @@
 .pressRelease-background{
   color: var(--color-paragraph)
 }
+
+
+
 
 
 /* SUBSECTION_3 MAPPING CARDS

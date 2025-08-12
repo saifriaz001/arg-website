@@ -10,24 +10,7 @@ const ProjectPage = () => {
          dispatch(fetchProjects());
         },[])
       
-    // const [projects, setProjects] = useState([]);
-    // const [loading, setLoading] = useState(true);
-
-    // useEffect(() => {
-    //     const fetchMarkets = async () => {
-    //         try {
-    //             const response = await getProjects();
-    //             console.log("Markets data:", response?.data);
-    //             setProjects(response?.data || []);
-    //         } catch (error) {
-    //             console.error('Error fetching markets:', error);
-    //         } finally {
-    //             setLoading(false);
-    //         }
-    //     };
-
-    //     fetchMarkets();
-    // }, []);
+    
 
     if (loading) return <div className="text-center py-10">Loading markets...</div>;
     if (error) return <p>Error: {error}</p>;
