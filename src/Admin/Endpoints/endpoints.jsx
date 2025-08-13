@@ -37,6 +37,12 @@ export const jobEndpoints = {
   DELETE_JOBS: `${BASE_URL}/delete-job`,
 };
 
+export const jobApplicationEndpoints = {
+  POST_APPLICATION: `${BASE_URL}/apply-job`,
+  GET_JOB_APPLICATIONS: `${BASE_URL}/get-job-applications`,
+  DELETE_APPLICATION: `${BASE_URL}/delete-job-applications`,
+};
+
 export const newsEndpoints = {
   POST_NEWS: `${BASE_URL}/createnews`,
   GET_NEWS: `${BASE_URL}/getnews`,

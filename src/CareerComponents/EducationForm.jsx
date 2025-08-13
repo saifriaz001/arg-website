@@ -6,7 +6,9 @@ const EducationForm = ({ index, onSave, onCancel }) => {
     <div className="form-array-item">
       <div className="form-grid">
         <div className="form-group">
-          <label htmlFor={`education.${index}.institution`}>Institution*</label>
+          <label htmlFor={`education.${index}.institution`}>
+            College/University*
+          </label>
           <Field
             name={`education.${index}.institution`}
             type="text"
@@ -19,31 +21,44 @@ const EducationForm = ({ index, onSave, onCancel }) => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor={`education.${index}.major`}>Major</label>
+          <label htmlFor={`education.${index}.course`}>Course*</label>
           <Field
-            name={`education.${index}.major`}
+            name={`education.${index}.course`}
             type="text"
             className="form-input"
+          />
+          <ErrorMessage
+            name={`education.${index}.course`}
+            component="div"
+            className="form-error"
           />
         </div>
       </div>
       <div className="form-grid">
         <div className="form-group">
-          <label htmlFor={`education.${index}.degree`}>Degree</label>
+          <label htmlFor={`education.${index}.branch`}>Branch*</label>
           <Field
-            name={`education.${index}.degree`}
+            name={`education.${index}.branch`}
             type="text"
             className="form-input"
           />
+          <ErrorMessage
+            name={`education.${index}.branch`}
+            component="div"
+            className="form-error"
+          />
         </div>
         <div className="form-group">
-          <label htmlFor={`education.${index}.schoolLocation`}>
-            School location
-          </label>
+          <label htmlFor={`education.${index}.schoolLocation`}>Location*</label>
           <Field
             name={`education.${index}.schoolLocation`}
             type="text"
             className="form-input"
+          />
+          <ErrorMessage
+            name={`education.${index}.schoolLocation`}
+            component="div"
+            className="form-error"
           />
         </div>
       </div>

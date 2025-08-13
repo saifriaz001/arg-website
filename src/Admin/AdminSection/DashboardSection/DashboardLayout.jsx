@@ -12,7 +12,8 @@ const DashboardLayout = () => {
           <Link to="/dashboard/create-market" className="hover:underline">Market</Link>
           <Link to="/dashboard/create-project" className="hover:underline">Project</Link>
           <Link to="/dashboard/create-news" className="hover:underline">News</Link>  
-          <Link to="/dashboard/create-jobs" className="hover:underline">Jobs</Link>  
+          <Link to="/dashboard/create-jobs" className="hover:underline">Create Jobs</Link>  
+          <Link to="/dashboard/applied-jobs" className="hover:underline">Applied Jobs</Link>  
           <Link to="/dashboard/create-projectarray" className="hover:underline">Project-Navbar</Link>            
           {/* Add more links as needed */}
         </nav>

@@ -1,18 +1,8 @@
-/*
-================================================================================
-File: /DashboardComponents/JobTable.jsx
-- This component displays the list of jobs.
-- It receives its data and refresh function as props.
-================================================================================
-*/
 import React from "react";
-import ReusableTanTable from "../../ReuseableComponents/ReusableTanTable"; // Adjust path if needed
-import { deleteJobs } from "../../Endpoints/JobsAPI"; // Adjust path if needed
+import ReusableTanTable from "../../ReuseableComponents/ReusableTanTable";
+import { deleteJobs } from "../../Endpoints/JobsAPI";
 
 const JobTable = ({ jobsData, onDataRefresh }) => {
-  // DEBUG: Log the props being received by the table to ensure data is arriving.
-  console.log("3. Data received in JobTable props:", jobsData);
-
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this job?")) return;
     try {
@@ -24,9 +14,6 @@ const JobTable = ({ jobsData, onDataRefresh }) => {
     }
   };
 
-  // --- POTENTIAL FIX IS HERE ---
-  // Check your data object properties against these accessorKey strings.
-  // They must match exactly, including capitalization.
   const columns = [
     {
       accessorKey: "title",

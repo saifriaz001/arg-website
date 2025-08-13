@@ -38,6 +38,7 @@ import Careers from "./Pages/Careers";
 import JobDetail from "./Pages/JobDetails";
 import Jobs from "./Admin/AdminSection/DashboardSection/Jobs";
 import Apply from "./Pages/Apply";
+import JobApplications from "./Admin/AdminSection/DashboardSection/JobApplications";
 
 function App() {
   return (
@@ -89,6 +90,7 @@ function App() {
             <Route path="create-market" element={<Market />} />
             <Route path="create-project" element={<ProjectList />} />
             <Route path="create-jobs" element={<Jobs />} />
+            <Route path="applied-jobs" element={<JobApplications />} />
             <Route path="create-news" element={<News />} />
             <Route path="create-projectarray" element={<ProjectNavbar />} />
             {/* Add more child routes here */}

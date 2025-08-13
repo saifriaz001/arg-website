@@ -20,10 +20,10 @@ export const experienceSchema = Yup.object().shape({
 });
 
 export const educationSchema = Yup.object().shape({
-  institution: Yup.string().required("Institution is required"),
-  major: Yup.string(),
-  degree: Yup.string(),
-  schoolLocation: Yup.string(),
+  institution: Yup.string().required("Institution name is required"),
+  branch: Yup.string().required("Branch name is required"),
+  course: Yup.string().required("Course name is required"),
+  schoolLocation: Yup.string().required("Location is required"),
   description: Yup.string(),
 });
 

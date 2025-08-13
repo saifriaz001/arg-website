@@ -1,14 +1,7 @@
-/*
-================================================================================
-File: /pages/Jobs.jsx (The Parent Page)
-- This component manages the state for the list of jobs.
-- It fetches the data and passes it down to the form and table.
-================================================================================
-*/
 import React, { useState, useEffect } from "react";
-import CreateJobForm from "../DashboardComponents/CreateJobForm"; // Adjust path if needed
-import JobTable from "../DashboardComponents/JobTable"; // Adjust path if needed
-import { getJobs } from "../../Endpoints/JobsAPI"; // Adjust path if needed
+import CreateJobForm from "../DashboardComponents/CreateJobForm";
+import JobTable from "../DashboardComponents/JobTable";
+import { getJobs } from "../../Endpoints/JobsAPI";
 
 const Jobs = () => {
   const [jobs, setJobs] = useState([]);
@@ -16,16 +9,7 @@ const Jobs = () => {
   const fetchJobs = async () => {
     try {
       const res = await getJobs();
-      // DEBUG: Log the entire raw response from the API
-      console.log("1. API Response:", res);
-
-      // --- FIX APPLIED HERE ---
-      // The log shows that `res` is the array itself, not an object
-      // containing a `data` property. We now correctly reference `res`.
       const jobsArray = res || [];
-
-      // DEBUG: Log the array you are trying to put into state
-      console.log("2. Extracted Jobs Array:", jobsArray);
 
       if (Array.isArray(jobsArray)) {
         const sortedJobs = jobsArray.sort(
@@ -50,8 +34,8 @@ const Jobs = () => {
 
   return (
     <div className="space-y-8 p-4 md:p-6">
-            <CreateJobForm onJobCreated={fetchJobs} />
-            <JobTable jobsData={jobs} onDataRefresh={fetchJobs} />   {" "}
+      <CreateJobForm onJobCreated={fetchJobs} />
+      <JobTable jobsData={jobs} onDataRefresh={fetchJobs} />   {" "}
     </div>
   );
 };

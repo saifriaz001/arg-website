@@ -9,7 +9,7 @@ const EducationDisplay = (
       {/* FIX: Use 'item' properties */}
       <h4 className="display-card-title">{item.institution}</h4>
       <p className="display-card-subtitle">
-        {item.degree} in {item.major}
+        {item.course} in {item.branch}
       </p>
       <p className="display-card-description">{item.description}</p>
     </div>
