@@ -11,7 +11,7 @@ const SearchBar = ({
   onSearch,
   onClear,
 }) => (
-  <div className="bg-[var(--color-strong)] px-2">
+  <div className="bg-[var(--color-strong)]">
     <div className="max-w-7xl mx-auto">
       <div className="search-bar-container">
         <input

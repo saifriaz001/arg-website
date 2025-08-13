@@ -16,7 +16,7 @@ const JobListing = ({ jobs, visibleCount, onLoadMore, onShowLess }) => (
     {jobs.length > 0 && (
       <div className="load-more-container">
         {visibleCount >= jobs.length ? (
-          <button onClick={onShowLess} className="color-btn">
+          <button onClick={onShowLess} className="btn-with-arrow">
             <span>Show Less</span>
             <FaChevronRight className="right-arrow" />
           </button>
