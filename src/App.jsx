@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LandingPage from "./Pages/LandingPage";
 import Services from "./Pages/Services";
 import ServiceSlugPage from "./Pages/ServiceSlugPage";
@@ -41,6 +41,11 @@ import Apply from "./Pages/Apply";
 import JobApplications from "./Admin/AdminSection/DashboardSection/JobApplications";
 
 function App() {
+  // scroll restored to top after refresh
+  useEffect(() => {
+    window.history.scrollRestoration = "manual";
+  }, []);
+
   return (
     <div className=" bg-cream">
       <div className="fixed top-0 left-0 w-full z-50 bg-cream shadow-md mb-10">

@@ -14,6 +14,9 @@
     --color-button-primary: #b88e23;
   }
 }
+@theme {
+  --breakpoint-xs: 18rem;
+}
 
 /* --- Generic & Reusable Classes --- */
 .page-section {
@@ -45,7 +48,8 @@
 
 /* Hero Section */
 .hero-career {
-  @apply h-[27.5rem] relative flex items-center justify-center text-[#FFF];
+  @apply h-[34rem] relative flex items-center justify-center text-[#FFF];
+  @apply xs:h-[27.5rem];
   /* Base padding */
 }
 
