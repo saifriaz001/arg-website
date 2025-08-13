@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FieldArray } from "formik";
+import { ErrorMessage, FieldArray } from "formik";
 
 // This is a "smart" component that manages its own state for editing.
 const EditableSection = ({
@@ -48,6 +48,7 @@ const EditableSection = ({
     setOriginalData(null); // Always clean up state
   };
 
+  const fieldError = formik.errors[fieldName];
   return (
     <div className="form-section">
       <h3 className="section-heading">{sectionTitle}</h3>
@@ -95,6 +96,9 @@ const EditableSection = ({
           </div>
         )}
       </FieldArray>
+      {typeof fieldError === "string" && (
+        <ErrorMessage name={fieldName} component="div" className="form-error" />
+      )}
     </div>
   );
 };

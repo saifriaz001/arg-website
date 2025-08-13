@@ -6,6 +6,7 @@ import { jobs } from "../utils/constants";
 import { getJobs } from "../Admin/Endpoints/JobsAPI";
 
 import { useEffect, useState } from "react";
+import ButtonWithArrow from "../ReuseableComponents/ButtonWithArrow";
 
 const JobDetail = () => {
   const [jobs, setJobs] = useState([]);
@@ -104,15 +105,16 @@ const JobDetail = () => {
             </p>
           </div>
 
-          <div className="w-38 mt-5">
-            <a
+          <div className="mt-5">
+            {/* <a
               href={job.applyFormLink}
               target="_blank"
               rel="noopener noreferrer"
               className="color-btn"
             >
               <span>Apply Now</span> <FaChevronRight className="right-arrow" />
-            </a>
+            </a> */}
+            <ButtonWithArrow to={"/careers/apply"} label="Apply Now" />
           </div>
         </div>
       </div>

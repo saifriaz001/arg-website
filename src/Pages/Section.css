@@ -1,16 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=DM+Sans:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=DM+Sans:wght@400;700&display=swap");
 @import "tailwindcss";
-
 
 @layer theme {
   :root {
     --font-heading: "Libre Baskerville";
     --font-paragraph: "DM Sans";
-    --color-heading: #5C4E3D;
+    --color-heading: #5c4e3d;
     --color-paragraph: #454240;
     --color-strong: #454240;
     --color-cardbackground: #f7edd4;
-    --color-pagebackground: #FFFDFA
+    --color-pagebackground: #fffdfa;
   }
 }
 
@@ -21,15 +20,15 @@
 }
 
 .heading-title {
-    @apply text-4xl md:text-5xl font-bold mt-6 mb-6;
-    color: var(--color-heading);
-    font-family: var(--font-heading);
-  }
+  @apply text-4xl md:text-5xl font-bold mt-6 mb-6;
+  color: var(--color-heading);
+  font-family: var(--font-heading);
+}
 
 @layer components {
   .section-layout {
     @apply px-4 py-10 md:px-10 lg:px-20;
-    background-color: var(--color-pagebackground)
+    background-color: var(--color-pagebackground);
   }
 
   .subheading {
@@ -47,51 +46,49 @@
   .strong {
     color: var(--color-strong);
   }
-/* Dropdown */
+  /* Dropdown */
 
-  .Dropdown-background{
+  .Dropdown-background {
     @apply z-50 mt-2 text-white  shadow-lg px-4 py-6 lg:px-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6;
     background-color: var(--color-paragraph);
   }
 
-  .Dropdown-select{
+  .Dropdown-select {
     @apply cursor-pointer text-sm text-black py-2 px-2  rounded  bg-white;
   }
 
-  .Dropdown-selected{
-    @apply text-sm cursor-pointer ;
-    font-family: var(--font-paragraph);
-    color: var(--color-paragraph)
-  }
-
-  /* News List Side Section */
-
-  .Date-section{
-    @apply text-base leading-7 font-normal;
-    font-family: var(--font-paragraph);
-    color: var(--color-paragraph) 
-  }
-
-  .title-section{
-    @apply text-base leading-7 font-normal;
-    font-family: var(--font-heading);
-    color: var(--color-heading) 
-  }
-
-
-
-  /* Load More button */
-
-  .Load-More{
-    @apply inline-flex items-center gap-2 border  px-6 py-2 rounded-full font-medium transition-all ease-in-out  duration-1000 ;
-    border-color: var(--color-heading) ;
+  .Dropdown-selected {
+    @apply text-sm cursor-pointer;
     font-family: var(--font-paragraph);
     color: var(--color-paragraph);
   }
 
-  .Load-More:hover{
+  /* News List Side Section */
+
+  .Date-section {
+    @apply text-base leading-7 font-normal;
+    font-family: var(--font-paragraph);
+    color: var(--color-paragraph);
+  }
+
+  .title-section {
+    @apply text-base leading-7 font-normal;
+    font-family: var(--font-heading);
+    color: var(--color-heading);
+  }
+
+  /* Load More button */
+
+  .Load-More {
+    @apply inline-flex items-center gap-2 border  px-6 py-2 rounded-full font-medium transition-all ease-in-out  duration-1000 cursor-pointer;
+    border-color: var(--color-heading);
+    font-family: var(--font-paragraph);
+    color: var(--color-paragraph);
+  }
+
+  .Load-More:hover {
     @apply text-white;
-    background-color:var(--color-paragraph) ;
+    background-color: var(--color-paragraph);
   }
 
   /* Reuseable-Grid-Page */
@@ -142,7 +139,7 @@
     @apply text-[1.25rem] leading-8 font-normal border-b pb-1 border-[#5C4E3D];
     font-family: var(--font-paragraph);
     color: var(--color-heading);
-    border-color: var(--color-heading)
+    border-color: var(--color-heading);
   }
 
   .Project-service-description {
@@ -157,19 +154,17 @@
     font-family: var(--font-heading);
   }
 
-  .News-Details-type{
-    @apply   text-sm px-3 py-1 text-white rounded-full border;
+  .News-Details-type {
+    @apply text-sm px-3 py-1 text-white rounded-full border;
     border-color: white;
     font-family: var(--font-paragraph);
   }
 
-  .News-detail-title{
+  .News-detail-title {
     @apply text-[2rem] font-normal leading-10 text-white;
     font-family: var(--font-heading);
-    background-color:  var(--color-paragraph) ;
-
+    background-color: var(--color-paragraph);
   }
-
 
   .News-heading {
     @apply text-[1.5rem] md:leading-8 leading-relaxed font-normal mb-2;
@@ -188,7 +183,7 @@
     font-family: var(--font-paragraph);
     color: var(--color-paragraph);
   }
-  .News{
+  .News {
     background-color: var(--color-paragraph);
   }
 
@@ -197,7 +192,7 @@
     color: var(--color-white);
     background-color: var(--color-paragraph);
     border-color: var(--color-paragraph);
-    @apply inline-flex items-center gap-1 border px-4 py-1.5 rounded-full font-medium  transition-all ease-in-out  duration-1000 ;
+    @apply inline-flex items-center gap-1 border px-4 py-1.5 rounded-full font-medium  transition-all ease-in-out  duration-1000;
   }
 
   .btn-with-arrow:hover {
@@ -209,7 +204,7 @@
 
   .value-card {
     @apply p-6 rounded-md shadow-sm hover:shadow-xl transition-shadow duration-300;
-    background-color: var(--color-cardbackground)
+    background-color: var(--color-cardbackground);
   }
 
   .icon-wrapper {
@@ -235,17 +230,16 @@
     font-family: var(--font-paragraph);
   }
 
-
   /*ABOUT-US-PAGE SUBSECTION_4 MAPPING CARDS FOR LEADERSHIP */
 
   .card {
     @apply relative rounded-lg shadow-md p-6 text-left transition-all overflow-hidden hover:shadow-xl duration-300;
-    background-color: var(--color-cardbackground)
+    background-color: var(--color-cardbackground);
   }
 
   .card-hover-overlay {
     @apply absolute inset-0 px-6 py-6 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-in-out pointer-events-none group-hover:pointer-events-auto z-20;
-    background-color: var(--color-cardbackground)
+    background-color: var(--color-cardbackground);
   }
 
   .card-image {
@@ -290,7 +284,7 @@
 
   .contact-card {
     @apply rounded-lg shadow-md p-6 text-left hover:shadow-xl transition-shadow duration-300;
-    background-color: var(--color-cardbackground)
+    background-color: var(--color-cardbackground);
   }
 
   .contact-title {
@@ -323,18 +317,15 @@
     color: var(--color-paragraph);
   }
 
-
   /* SERVICE PAGE GENERIC MAP CARDS TEMPLATE  */
   .feature-card {
     @apply rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden;
-    background-color: var(--color-cardbackground)
+    background-color: var(--color-cardbackground);
   }
-
 
   /* Card-image */
   .feature-card-image {
     @apply w-full h-48  md:h-80 lg:h-48  object-cover object-top rounded-t-lg;
-
   }
 
   /* Inner-content */
@@ -363,25 +354,19 @@
   }
 
   /*For Navbar*/
-
 }
 
 .strong {
   color: var(--color-strong);
 }
 
-.page-background{
+.page-background {
   color: var(--color-pagebackground);
-
 }
 
-.pressRelease-background{
-  color: var(--color-paragraph)
+.pressRelease-background {
+  color: var(--color-paragraph);
 }
-
-
-
-
 
 /* SUBSECTION_3 MAPPING CARDS
 
