@@ -93,7 +93,7 @@ const MegaMenu = () => {
             <ul className="space-y-4">
               {services.map((service) => (
                 <li key={service._id || service.id} className="dropdown-link">
-                  <Link to={`/servicespage/${service.slug}`}>
+                  <Link to={`/services/${service.slug}`}>
                     {service.title}
                   </Link>
                 </li>
