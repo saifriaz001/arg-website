@@ -17,7 +17,7 @@ export const login = async (email , password , navigate) =>{
         );
         if (response.status === 200) {
             console.log("Login successful:", response.data);
-            navigate ("/adminpanel");
+            navigate ("/dashboard/create-service");
         }
         else{
             console.error("Login failed:", response.data);
