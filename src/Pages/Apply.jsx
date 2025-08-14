@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useDropzone } from "react-dropzone";
 import {
   applicationValidationSchema,
   experienceSchema,
@@ -17,7 +18,6 @@ import Select from "react-select";
 import "../yahya-css/careers.css";
 
 const Apply = () => {
-  const fileInputRef = useRef(null);
   const [jobs, setJobs] = useState([]); // State to hold the fetched jobs
 
   // Fetch the list of jobs when the component mounts
@@ -77,9 +77,6 @@ const Apply = () => {
     } finally {
       setSubmitting(false);
     }
-    if (fileInputRef.current) {
-      fileInputRef.current.value = "";
-    }
   };
 
   const jobOptions = jobs.map((job) => ({
@@ -108,6 +105,47 @@ const Apply = () => {
     }),
   };
 
+  const ResumeDropzone = ({ formik }) => {
+    const onDrop = (acceptedFiles) => {
+      // When a file is dropped, we take the first one and set it in Formik's state.
+      if (acceptedFiles && acceptedFiles.length > 0) {
+        formik.setFieldValue("resume", acceptedFiles[0]);
+      }
+    };
+
+    const { getRootProps, getInputProps, isDragActive } = useDropzone({
+      onDrop,
+      multiple: false, // Ensures only one file can be uploaded
+      accept: { "application/pdf": [".pdf"] }, // Accepts only PDF files
+      maxSize: 5 * 1024 * 1024, // 5MB size limit
+    });
+    return (
+      <div className="form-group">
+        <label htmlFor="resume">Resume (PDF, up to 5MB)*</label>
+        {/* getRootProps applies all necessary event handlers for drag-and-drop */}
+        <div
+          {...getRootProps()}
+          className={`dropzone ${isDragActive ? "dropzone-active" : ""}`}
+        >
+          {/* getInputProps applies necessary attributes to the hidden file input */}
+          <input {...getInputProps()} name="resume" />
+          {isDragActive ? (
+            <p>Drop the resume here ...</p>
+          ) : (
+            <p>Drag & drop your resume here, or click to select a file</p>
+          )}
+        </div>
+        {/* Display the selected file name for user feedback */}
+        {formik.values.resume && (
+          <p className="file-name-display">
+            Selected file: {formik.values.resume.name}
+          </p>
+        )}
+        <ErrorMessage name="resume" component="div" className="form-error" />
+      </div>
+    );
+  };
+
   return (
     <div className="apply-container mt-5 md:mt-10">
       <div className="page-section">
@@ -121,10 +159,10 @@ const Apply = () => {
         >
           {(formik) => (
             <Form className="form-container">
+              <ResumeDropzone formik={formik} />
               <div className="form-grid">
                 <div className="form-group">
                   <label htmlFor="firstName">First Name*</label>
-
                   <Field
                     name="firstName"
                     type="text"
@@ -238,7 +276,6 @@ const Apply = () => {
                   endDate: "",
                   currentlyWorkHere: false,
                 }}
-                
               />
 
               <EditableSection
@@ -255,10 +292,9 @@ const Apply = () => {
                   schoolLocation: "",
                   description: "",
                 }}
-                
               />
 
-              <div className="form-group">
+              {/* <div className="form-group">
                 <label htmlFor="resume">Resume (PDF, up to 5MB)*</label>
                 <input
                   ref={fileInputRef}
@@ -274,7 +310,7 @@ const Apply = () => {
                   component="div"
                   className="form-error"
                 />
-              </div>
+              </div> */}
 
               <div className="form-group">
                 <label htmlFor="message">Message to the Hiring Team</label>
