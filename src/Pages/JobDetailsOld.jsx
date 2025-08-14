@@ -5,81 +5,44 @@ import { getJobs } from "../Admin/Endpoints/JobsAPI";
 
 import { useEffect, useState } from "react";
 import ButtonWithArrow from "../ReuseableComponents/ButtonWithArrow";
-import JobDetailShimmer from "../Shimmer/JobDetailShimmer";
-
-// --- Main Page Component ---
 
 const JobDetail = () => {
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-  const [job, setJob] = useState([]);
-
-  const { slug } = useParams();
-
+  const [jobs, setJobs] = useState([]);
   useEffect(() => {
     const fetchAndSetJobs = async () => {
-      setLoading(true);
-      setError(false);
-      setJob(null);
-
       try {
         const jobsFromAPI = await getJobs();
         if (Array.isArray(jobsFromAPI)) {
-          const foundJob = jobsFromAPI.find((j) => j.slug === slug);
-          if (foundJob) {
-            setJob(foundJob);
-          } else {
-            setError(true); // Set error if job with slug is not found
-          }
+          setJobs(jobsFromAPI);
         } else {
           console.error("Fetched data is not an array:", jobsFromAPI);
-          setError(true);
         }
       } catch (error) {
         console.error("❌ Failed to fetch jobs:", error);
-        setError(true);
-      } finally {
-        setLoading(false);
       }
     };
     fetchAndSetJobs();
-  }, [slug]);
-  //   const job = jobs.find((j) => j.slug === slug);
+  }, []);
 
-  // 1. Render Shimmer while loading
-  if (loading) {
-    return <JobDetailShimmer />;
-  }
+  const { slug } = useParams();
+  const job = jobs.find((j) => j.slug === slug);
 
-  // 2. Render error or "not found" message
-  if (error || !job) {
+  if (!job) {
     return (
-      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-        <div className="p-8 text-center bg-white rounded-lg shadow-md">
-          <h1 className="text-3xl font-bold mb-4 text-[var(--color-heading)]">
-            Job Not Found
-          </h1>
-          <p className="text-[var(--color-paragraph)] mb-8">
-            Sorry, we couldn't find that job. It might have been filled or
-            removed.
-          </p>
-          <Link
-            to={"/careers"}
-            className="inline-block bg-[var(--color-connect-card)] cursor-pointer border-2 border-white text-white font-bold  py-2 px-4 rounded-4xl hover:bg-white hover:border-[var(--color-connect-card)] hover:text-[var(--color-connect-card)] hover:transition-colors"
-          >
-            &larr; Back to All Jobs
-          </Link>
-        </div>
+      <div className="job-detail-container p-8">
+        <h1 className="text-3xl font-bold">Job not found</h1>
+        <Link to="/careers" className="back-button mt-4">
+          &larr; Back to all jobs
+        </Link>
       </div>
     );
   }
 
-  // 3. Render the actual job details when data is ready
   return (
     <div className="job-detail-container">
       {/* Header Section */}
       <div className="job-detail-header">
-        <div className="page-section  ">
+        <div className="page-section">
           <h1 className="page-title">{job.title}</h1>
           <p className="page-subtitle">
             {job.city}, {job.state}
@@ -90,24 +53,23 @@ const JobDetail = () => {
       {/* Main Content Section */}
       <div className="page-section">
         <div className="content-panel">
-          <h3 className="section-heading ">Job Description</h3>
+          <h3 className="section-heading">Job Description</h3>
           <p className="paragraph">{job.description}</p>
-
-          <h3 className="section-heading ">Qualifications</h3>
+          <h3 className="section-heading">Qualifications</h3>
           <ul className="qualifications-list">
             {job.qualifications.map((q, index) => (
               <li key={index}>{q}</li>
             ))}
           </ul>
 
-          <h3 className="section-heading ">Minimum Requirements</h3>
+          <h3 className="section-heading">Minimum Requirements</h3>
           <ul className="qualifications-list">
             {job.minRequirements.map((q, index) => (
               <li key={index}>{q}</li>
             ))}
           </ul>
 
-          <h3 className="section-heading ">
+          <h3 className="section-heading">
             What makes ARG a great place to work
           </h3>
           <p className="paragraph">
